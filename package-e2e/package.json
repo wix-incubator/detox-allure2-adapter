@@ -1,0 +1,15 @@
+{
+  "name": "@detox-allure2-adapter/package-e2e",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "node test.cjs && node test.mjs && tsc",
+    "test:cjs": "node test.cjs",
+    "test:mjs": "node test.mjs",
+    "test:ts": "tsc"
+  },
+  "dependencies": {
+    "detox-allure2-adapter": "file:../detox-allure2-adapter-1.0.0.tgz"
+  }
+}

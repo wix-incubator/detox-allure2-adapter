@@ -1,0 +1,6 @@
+{
+  "entryPoints": ["src/index.ts"],
+  "hideGenerator": true,
+  "name": "@wix-incubator/detox-allure2-adapter",
+  "out": "../../website"
+}

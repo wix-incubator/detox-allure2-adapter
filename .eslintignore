@@ -1,0 +1,5 @@
+coverage/**
+dist/**
+package-e2e/**
+*.js
+*.mjs

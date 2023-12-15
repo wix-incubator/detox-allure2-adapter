@@ -1,0 +1,69 @@
+{
+  "root": true,
+  "env": {
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "plugin:unicorn/all",
+    "plugin:node/recommended",
+    "plugin:prettier/recommended",
+    "plugin:ecmascript-compat/recommended"
+  ],
+  "ignorePatterns": [
+    "__fixtures__",
+    "coverage",
+    "dist",
+    "e2e",
+    "*.js"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "tsconfig.json"
+  },
+  "plugins": [
+    "no-only-tests"
+  ],
+  "rules": {
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "import/no-cycle": "error",
+    "import/order": ["error", {
+      "alphabetize": {"order": "asc", "caseInsensitive": true}
+    }],
+    "import/no-internal-modules": "error",
+    "node/no-missing-import": "off",
+    "node/no-unsupported-features/es-syntax": "off",
+    "@typescript-eslint/no-this-alias": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/member-ordering": "error",
+    "@typescript-eslint/no-unused-vars": ["error", {
+      "argsIgnorePattern": "^_",
+      "varsIgnorePattern": "^_"
+    }],
+    "unicorn/consistent-function-scoping": "off",
+    "unicorn/filename-case": "off",
+    "unicorn/prefer-at": "off",
+    "unicorn/prefer-json-parse-buffer": "off",
+    "unicorn/prefer-node-protocol": "off",
+    "unicorn/prefer-string-replace-all": "off",
+    "unicorn/prevent-abbreviations": "off",
+    "unicorn/no-array-callback-reference": "off",
+    "unicorn/no-null": "off",
+    "unicorn/no-this-assignment": "off",
+    "unicorn/no-unused-properties": "off",
+    "unicorn/prefer-module": "off"
+  }
+}

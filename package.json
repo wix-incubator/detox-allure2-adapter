@@ -55,7 +55,7 @@
   },
   "homepage": "https://github.com/wix-incubator/detox-allure2-adapter#readme",
   "peerDependencies": {
-    "detox": "20.14.2-smoke.0",
+    "detox": "20.14.2-smoke.0 || >20.14.5",
     "jest-allure2-reporter": "^2.0.0-beta.3"
   },
   "devDependencies": {

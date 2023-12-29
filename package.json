@@ -10,6 +10,8 @@
     "dist",
     "*.js",
     "*.mjs",
+    "!.*.js",
+    "!jest.config.js",
     "!**/__utils__",
     "!**/__tests__",
     "!**/*.test.*"

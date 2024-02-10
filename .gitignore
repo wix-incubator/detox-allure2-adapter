@@ -131,3 +131,5 @@ dist
 
 # IDE
 .idea/
+
+!__fixtures__

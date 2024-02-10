@@ -36,6 +36,7 @@ const listener: EnvironmentListenerFn = ({ testEvents }) => {
 
   function onTrackArtifact(artifact: any) {
     const $step = allure.$bind();
+    const $$test = $test;
     const originalSave = artifact.doSave.bind(artifact);
 
     artifact.doSave = async (artifactPath: string, ...args: unknown[]) => {
@@ -45,7 +46,7 @@ const listener: EnvironmentListenerFn = ({ testEvents }) => {
       const isVideo = !!inferMimeType({ sourcePath: artifactPath })?.startsWith('video/');
       const handler = isDirectory ? zipHandler : isLog ? logHandler : 'copy';
       const mimeType = isLog ? 'text/plain' : undefined;
-      const $allure = (isLog || isVideo ? $test : $step) ?? $step;
+      const $allure = (isLog || isVideo ? $$test : $step) ?? $step;
 
       $allure.fileAttachment(artifactPath, {
         name: path.basename(artifactPath),

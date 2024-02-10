@@ -4,26 +4,54 @@ import path from 'node:path';
 // eslint-disable-next-line import/no-internal-modules
 import { worker } from 'detox/internals';
 // eslint-disable-next-line import/no-internal-modules
-import { allure } from 'jest-allure2-reporter/api';
+import { allure, type MIMEInferer } from 'jest-allure2-reporter/api';
 // eslint-disable-next-line node/no-extraneous-import
 import type { EnvironmentListenerFn } from 'jest-environment-emit';
 
+import { createLogHandler, createZipHandler } from './file-handlers';
+
 const listener: EnvironmentListenerFn = ({ testEvents }) => {
-  testEvents.on('setup', () => {
-    const artifactsManager = (worker as any)._artifactsManager;
-    artifactsManager.on('trackArtifact', onTrackArtifact);
-  });
+  let logHandler: ReturnType<typeof createLogHandler>;
+  let zipHandler: ReturnType<typeof createZipHandler>;
+  let inferMimeType: MIMEInferer;
+  let $test: ReturnType<typeof allure.$bind> | undefined;
+
+  testEvents
+    .on('setup', () => {
+      allure.$plug((context) => {
+        logHandler = createLogHandler(context);
+        zipHandler = createZipHandler(context);
+        inferMimeType = context.inferMimeType;
+      });
+
+      const artifactsManager = (worker as any)._artifactsManager;
+      artifactsManager.on('trackArtifact', onTrackArtifact);
+    })
+    .on('test_start', () => {
+      $test = allure.$bind();
+    })
+    .on('test_done', () => {
+      $test = undefined;
+    });
 
   function onTrackArtifact(artifact: any) {
-    const $allure = allure.$bind();
+    const $step = allure.$bind();
     const originalSave = artifact.doSave.bind(artifact);
+
     artifact.doSave = async (artifactPath: string, ...args: unknown[]) => {
       const result = await originalSave(artifactPath, ...args);
-      // if not directory
-      if (!fs.lstatSync(artifactPath).isDirectory()) {
-        const mimeType = path.extname(artifactPath) === '.log' ? 'text/plain' : undefined;
-        $allure.fileAttachment(artifactPath, { name: path.basename(artifactPath), mimeType });
-      }
+      const isDirectory = fs.lstatSync(artifactPath).isDirectory();
+      const isLog = path.extname(artifactPath) === '.log';
+      const isVideo = !!inferMimeType({ sourcePath: artifactPath })?.startsWith('video/');
+      const handler = isDirectory ? zipHandler : isLog ? logHandler : 'copy';
+      const mimeType = isLog ? 'text/plain' : undefined;
+      const $allure = (isLog || isVideo ? $test : $step) ?? $step;
+
+      $allure.fileAttachment(artifactPath, {
+        name: path.basename(artifactPath),
+        mimeType,
+        handler,
+      });
 
       return result;
     };

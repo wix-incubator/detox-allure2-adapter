@@ -1,0 +1,167 @@
+--------- beginning of main
+02-06 07:19:02.046  3455  3583 D DetoxWSClient: Received action 'reactNativeReload' (ID #-1000, params={})
+02-06 07:19:02.046  3455  3579 I DetoxDispatcher: Handling action 'reactNativeReload' (ID #-1000)...
+02-06 07:19:02.048  3455  3579 I DetoxRNExt: Reloading React Native
+02-06 07:19:02.048  3455  3579 D IdlingRegistry: Unregistering idling resources: [com.wix.detox.reactnative.idlingresources.timers.TimersIdlingResource@8cf1958, com.wix.detox.reactnative.idlingresources.BridgeIdlingResource@bf6cab1, com.wix.detox.reactnative.idlingresources.uimodule.UIModuleIdlingResource@fbc6b96, com.wix.detox.reactnative.idlingresources.AnimatedModuleIdlingResource@805b317]
+02-06 07:19:02.048  3455  3579 D IdlingRegistry: Unregistering idling resources: [com.wix.detox.reactnative.idlingresources.NetworkIdlingResource@1c87304]
+02-06 07:19:02.048  3455  3579 D IdlingRegistry: Unregistering idling resources: [com.wix.detox.reactnative.idlingresources.AsyncStorageIdlingResource@72869b3]
+02-06 07:19:02.048  3455  3455 D Detox.RNMarker: REACT_BRIDGE_LOADING_START (null)
+02-06 07:19:02.048  3455  3455 D Detox.RNMarker: DESTROY_CATALYST_INSTANCE_START (null)
+02-06 07:19:02.049  3455  3632 D Detox.RNMarker: CREATE_REACT_CONTEXT_START (HermesExecutorRelease)
+02-06 07:19:02.049  3455  3632 D Detox.RNMarker: PROCESS_PACKAGES_START (null)
+02-06 07:19:02.050  3455  3632 D Detox.RNMarker: CREATE_MODULE_START (FrescoModule)
+02-06 07:19:02.050  3455  3632 D Detox.RNMarker: CREATE_MODULE_END (FrescoModule)
+02-06 07:19:02.051  3455  3632 D Detox.RNMarker: PROCESS_PACKAGES_END (null)
+02-06 07:19:02.051  3455  3632 D Detox.RNMarker: CREATE_CATALYST_INSTANCE_START (null)
+02-06 07:19:02.072  3455  3633 D Detox.RNMarker: CREATE_REACT_CONTEXT_END (null)
+02-06 07:19:02.072  3455  3632 D Detox.RNMarker: CREATE_CATALYST_INSTANCE_END (null)
+02-06 07:19:02.072  3455  3632 W unknown:ReactContext: initializeMessageQueueThreads() is called.
+02-06 07:19:02.072  3455  3632 D Detox.RNMarker: PRE_RUN_JS_BUNDLE_START (null)
+02-06 07:19:02.093  3455  3633 D Detox.RNMarker: RUN_JS_BUNDLE_START (index.android.bundle)
+02-06 07:19:02.094  3455  3634 D Detox.RNMarker: CREATE_MODULE_START (UIManager)
+02-06 07:19:02.097  3455  3625 D Detox.RNMarker: DESTROY_CATALYST_INSTANCE_END (null)
+02-06 07:19:02.099  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_START (NativePerformanceCxx)
+02-06 07:19:02.099  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_START (NativePerformanceObserverCxx)
+02-06 07:19:02.100  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_START (RedBox)
+02-06 07:19:02.100  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_START (BugReporting)
+02-06 07:19:02.100  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_START (HeadlessJsTaskSupport)
+02-06 07:19:02.100  3455  3633 D Detox.RNMarker: CREATE_MODULE_START (HeadlessJsTaskSupport)
+02-06 07:19:02.100  3455  3633 D Detox.RNMarker: CREATE_MODULE_END (HeadlessJsTaskSupport)
+02-06 07:19:02.100  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_END (HeadlessJsTaskSupport)
+02-06 07:19:02.100  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_START (UIManager)
+02-06 07:19:02.101  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.drawer.ReactDrawerLayoutManager
+02-06 07:19:02.102  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.uimanager.LayoutShadowNode
+02-06 07:19:02.102  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.scroll.ReactHorizontalScrollViewManager
+02-06 07:19:02.103  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.scroll.ReactHorizontalScrollContainerViewManager
+02-06 07:19:02.103  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.progressbar.ReactProgressBarViewManager
+02-06 07:19:02.103  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.progressbar.ProgressBarShadowNode
+02-06 07:19:02.103  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.scroll.ReactScrollViewManager
+02-06 07:19:02.104  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.switchview.ReactSwitchManager
+02-06 07:19:02.104  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.switchview.ReactSwitchManager$ReactSwitchShadowNode
+02-06 07:19:02.104  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.swiperefresh.SwipeRefreshLayoutManager
+02-06 07:19:02.104  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.text.frescosupport.FrescoBasedReactTextInlineImageViewManager
+02-06 07:19:02.104  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.text.frescosupport.FrescoBasedReactTextInlineImageShadowNode
+02-06 07:19:02.104  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.image.ReactImageManager
+02-06 07:19:02.105  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.modal.ReactModalHostManager
+02-06 07:19:02.105  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.modal.ModalHostShadowNode
+02-06 07:19:02.105  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.text.ReactRawTextManager
+02-06 07:19:02.105  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.text.ReactRawTextShadowNode
+02-06 07:19:02.105  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.textinput.ReactTextInputManager
+02-06 07:19:02.106  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.textinput.ReactTextInputShadowNode
+02-06 07:19:02.106  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.text.ReactTextViewManager
+02-06 07:19:02.107  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.text.ReactTextShadowNode
+02-06 07:19:02.107  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.view.ReactViewManager
+02-06 07:19:02.107  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.text.ReactVirtualTextViewManager
+02-06 07:19:02.108  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.text.ReactVirtualTextShadowNode
+02-06 07:19:02.109  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.unimplementedview.ReactUnimplementedViewManager
+02-06 07:19:02.109  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.reactnativecommunity.slider.ReactSliderManager
+02-06 07:19:02.109  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.reactnativecommunity.slider.ReactSliderManager$ReactSliderShadowNode
+02-06 07:19:02.109  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.reactnativecommunity.webview.RNCWebViewManager
+02-06 07:19:02.110  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.example.AnimationViewManager
+02-06 07:19:02.110  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.example.DoubleTapsTextViewManager
+02-06 07:19:02.111  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.example.SluggishTextTextViewManager
+02-06 07:19:02.111  3455  3634 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.reactnativecommunity.checkbox.ReactCheckBoxManager
+02-06 07:19:02.111  3455  3634 D Detox.RNMarker: CREATE_MODULE_END (UIManager)
+02-06 07:19:02.111  3455  3634 W unknown:ReactContext: initializeMessageQueueThreads() is called.
+02-06 07:19:02.112  3455  3634 D Detox.RNMarker: REACT_BRIDGE_LOADING_END (null)
+02-06 07:19:02.112  3455  3455 D DetoxRNLoading: Listener-proxy method called: onReactContextInitialized
+02-06 07:19:02.112  3455  3455 I DetoxRNLoading: Got new RN-context async'ly through listener
+02-06 07:19:02.112  3455  3455 D DetoxRNLoading: Listener-proxy method called: equals
+02-06 07:19:02.113  3455  3579 I DetoxRNIdleRes: Setting up Espresso Idling Resources for React Native
+02-06 07:19:02.113  3455  3579 D IdlingRegistry: Unregistering idling resources: [null, null, null, null]
+02-06 07:19:02.119  3455  3455 D Detox.RNMarker: CREATE_MODULE_START (Timing)
+02-06 07:19:02.119  3455  3455 D Detox.RNMarker: CREATE_MODULE_END (Timing)
+02-06 07:19:02.119  3455  3579 D IdlingRegistry: Registering idling resources: [com.wix.detox.reactnative.idlingresources.timers.TimersIdlingResource@7581645, com.wix.detox.reactnative.idlingresources.BridgeIdlingResource@5a8b19a, com.wix.detox.reactnative.idlingresources.uimodule.UIModuleIdlingResource@60cbacb, com.wix.detox.reactnative.idlingresources.AnimatedModuleIdlingResource@85792a8]
+02-06 07:19:02.119  3455  3579 D Detox.RNMarker: CREATE_MODULE_START (Networking)
+02-06 07:19:02.120  3455  3579 D Detox.RNMarker: CREATE_MODULE_END (Networking)
+02-06 07:19:02.120  3455  3579 D IdlingRegistry: Registering idling resources: [com.wix.detox.reactnative.idlingresources.NetworkIdlingResource@1e8d1c1]
+02-06 07:19:02.120  3455  3579 D AsyncStorageIR: Checking whether a custom IR for Async-Storage is required... (legacy=false)
+02-06 07:19:02.120  3455  3579 D Detox.RNMarker: CREATE_MODULE_START (RNCAsyncStorage)
+02-06 07:19:02.120  3455  3579 V AsyncStorageExpoMigration: No scoped database found
+02-06 07:19:02.120  3455  3579 D Detox.RNMarker: CREATE_MODULE_END (RNCAsyncStorage)
+02-06 07:19:02.120  3455  3579 D AsyncStorageIR: IR for Async-Storage is required! (legacy=false)
+02-06 07:19:02.120  3455  3579 D IdlingRegistry: Registering idling resources: [com.wix.detox.reactnative.idlingresources.AsyncStorageIdlingResource@c504d66]
+02-06 07:19:02.120  3455  3579 D AsyncStorageIR: Checking whether a custom IR for Async-Storage is required... (legacy=true)
+02-06 07:19:02.120  3455  3579 D DetoxRNHelpers: Native RN module resolution (class com.facebook.react.modules.storage.AsyncStorageModule): no such class
+02-06 07:19:02.121  3455  3455 D AsyncStorageIR: Async-storage is busy!
+02-06 07:19:02.121  3455  3455 D Detox.RNMarker: CREATE_MODULE_START (NativeAnimatedModule)
+02-06 07:19:02.122  3455  3455 D Detox.RNMarker: CREATE_MODULE_END (NativeAnimatedModule)
+02-06 07:19:02.122  3455  3579 I DetoxWSClient: Sending out action 'ready' (ID #-1000)
+02-06 07:19:02.122  3455  3579 I DetoxDispatcher: Done with action 'reactNativeReload'
+02-06 07:19:02.125  3455  3583 D DetoxWSClient: Received action 'invoke' (ID #4, params={"target":{"type":"Class","value":"com.wix.detox.espresso.EspressoDetox"},"method":"perform","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForText","args":["Actions",{"type":"boolean","value":false}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxViewActions"},"method":"click","args":[]}}]})
+02-06 07:19:02.125  3455  3579 I DetoxDispatcher: Handling action 'invoke' (ID #4)...
+02-06 07:19:02.125  3455  3579 D Detox   : class com.wix.detox.espresso.DetoxMatcher, matcherForText, [Actions, false]
+02-06 07:19:02.125  3455  3579 D Detox   : class com.wix.detox.espresso.DetoxViewActions, click, []
+02-06 07:19:02.126  3455  3579 D Detox   : class com.wix.detox.espresso.EspressoDetox, perform, [(an instance of android.widget.TextView and view.getText() with or without transformation to match: is "Actions" and view has effective visibility <VISIBLE>), com.wix.detox.espresso.action.RNClickAction@8aa38a7]
+02-06 07:19:02.129  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_END (UIManager)
+02-06 07:19:02.130  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_START (PlatformConstants)
+02-06 07:19:02.130  3455  3633 D Detox.RNMarker: CREATE_MODULE_START (PlatformConstants)
+02-06 07:19:02.130  3455  3633 D Detox.RNMarker: CREATE_MODULE_END (PlatformConstants)
+02-06 07:19:02.131  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_END (PlatformConstants)
+02-06 07:19:02.132  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_START (DeviceInfo)
+02-06 07:19:02.132  3455  3633 D Detox.RNMarker: CREATE_MODULE_START (DeviceInfo)
+02-06 07:19:02.132  3455  3633 D Detox.RNMarker: CREATE_MODULE_END (DeviceInfo)
+02-06 07:19:02.132  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_END (DeviceInfo)
+02-06 07:19:02.132  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_START (DeviceEventManager)
+02-06 07:19:02.132  3455  3633 D Detox.RNMarker: CREATE_MODULE_START (DeviceEventManager)
+02-06 07:19:02.132  3455  3633 D Detox.RNMarker: CREATE_MODULE_END (DeviceEventManager)
+02-06 07:19:02.132  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_END (DeviceEventManager)
+02-06 07:19:02.134  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_START (NativeModule)
+02-06 07:19:02.134  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_END (NativeModule)
+02-06 07:19:02.135  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_START (PlatformLocalStorage)
+02-06 07:19:02.135  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_START (RNC_AsyncSQLiteDBStorage)
+02-06 07:19:02.135  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_START (RNCAsyncStorage)
+02-06 07:19:02.135  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_END (RNCAsyncStorage)
+02-06 07:19:02.135  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_START (RNPermissionsModule)
+02-06 07:19:02.135  3455  3633 D Detox.RNMarker: CREATE_MODULE_START (RNPermissionsModule)
+02-06 07:19:02.135  3455  3633 D Detox.RNMarker: CREATE_MODULE_END (RNPermissionsModule)
+02-06 07:19:02.136  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_END (RNPermissionsModule)
+02-06 07:19:02.137  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_START (ShakeEventEmitter)
+02-06 07:19:02.139  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_START (Timing)
+02-06 07:19:02.140  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_END (Timing)
+02-06 07:19:02.145  3455  3633 D Detox.RNMarker: RUN_JS_BUNDLE_END (index.android.bundle)
+02-06 07:19:02.145  3455  3633 I ReactNativeJS: Running "example
+02-06 07:19:02.147  3455  3633 I ReactNativeJS: App@render: JS rendering main screen
+02-06 07:19:02.147  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_START (SoundManager)
+02-06 07:19:02.147  3455  3633 D Detox.RNMarker: CREATE_MODULE_START (SoundManager)
+02-06 07:19:02.147  3455  3633 D Detox.RNMarker: CREATE_MODULE_END (SoundManager)
+02-06 07:19:02.147  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_END (SoundManager)
+02-06 07:19:02.148  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_START (NativeAnimatedModule)
+02-06 07:19:02.149  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_END (NativeAnimatedModule)
+02-06 07:19:02.149  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_START (NativeAnimatedTurboModule)
+02-06 07:19:02.183  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_START (LaunchArguments)
+02-06 07:19:02.183  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_END (LaunchArguments)
+02-06 07:19:02.212  3455  3455 D Detox.RNMarker: CONTENT_APPEARED (example)
+02-06 07:19:02.228  3455  3455 I ViewInteraction: Performing 'com.wix.detox.espresso.action.detoxsingletap@5e73154 click' action on view (an instance of android.widget.TextView and view.getText() with or without transformation to match: is "Actions" and view has effective visibility <VISIBLE>)
+02-06 07:19:02.278  3455  3633 I ReactNativeJS: App@render: JS rendering screen
+02-06 07:19:02.279  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_START (FrameRateLogger)
+02-06 07:19:02.279  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_START (KeyboardObserver)
+02-06 07:19:02.313  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_START (ImageLoader)
+02-06 07:19:02.313  3455  3633 D Detox.RNMarker: CREATE_MODULE_START (ImageLoader)
+02-06 07:19:02.313  3455  3633 D Detox.RNMarker: CREATE_MODULE_END (ImageLoader)
+02-06 07:19:02.314  3455  3633 D Detox.RNMarker: NATIVE_MODULE_SETUP_END (ImageLoader)
+02-06 07:19:02.333  3455  3634 W unknown:ReactNative: Attempt to set local data for view with unknown tag: -1
+02-06 07:19:02.333  3455  3634 I chatty  : uid=10116(com.wix.detox.test) mqt_native_modu identical 1 line
+02-06 07:19:02.333  3455  3634 W unknown:ReactNative: Attempt to set local data for view with unknown tag: -1
+02-06 07:19:02.644  3455  3579 I DetoxWSClient: Sending out action 'invokeResult' (ID #4)
+02-06 07:19:02.644  3455  3579 I DetoxDispatcher: Done with action 'invoke'
+02-06 07:19:02.648  3455  3583 D DetoxWSClient: Received action 'invoke' (ID #5, params={"target":{"type":"Class","value":"com.wix.detox.espresso.EspressoDetox"},"method":"perform","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForText","args":["Tap Me",{"type":"boolean","value":false}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.action.ViewActions"},"method":"longClick","args":[]}}]})
+02-06 07:19:02.649  3455  3579 I DetoxDispatcher: Handling action 'invoke' (ID #5)...
+02-06 07:19:02.649  3455  3579 D Detox   : class com.wix.detox.espresso.DetoxMatcher, matcherForText, [Tap Me, false]
+02-06 07:19:02.649  3455  3579 D Detox   : class androidx.test.espresso.action.ViewActions, longClick, []
+02-06 07:19:02.649  3455  3579 D Detox   : class com.wix.detox.espresso.EspressoDetox, perform, [(an instance of android.widget.TextView and view.getText() with or without transformation to match: is "Tap Me" and view has effective visibility <VISIBLE>), androidx.test.espresso.action.GeneralClickAction@eb86cb4]
+02-06 07:19:02.652  3455  3455 I ViewInteraction: Performing 'long click' action on view (an instance of android.widget.TextView and view.getText() with or without transformation to match: is "Tap Me" and view has effective visibility <VISIBLE>)
+02-06 07:19:02.672  3455  3455 I Detox   : UIManagerModule is busy
+02-06 07:19:03.192  3455  3455 I Detox   : UIManagerModule is busy
+02-06 07:19:03.264  3455  3455 W MotionEvents: Overslept and turned a tap into a long press
+02-06 07:19:03.980  3455  3579 I DetoxWSClient: Sending out action 'invokeResult' (ID #5)
+02-06 07:19:03.980  3455  3579 I DetoxDispatcher: Done with action 'invoke'
+02-06 07:19:03.985  3455  3583 D DetoxWSClient: Received action 'invoke' (ID #6, params={"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForText","args":["Long Press Working!!!",{"type":"boolean","value":false}]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForSufficientlyVisible","args":[{"type":"Integer","value":75}]}}]})
+02-06 07:19:03.985  3455  3579 I DetoxDispatcher: Handling action 'invoke' (ID #6)...
+02-06 07:19:03.985  3455  3579 D Detox   : class com.wix.detox.espresso.DetoxMatcher, matcherForText, [Long Press Working!!!, false]
+02-06 07:19:03.985  3455  3579 D Detox   : class androidx.test.espresso.Espresso, onView, [(an instance of android.widget.TextView and view.getText() with or without transformation to match: is "Long Press Working!!!" and view has effective visibility <VISIBLE>)]
+02-06 07:19:03.986  3455  3579 D Detox   : class com.wix.detox.espresso.DetoxMatcher, matcherForSufficientlyVisible, [75]
+02-06 07:19:03.986  3455  3579 D Detox   : class com.wix.detox.espresso.DetoxAssertion, assertMatcher, [androidx.test.espresso.ViewInteraction@c9de7f, (view has effective visibility <VISIBLE> and view.getGlobalVisibleRect() covers at least <75> percent of the view's area)]
+02-06 07:19:03.989  3455  3455 I ViewInteraction: Checking 'MatchesViewAssertion(Detox){viewMatcher=(view has effective visibility <VISIBLE> and view.getGlobalVisibleRect() covers at least <75> percent of the view's area)}' assertion on view (an instance of android.widget.TextView and view.getText() with or without transformation to match: is "Long Press Working!!!" and view has effective visibility <VISIBLE>)
+02-06 07:19:03.990  3455  3579 I DetoxWSClient: Sending out action 'invokeResult' (ID #6)
+02-06 07:19:03.990  3455  3579 I DetoxDispatcher: Done with action 'invoke'

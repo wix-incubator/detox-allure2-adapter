@@ -10,6 +10,8 @@
     "dist",
     "*.js",
     "*.mjs",
+    "!.*.js",
+    "!jest.config.js",
     "!**/__utils__",
     "!**/__tests__",
     "!**/*.test.*"
@@ -32,8 +34,7 @@
     "lint": "eslint . --fix",
     "lint:ci": "eslint .",
     "lint:staged": "lint-staged",
-    "test": "jest",
-    "test:e2e": "jest --config e2e/jest.config.js"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -56,11 +57,12 @@
   "homepage": "https://github.com/wix-incubator/detox-allure2-adapter#readme",
   "peerDependencies": {
     "detox": "20.14.2-smoke.0 || >20.14.5",
-    "jest-allure2-reporter": "^2.0.0-beta.3"
+    "jest-allure2-reporter": "^2.0.0-beta.5"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
+    "@types/archiver": "^6.0.2",
     "@types/jest": "^29.2.5",
     "@typescript-eslint/eslint-plugin": "^6.2.0",
     "@typescript-eslint/parser": "^6.2.0",
@@ -79,7 +81,7 @@
     "husky": "^8.0.3",
     "is-ci": "^3.0.1",
     "jest": "^29.6.2",
-    "jest-allure2-reporter": "^2.0.0-beta.3",
+    "jest-allure2-reporter": "^2.0.0-beta.5",
     "lint-staged": "^13.1.0",
     "lodash": "^4.17.21",
     "prettier": "^3.0.0",
@@ -89,5 +91,8 @@
   },
   "browserslist": [
     "node 16"
-  ]
+  ],
+  "dependencies": {
+    "archiver": "^6.0.1"
+  }
 }

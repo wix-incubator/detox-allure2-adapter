@@ -2,19 +2,29 @@
 
 ## Prerequisites
 
-To use Detox, Jest, and Allure together, please verify that the following modules are part of your `devDependencies` in your `package.json` file. 
+To use Detox, Jest, and Allure together, please verify that the following modules are part of your `devDependencies` in your `package.json` file.
 
 ```json
 "devDependencies": {
-  "detox": "^20.14.7",
-  "detox-allure2-adapter": "^1.0.0-alpha.3",
+  "detox": "^20.20.3",
+  "detox-allure2-adapter": "^1.0.0-alpha.4",
   "jest": "^29.7.0",
-  "jest-allure2-reporter": "^2.0.0-beta.5",
-  "jest-metadata": "^1.3.1"
+  "jest-allure2-reporter": "^2.0.0-beta.15",
+  "jest-metadata": "^1.5.2"
 }
 ```
 
 If not, add the necessary modules and run `npm install`.
+
+## Setting Up `detox.config.js`
+
+Find `.detoxrc.json`, `detox.config.js` or where your Detox configuration is stored. Add "extends" to include this adapter's preset:
+
+```json
+{
+  "extends": "detox-allure2-adapter/preset-detox"
+}
+```
 
 ## Setting Up `jest.config.js`
 
@@ -26,6 +36,7 @@ module.exports = {
     reporters: [
       'detox/runners/jest/reporter',
       ['jest-allure2-reporter', {
+        extends: 'detox-allure2-adapter/preset-allure',
         /* see https://github.com/wix-incubator/jest-allure2-reporter/blob/beta/index.d.ts */
       }],
     ],

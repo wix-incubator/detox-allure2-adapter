@@ -1,7 +1,5 @@
 const config: Partial<Detox.DetoxConfig> = {
   artifacts: {
-    rootDir: 'artifacts/',
-    pathBuilder: 'detox-allure2-adapter/path-builder',
     plugins: {
       log: 'failing',
       screenshot: {

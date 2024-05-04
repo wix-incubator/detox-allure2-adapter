@@ -44,7 +44,6 @@ const status: TestCaseCustomizer<TestCaseExtractorContext>['status'] = ({
 };
 
 const options: ReporterOptions = {
-  resultsDir: config.artifacts?.rootDir ?? 'artifacts',
   overwrite: session.testSessionIndex === 0,
   attachments: {
     fileHandler: 'copy',

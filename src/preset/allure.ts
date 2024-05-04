@@ -64,18 +64,6 @@ const options: ReporterOptions = {
   testRun: {
     ignored: ({ aggregatedResult }) =>
       aggregatedResult.numFailedTests === 0 && aggregatedResult.numFailedTestSuites === 0,
-    attachments: [
-      {
-        name: 'detox.log',
-        type: 'text/plain',
-        source: 'detox.log',
-      },
-      {
-        name: 'detox.trace.json',
-        type: 'application/json',
-        source: 'detox.trace.json',
-      },
-    ],
   },
 };
 

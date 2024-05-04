@@ -22,6 +22,21 @@
       "require": "./index.js",
       "types": "./dist/index.d.ts"
     },
+    "./path-builder": {
+      "import": "./path-builder.mjs",
+      "require": "./path-builder.js",
+      "types": "./dist/path-builder.d.ts"
+    },
+    "./preset-allure": {
+      "import": "./preset-allure.mjs",
+      "require": "./preset-allure.js",
+      "types": "./dist/preset/allure.d.ts"
+    },
+    "./preset-detox": {
+      "import": "./preset-detox.mjs",
+      "require": "./preset-detox.js",
+      "types": "./dist/preset/detox.d.ts"
+    },
     "./package.json": "./package.json"
   },
   "engines": {
@@ -57,7 +72,7 @@
   "homepage": "https://github.com/wix-incubator/detox-allure2-adapter#readme",
   "peerDependencies": {
     "detox": "20.14.2-smoke.0 || >20.14.5",
-    "jest-allure2-reporter": "^2.0.0-beta.5"
+    "jest-allure2-reporter": "^2.0.0-beta.15"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",

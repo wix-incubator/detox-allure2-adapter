@@ -47,7 +47,7 @@ const listener: EnvironmentListenerFn = ({ testEvents }) => {
       const handler = isDirectory ? zipHandler : isLog ? logHandler : 'copy';
       const mimeType = isLog ? 'text/plain' : isDirectory ? 'application/zip' : undefined;
       const $allure = (isLog || isVideo ? $$test : $step) ?? $step;
-      const name = path.basename(artifactPath) + (isDirectory ? '.zip' : '');
+      const name = path.basename(artifactPath);
 
       $allure.fileAttachment(artifactPath, {
         name,

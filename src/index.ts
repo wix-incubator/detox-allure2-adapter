@@ -15,6 +15,7 @@ const listener: EnvironmentListenerFn = ({ testEvents }) => {
   let zipHandler: ReturnType<typeof createZipHandler>;
   let inferMimeType: MIMEInferer;
   let $test: ReturnType<typeof allure.$bind> | undefined;
+  let artifactsManager: any;
 
   testEvents
     .on('setup', () => {
@@ -24,7 +25,7 @@ const listener: EnvironmentListenerFn = ({ testEvents }) => {
         inferMimeType = context.inferMimeType;
       });
 
-      const artifactsManager = (worker as any)._artifactsManager;
+      artifactsManager = (worker as any)._artifactsManager;
       artifactsManager.on('trackArtifact', onTrackArtifact);
     })
     .on('test_start', () => {
@@ -32,7 +33,14 @@ const listener: EnvironmentListenerFn = ({ testEvents }) => {
     })
     .on('test_done', () => {
       $test = undefined;
-    });
+    })
+    .on('teardown', flushArtifacts, -1)
+    .on('test_environment_teardown', flushArtifacts, -1);
+
+  async function flushArtifacts() {
+    await artifactsManager?._idlePromise;
+    artifactsManager = undefined;
+  }
 
   function onTrackArtifact(artifact: any) {
     const $step = allure.$bind();

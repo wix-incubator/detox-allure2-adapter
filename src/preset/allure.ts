@@ -61,10 +61,6 @@ const options: ReporterOptions = {
       device,
     },
   },
-  testRun: {
-    ignored: ({ aggregatedResult }) =>
-      aggregatedResult.numFailedTests === 0 && aggregatedResult.numFailedTestSuites === 0,
-  },
 };
 
 export default options;

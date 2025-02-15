@@ -1,0 +1,491 @@
+{"params":{"testerConnected":true,"appConnected":true},"type":"loginSuccess"}
+{"type":"captureViewHierarchy","params":{"viewHierarchyURL":"/private/var/folders/fh/0d3w8yss2_x_5s_448yfc6xr0000gn/T/661b57d0-5e61-47ba-934f-ed417e5b1bc7.detox.viewhierarchy"}}
+{"type":"captureViewHierarchy","params":{"viewHierarchyURL":"/private/var/folders/fh/0d3w8yss2_x_5s_448yfc6xr0000gn/T/7994db2b-a838-488b-8dd6-e1ec0809ac84.detox.viewhierarchy"}}
+{"type":"captureViewHierarchy","params":{"viewHierarchyURL":"/private/var/folders/fh/0d3w8yss2_x_5s_448yfc6xr0000gn/T/a7d78bd4-ff2d-4652-9347-77d0995835c7.detox.viewhierarchy"}}
+{"type":"captureViewHierarchy","params":{"viewHierarchyURL":"/private/var/folders/fh/0d3w8yss2_x_5s_448yfc6xr0000gn/T/c4a81636-bd67-4a0f-9f53-4730b6c34311.detox.viewhierarchy"}}
+{"type":"captureViewHierarchy","params":{"viewHierarchyURL":"/private/var/folders/fh/0d3w8yss2_x_5s_448yfc6xr0000gn/T/cd0aff1f-12ec-4293-b165-98d39121a976.detox.viewhierarchy"}}
+{"type":"cleanup","params":{"stopRunner":false}}
+{"type":"cleanup","params":{"stopRunner":true}}
+{"type":"currentStatus","params":{}}
+{"type":"deliverPayload","params":{"detoxUserActivityDataURL":"/var/folders/fh/0d3w8yss2_x_5s_448yfc6xr0000gn/T/detoxrand-jF8YfN/payload.json"}}
+{"type":"deliverPayload","params":{"detoxUserNotificationDataURL":"/var/folders/fh/0d3w8yss2_x_5s_448yfc6xr0000gn/T/detoxrand-EtGXXg/payload.json"}}
+{"type":"deliverPayload","params":{"newInstance":false,"detoxUserActivityDataURL":"/var/folders/fh/0d3w8yss2_x_5s_448yfc6xr0000gn/T/detoxrand-if4vil/payload.json","delayPayload":true}}
+{"type":"deliverPayload","params":{"newInstance":false,"detoxUserNotificationDataURL":"/var/folders/fh/0d3w8yss2_x_5s_448yfc6xr0000gn/T/detoxrand-Nvu0Cj/payload.json","delayPayload":true}}
+{"type":"deliverPayload","params":{"newInstance":false,"url":"detoxtesturlscheme://such-string?arg1=first&arg2=second","delayPayload":true}}
+{"type":"deliverPayload","params":{"url":"detoxtesturlscheme://such-string?arg1=first&arg2=second"}}
+{"type":"generateViewHierarchyXml","params":{"shouldInjectTestIds":false}}
+{"type":"generateViewHierarchyXml","params":{"shouldInjectTestIds":true}}
+{"type":"invoke","params":{"type":"action","action":"accessibilityAction","params":["activate"],"predicate":{"type":"id","value":"View7991","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"accessibilityAction","params":["custom"],"predicate":{"type":"id","value":"View7991","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"accessibilityAction","params":["decrement"],"predicate":{"type":"id","value":"View7991","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"accessibilityAction","params":["escape"],"predicate":{"type":"id","value":"View7991","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"accessibilityAction","params":["increment"],"predicate":{"type":"id","value":"View7991","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"accessibilityAction","params":["longpress"],"predicate":{"type":"id","value":"View7991","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"accessibilityAction","params":["magicTap"],"predicate":{"type":"id","value":"View7991","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"getAttributes","predicate":{"type":"and","predicates":[{"type":"type","value":"RCTCustomScrollView"},{"type":"ancestor","predicate":{"type":"id","value":"attrScrollView","isRegex":false}}]}}}
+{"type":"invoke","params":{"type":"action","action":"getAttributes","predicate":{"type":"and","predicates":[{"type":"type","value":"RCTView"},{"type":"ancestor","predicate":{"type":"id","value":"attrScrollView","isRegex":false}}]}}}
+{"type":"invoke","params":{"type":"action","action":"getAttributes","predicate":{"type":"id","value":"DragAndDropTarget","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"getAttributes","predicate":{"type":"id","value":"attrDatePicker","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"getAttributes","predicate":{"type":"id","value":"blurredTextInputId","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"getAttributes","predicate":{"type":"id","value":"checkboxId","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"getAttributes","predicate":{"type":"id","value":"draggable","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"getAttributes","predicate":{"type":"id","value":"focusedTextInputId","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"getAttributes","predicate":{"type":"id","value":"sliderId","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"getAttributes","predicate":{"type":"id","value":"textGroupRoot","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"getAttributes","predicate":{"type":"id","value":"textViewId","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"getAttributes","predicate":{"type":"id","value":"viewId","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"longPress","params":[1000,0,0,0,0,"fast",0],"predicate":{"type":"id","value":"draggable","isRegex":false},"targetElement":{"predicate":{"type":"id","value":"DragAndDropTarget","isRegex":false}}}}
+{"type":"invoke","params":{"type":"action","action":"longPress","params":[1000,0,0,0.5,0.5,"fast",0],"predicate":{"type":"id","value":"draggable","isRegex":false},"targetElement":{"predicate":{"type":"id","value":"DragAndDropTarget","isRegex":false}}}}
+{"type":"invoke","params":{"type":"action","action":"longPress","params":[1000,0,0,1,0,"fast",0],"predicate":{"type":"id","value":"draggable","isRegex":false},"targetElement":{"predicate":{"type":"id","value":"DragAndDropTarget","isRegex":false}}}}
+{"type":"invoke","params":{"type":"action","action":"longPress","params":[1000,0.5,0.5,0,0,"fast",0],"predicate":{"type":"id","value":"draggable","isRegex":false},"targetElement":{"predicate":{"type":"id","value":"DragAndDropTarget","isRegex":false}}}}
+{"type":"invoke","params":{"type":"action","action":"longPress","params":[1000,0.5,0.5,0.5,0.5,"fast",0],"predicate":{"type":"id","value":"draggable","isRegex":false},"targetElement":{"predicate":{"type":"id","value":"DragAndDropTarget","isRegex":false}}}}
+{"type":"invoke","params":{"type":"action","action":"longPress","params":[1000,1,0,0,0,"fast",0],"predicate":{"type":"id","value":"draggable","isRegex":false},"targetElement":{"predicate":{"type":"id","value":"DragAndDropTarget","isRegex":false}}}}
+{"type":"invoke","params":{"type":"action","action":"longPress","params":[1000,1,0,1,0,"fast",0],"predicate":{"type":"id","value":"draggable","isRegex":false},"targetElement":{"predicate":{"type":"id","value":"DragAndDropTarget","isRegex":false}}}}
+{"type":"invoke","params":{"type":"action","action":"longPress","params":[null,1500],"predicate":{"type":"text","value":"Long Press Me 1.5s","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"longPress","params":[null,null],"predicate":{"type":"text","value":"Tap Me","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"longPress","params":[{"x":15,"y":15},null],"predicate":{"type":"text","value":"Long Press on Top Left","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"longPress","params":[{"x":5,"y":5},null],"predicate":{"type":"text","value":"Long Press on Top Left","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"multiTap","params":[3],"predicate":{"type":"id","value":"UniqueId819","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"replaceText","params":["1600"],"predicate":{"type":"id","value":"UniqueId_AnimationsScreen_delay","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"replaceText","params":["2000"],"predicate":{"type":"id","value":"UniqueId_AnimationsScreen_duration","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"replaceText","params":["4"],"predicate":{"type":"id","value":"UniqueId_AnimationsScreen_numberOfIterations","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"replaceText","params":["500"],"predicate":{"type":"id","value":"UniqueId_AnimationsScreen_delay","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"replaceText","params":["5000"],"predicate":{"type":"id","value":"UniqueId_AnimationsScreen_duration","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"scroll","params":[10,"down",null,null],"predicate":{"type":"id","value":"FSScrollActions.scrollView","isRegex":false},"while":{"type":"expectation","predicate":{"type":"text","value":"Text16","isRegex":false},"expectation":"toBeVisible","params":[100]}}}
+{"type":"invoke","params":{"type":"action","action":"scroll","params":[10,"down",null,null],"predicate":{"type":"id","value":"FSScrollActions.scrollView","isRegex":false},"while":{"type":"expectation","predicate":{"type":"text","value":"Text16","isRegex":false},"expectation":"toBeVisible","params":[50]}}}
+{"type":"invoke","params":{"type":"action","action":"scroll","params":[100,"down",null,null],"predicate":{"type":"id","value":"ScrollView161","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"scroll","params":[100,"up",null,null],"predicate":{"type":"id","value":"ScrollView161","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"scroll","params":[1000,"down",null,null],"predicate":{"type":"id","value":"ScrollView161","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"scroll","params":[200,"down",null,null],"predicate":{"type":"id","value":"ScrollView161","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"scroll","params":[200,"right",null,null],"predicate":{"type":"id","value":"ScrollViewH","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"scroll","params":[220,"left",0.2,0.4],"predicate":{"type":"id","value":"ScrollViewH","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"scroll","params":[220,"right",0.8,0.6],"predicate":{"type":"id","value":"ScrollViewH","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"scroll","params":[220,"right",null,null],"predicate":{"type":"id","value":"ScrollViewH","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"scroll","params":[50,"down",null,null],"predicate":{"type":"id","value":"ScrollView","isRegex":false},"while":{"type":"expectation","predicate":{"type":"text","value":"Text1000","isRegex":false},"expectation":"toBeVisible"}}}
+{"type":"invoke","params":{"type":"action","action":"scroll","params":[50,"down",null,null],"predicate":{"type":"id","value":"ScrollView","isRegex":false},"while":{"type":"expectation","predicate":{"type":"text","value":"Text5","isRegex":false},"expectation":"toBeVisible"}}}
+{"type":"invoke","params":{"type":"action","action":"scroll","params":[50,"down",null,null],"predicate":{"type":"id","value":"ScrollView161","isRegex":false},"while":{"type":"expectation","predicate":{"type":"text","value":"Index","isRegex":false},"atIndex":1,"expectation":"toBeVisible"}}}
+{"type":"invoke","params":{"type":"action","action":"scroll","params":[550,"down",0.8,0.6],"predicate":{"type":"id","value":"ScrollView161","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"scroll","params":[550,"up",0.2,0.4],"predicate":{"type":"id","value":"ScrollView161","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"scrollTo","params":["bottom",0.2,0.4],"predicate":{"type":"id","value":"ScrollView161","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"scrollTo","params":["bottom",null,null],"predicate":{"type":"id","value":"ScrollView161","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"scrollTo","params":["bottom",null,null],"predicate":{"type":"id","value":"ShowOverlayViewButton","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"scrollTo","params":["bottom",null,null],"predicate":{"type":"id","value":"VerticalScrollView","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"scrollTo","params":["left",0.2,0.4],"predicate":{"type":"id","value":"ScrollViewH","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"scrollTo","params":["left",null,null],"predicate":{"type":"id","value":"ScrollViewH","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"scrollTo","params":["right",0.8,0.6],"predicate":{"type":"id","value":"ScrollViewH","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"scrollTo","params":["right",null,null],"predicate":{"type":"id","value":"ScrollViewH","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"scrollTo","params":["top",0.8,0.6],"predicate":{"type":"id","value":"ScrollView161","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"scrollTo","params":["top",null,null],"predicate":{"type":"id","value":"ScrollView161","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"setColumnToValue","params":[0,"c"],"predicate":{"type":"id","value":"pickerView","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"setColumnToValue","params":[1,"6"],"predicate":{"type":"id","value":"datePicker","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"setDatePickerDate","params":["2019-02-06T05:10:00-08:00","ISO8601"],"predicate":{"type":"id","value":"datePicker","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"setDatePickerDate","params":["2019/02/06 13:10","yyyy/MM/dd HH:mm"],"predicate":{"type":"id","value":"datePicker","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"setDatePickerDate","params":["2023-01-11T10:41:26Z","ISO8601"],"predicate":{"type":"id","value":"datePicker","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"swipe","atIndex":0,"params":["down","fast",0.7,null,null],"predicate":{"type":"text","value":"Index","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["elementScreenshot.horiz"],"predicate":{"type":"id","value":"fancyElement","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["elementScreenshot.vert"],"predicate":{"type":"id","value":"fancyElement","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["focus-on-content-editable-webview"],"predicate":{"type":"id","value":"webViewFormWithScrolling","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["focus-on-input-webview"],"predicate":{"type":"id","value":"webViewFormWithScrolling","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["move-cursor-to-end-content-editable-webview"],"predicate":{"type":"id","value":"webViewFormWithScrolling","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["move-cursor-to-end-webview"],"predicate":{"type":"id","value":"webViewFormWithScrolling","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["scroll-to-view-webview"],"predicate":{"type":"id","value":"webViewFormWithScrolling","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["select-all-text-in-content-editable-webview"],"predicate":{"type":"id","value":"webViewFormWithScrolling","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["select-all-text-in-webview"],"predicate":{"type":"id","value":"webViewFormWithScrolling","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["tap-on-cross-origin-frame-element"],"predicate":{"type":"id","value":"webView","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["type-text-in-cross-origin-frame"],"predicate":{"type":"id","value":"webView","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["typing-keep-cursor-position-webview-content-editable-1"],"predicate":{"type":"id","value":"webViewFormWithScrolling","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["typing-keep-cursor-position-webview-input-1"],"predicate":{"type":"id","value":"webViewFormWithScrolling","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","atIndex":0,"predicate":{"type":"text","value":"Index","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","atIndex":3,"predicate":{"type":"text","value":"Index","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"/UniqueId\\d{3}/","isRegex":true}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"AlertScreen.Button","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"Immediate","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"IntervalIgnore","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"LongNetworkRequest","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"OverlayView","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"ShortNetworkRequest","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"ShowDismissibleAlertButton","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"ShowOverlayViewButton","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"ShowOverlayWindowButton","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"SkipOverInterval","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"TimeoutIgnoreLong","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"TimeoutIgnoreShort","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"TimeoutShort","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"TimeoutZero","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"UniqueId345","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"UniqueId819","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"UniqueId_AnimationsScreen_enableLoop","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"UniqueId_AnimationsScreen_startButton","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"closeButton","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"get_location_button","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"goButton","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"keyboardHelloButton","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"moveHalfVisible","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"nonExistentId","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"requestPermissionButton","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"switchOrientation","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"textWithCustomInput","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"toggle","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"toggle2ndWebviewButton","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"toggle3rdWebviewButton","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"toggleDatePicker","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"toggleScrollOverlays","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"label","value":"Label","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Actions","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Alerts","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Assertions","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Attributes","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Bridge OneWay Stress","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Bridge TwoWay Stress","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Bridge setState Stress","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Button 1","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Cancel","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Consecutive Stress 1","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Consecutive Stress 10","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Consecutive Stress 11","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Consecutive Stress 12","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Consecutive Stress 13","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Consecutive Stress 14","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Consecutive Stress 15","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Consecutive Stress 16","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Consecutive Stress 17","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Consecutive Stress 18","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Consecutive Stress 19","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Consecutive Stress 2","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Consecutive Stress 20","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Consecutive Stress 3","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Consecutive Stress 4","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Consecutive Stress 5","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Consecutive Stress 6","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Consecutive Stress 7","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Consecutive Stress 8","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Consecutive Stress 9","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Crash","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Custom Keyboard","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"DatePicker","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Device Tap","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Dismiss","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Drag And Drop","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Element-Screenshots","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"EventLoop Stress","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"FS Scroll Actions","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Init URL","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"JS","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Language","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Location","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Matchers","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Native","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Network","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Next","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Not existing","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"OK","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Orientation","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Overlay","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Permissions","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Picker","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"RN Animations","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Sanity","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Say Hello","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Say World","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Shake","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Stress","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Switch Root","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Switch to a new native root","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Switch to multiple react roots","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"System Dialogs","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Tap Me","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Timeouts","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"VirtualizedList Stress","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Visibility Debug Artifacts","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"Visibility Expectation","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"WaitFor","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"text","value":"WebView","isRegex":false}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"traits","value":["button"]}}}
+{"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"type","value":"RCTImageView"}}}
+{"type":"invoke","params":{"type":"action","action":"typeText","params":["Type Working 123 אֱבּג абв!!!"],"predicate":{"type":"id","value":"UniqueId937","isRegex":false}}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Father883","isRegex":false},{"type":"ancestor","predicate":{"type":"id","value":"Grandson883","isRegex":false}}]},"modifiers":["not"],"expectation":"toExist"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Father883","isRegex":false},{"type":"descendant","predicate":{"type":"id","value":"Grandson883","isRegex":false}}]},"expectation":"toExist"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Grandfather883","isRegex":false},{"type":"ancestor","predicate":{"type":"id","value":"Grandson883","isRegex":false}}]},"modifiers":["not"],"expectation":"toExist"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Grandfather883","isRegex":false},{"type":"descendant","predicate":{"type":"id","value":"Grandson883","isRegex":false}}]},"expectation":"toExist"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Grandson883","isRegex":false},{"type":"ancestor","predicate":{"type":"id","value":"Father883","isRegex":false}}]},"expectation":"toExist"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Grandson883","isRegex":false},{"type":"ancestor","predicate":{"type":"id","value":"Grandfather883","isRegex":false}}]},"expectation":"toExist"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Grandson883","isRegex":false},{"type":"ancestor","predicate":{"type":"id","value":"Son883","isRegex":false}}]},"expectation":"toExist"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Grandson883","isRegex":false},{"type":"descendant","predicate":{"type":"id","value":"Father883","isRegex":false}}]},"modifiers":["not"],"expectation":"toExist"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Grandson883","isRegex":false},{"type":"descendant","predicate":{"type":"id","value":"Grandfather883","isRegex":false}}]},"modifiers":["not"],"expectation":"toExist"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Grandson883","isRegex":false},{"type":"descendant","predicate":{"type":"id","value":"Son883","isRegex":false}}]},"modifiers":["not"],"expectation":"toExist"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Son883","isRegex":false},{"type":"ancestor","predicate":{"type":"id","value":"Grandson883","isRegex":false}}]},"modifiers":["not"],"expectation":"toExist"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Son883","isRegex":false},{"type":"descendant","predicate":{"type":"id","value":"Grandson883","isRegex":false}}]},"expectation":"toExist"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"UniqueId345","isRegex":false},{"type":"label","value":"RandomJunk","isRegex":false}]},"modifiers":["not"],"expectation":"toExist"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"UniqueId345","isRegex":false},{"type":"text","value":"ID","isRegex":false}]},"expectation":"toExist"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"UniqueId345","isRegex":false},{"type":"text","value":"RandomJunk","isRegex":false}]},"modifiers":["not"],"expectation":"toExist"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"UniqueId345","isRegex":false},{"type":"traits","value":["button"]}]},"modifiers":["not"],"expectation":"toExist"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"AlertScreen.Text","isRegex":false},"expectation":"toHaveText","params":["Cancel Pressed"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"AlertScreen.Text","isRegex":false},"expectation":"toHaveText","params":["Not Pressed"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"AlertScreen.Text","isRegex":false},"expectation":"toHaveText","params":["OK Pressed"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"LongNetworkRequest","isRegex":false},"expectation":"toBeVisible","timeout":4000}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"RandomJunk959","isRegex":false},"modifiers":["not"],"expectation":"toExist"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"ScrollView161","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"ShowDismissibleAlertButton","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"ShowOverlayViewButton","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"ShowOverlayWindowButton","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"ShowOverlayWindowButton","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"UniqueId819","isRegex":false},"expectation":"toHaveText","params":["Taps: 3"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"UniqueId_AnimationsScreen_afterAnimationText","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"UniqueId_AnimationsScreen_afterAnimationText","isRegex":false},"expectation":"toExist"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"UniqueId_AnimationsScreen_afterAnimationText","isRegex":false},"modifiers":["not"],"expectation":"toExist"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"UniqueId_AnimationsScreen_enableLoop","isRegex":false},"expectation":"toHaveValue","params":["1"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"calendar","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"calendar","isRegex":false},"expectation":"toHaveText","params":["blocked"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"calendar","isRegex":false},"expectation":"toHaveText","params":["denied"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"calendar","isRegex":false},"expectation":"toHaveText","params":["granted"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"camera","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"camera","isRegex":false},"expectation":"toHaveText","params":["blocked"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"camera","isRegex":false},"expectation":"toHaveText","params":["denied"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"camera","isRegex":false},"expectation":"toHaveText","params":["granted"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"changeExistenceByToggle","isRegex":false},"expectation":"toExist","timeout":5000}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"changeExistenceByToggle","isRegex":false},"modifiers":["not"],"expectation":"toExist","timeout":5000}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"changeExistenceByToggle","isRegex":false},"modifiers":["not"],"expectation":"toExist"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"changeFocusByToggle","isRegex":false},"expectation":"toBeFocused","timeout":5000}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"changeFocusByToggle","isRegex":false},"modifiers":["not"],"expectation":"toBeFocused","timeout":5000}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"changeFocusByToggle","isRegex":false},"modifiers":["not"],"expectation":"toBeFocused"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"contacts","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"contacts","isRegex":false},"expectation":"toHaveText","params":["blocked"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"contacts","isRegex":false},"expectation":"toHaveText","params":["denied"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"contacts","isRegex":false},"expectation":"toHaveText","params":["granted"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"currentOrientation","isRegex":false},"expectation":"toExist"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"currentOrientation","isRegex":false},"expectation":"toHaveText","params":["Landscape"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"currentOrientation","isRegex":false},"expectation":"toHaveText","params":["Portrait"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"faceid","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"faceid","isRegex":false},"expectation":"toHaveText","params":["blocked"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"faceid","isRegex":false},"expectation":"toHaveText","params":["denied"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"faceid","isRegex":false},"expectation":"toHaveText","params":["unavailable"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"halfVisible","isRegex":false},"expectation":"toBeVisible","params":[25],"timeout":2000}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"halfVisible","isRegex":false},"expectation":"toBeVisible","params":[50]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"halfVisible","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible","params":[26],"timeout":2000}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"halfVisible","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible","params":[51]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"localDateLabel","isRegex":false},"expectation":"toHaveText","params":["Date (Local): Feb 6th, 2019"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"location_always","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"location_always","isRegex":false},"expectation":"toHaveText","params":["blocked"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"location_always","isRegex":false},"expectation":"toHaveText","params":["denied"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"location_always","isRegex":false},"expectation":"toHaveText","params":["granted"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"location_error","isRegex":false},"expectation":"toBeVisible","timeout":3000}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"location_latitude","isRegex":false},"expectation":"toHaveText","params":["Latitude: -80.125"],"timeout":5000}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"location_latitude","isRegex":false},"expectation":"toHaveText","params":["Latitude: 66.5"],"timeout":5000}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"location_latitude","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"location_longitude","isRegex":false},"expectation":"toHaveText","params":["Longitude: -80.125"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"location_longitude","isRegex":false},"expectation":"toHaveText","params":["Longitude: 66.5"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"location_longitude","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"location_when_in_use","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"location_when_in_use","isRegex":false},"expectation":"toHaveText","params":["blocked"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"location_when_in_use","isRegex":false},"expectation":"toHaveText","params":["denied"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"location_when_in_use","isRegex":false},"expectation":"toHaveText","params":["granted"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"main-text","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"main-text","isRegex":false},"expectation":"toHaveLabel","params":["I contain some text"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"main-text","isRegex":false},"expectation":"toHaveText","params":["I contain some text"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"medialibrary","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"medialibrary","isRegex":false},"expectation":"toHaveText","params":["blocked"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"medialibrary","isRegex":false},"expectation":"toHaveText","params":["denied"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"medialibrary","isRegex":false},"expectation":"toHaveText","params":["granted"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"microphone","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"microphone","isRegex":false},"expectation":"toHaveText","params":["blocked"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"microphone","isRegex":false},"expectation":"toHaveText","params":["denied"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"microphone","isRegex":false},"expectation":"toHaveText","params":["granted"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"neverAppearingText","isRegex":false},"expectation":"toExist","timeout":500}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"neverAppearingText","isRegex":false},"modifiers":["not"],"expectation":"toExist"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"offscreen-text","isRegex":false},"expectation":"toExist"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"offscreen-text","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"permissionStatus","isRegex":false},"expectation":"toHaveText","params":["denied"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"permissionStatus","isRegex":false},"expectation":"toHaveText","params":["granted"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"photo_library","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"photo_library","isRegex":false},"expectation":"toHaveText","params":["blocked"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"photo_library","isRegex":false},"expectation":"toHaveText","params":["denied"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"photo_library","isRegex":false},"expectation":"toHaveText","params":["granted"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"photo_library_add_only","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"photo_library_add_only","isRegex":false},"expectation":"toHaveText","params":["denied"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"photo_library_add_only","isRegex":false},"expectation":"toHaveText","params":["granted"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"reminders","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"reminders","isRegex":false},"expectation":"toHaveText","params":["blocked"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"reminders","isRegex":false},"expectation":"toHaveText","params":["denied"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"reminders","isRegex":false},"expectation":"toHaveText","params":["granted"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"siri","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"siri","isRegex":false},"expectation":"toHaveText","params":["blocked"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"siri","isRegex":false},"expectation":"toHaveText","params":["denied"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"siri","isRegex":false},"expectation":"toHaveText","params":["granted"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"speech","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"speech","isRegex":false},"expectation":"toHaveText","params":["blocked"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"speech","isRegex":false},"expectation":"toHaveText","params":["denied"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"speech","isRegex":false},"expectation":"toHaveText","params":["granted"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"stressContainer","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"subtext-root","isRegex":false},"expectation":"toHaveLabel","params":["This is some subtext"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"textWithCustomInput","isRegex":false},"expectation":"toHaveText","params":["World!"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"toggle","isRegex":false},"expectation":"toHaveValue","params":["0"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"toggle","isRegex":false},"expectation":"toHaveValue","params":["1"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"toggle","isRegex":false},"modifiers":["not"],"expectation":"toHaveValue","params":["0"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"userTracking","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"userTracking","isRegex":false},"expectation":"toHaveText","params":["blocked"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"userTracking","isRegex":false},"expectation":"toHaveText","params":["denied"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"userTracking","isRegex":false},"expectation":"toHaveText","params":["granted"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"utcDateLabel","isRegex":false},"expectation":"toHaveText","params":["Date (UTC): Feb 6th, 2019"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"utcDateLabel","isRegex":false},"expectation":"toHaveText","params":["Date (UTC): Jan 11th, 2023"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"label","value":"/^[a-z]* working!+$/i","isRegex":true},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"label","value":"Label Working!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"/^[a-z]* working!+$/i","isRegex":true},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Accessibility Action activate Working!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Accessibility Action custom Working!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Accessibility Action decrement Working!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Accessibility Action escape Working!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Accessibility Action increment Working!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Accessibility Action longpress Working!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Accessibility Action magicTap Working!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Active","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Alert Title","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Background","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"BridgeOneWay","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"BridgeSetState","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"BridgeTwoWay","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Button Tapped","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Button Tapped","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Choose a test","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Current language: en-US","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Current language: es-MX","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Current locale: en-US","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Current locale: es-MX","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"EventLoop","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"First button pressed!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"From push","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"HText1","isRegex":false},"expectation":"toBeVisible","params":[1]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"HText1","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"HText6","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"HText6","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"HText7","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"HText7","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"HText8","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"HText8","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Hello!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"I contain some text","isRegex":false},"expectation":"toHaveId","params":["main-text"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"ID Working!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Immediate Working!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Interval Ignored!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Interval Skipped-Over!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Label Working!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Long Network Request Working!!!","isRegex":false},"expectation":"toBeVisible","timeout":4000}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Long Network Request Working!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Long Network Request Working!!!","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Long Press With Duration Working!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Long Press Working!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Long Press on Top Left Working!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Long Press on Top Left Working!!!","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Long Timeout Ignored!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"My Alert Msg","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Obscured by keyboard","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Obscured by keyboard","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Product","isRegex":false},"atIndex":2,"expectation":"toHaveId","params":["ProductId002"]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Sanity","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Say Hello","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Say World","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Screen Long Custom Duration Pressed","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Screen Long Custom Duration Pressed","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Screen Long Pressed","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Screen Tapped","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Shaken, not stirred","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Short Network Request Working!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Short Timeout Ignored!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Short Timeout Working!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Tap Working!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Text1","isRegex":false},"expectation":"toBeVisible","params":[1]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Text1","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Text1","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Text1000","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Text12","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Text12","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Text16","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible","params":[80]}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Text4","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Text4","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Text5","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Text5","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Traits Working!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Type Working 123 אֱבּג абв!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Welcome","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"World!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Zero Timeout Working!!!","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"com.test.itemId","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"detoxtesturlscheme://such-string?arg1=first&arg2=second","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"detoxtesturlscheme://such-string?arg1=first&arg2=second","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"https://my.deeplink.dtx","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"this is a new native root","isRegex":false},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"type","value":"RCTImageView"},"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"expectation","predicate":{"type":"type","value":"RCTImageView"},"modifiers":["not"],"expectation":"toBeVisible"}}
+{"type":"invoke","params":{"type":"webAction","predicate":{"type":"id","value":"webView","isRegex":false},"webPredicate":{"type":"tag","value":"body"},"webAction":"getTitle"}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"bottomParagraph"},"webAction":"scrollToView"}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"clearText"}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"focus"}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"moveCursorToEnd"}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"replaceText","params":["Tester"]}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"selectAllText"}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"typeText","params":["Tes"]}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"typeText","params":["Test"]}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"typeText","params":["er"]}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"typeText","params":["r"]}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"typeText","params":["te"]}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"clearText"}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"focus"}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"moveCursorToEnd"}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"replaceText","params":["Tester"]}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"runScript","params":["el => {\n              el.type = 'email';\n            }"]}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"selectAllText"}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"typeText","params":["0123456789 ABCDEF"]}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"typeText","params":["Temp"]}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"typeText","params":["Test"]}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"typeText","params":["Tester"]}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"typeText","params":["er"]}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"pageHeadline"},"webAction":"getText"}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"pageHeadline"},"webAction":"runScript","params":["(el) => { el.textContent = \"Changed\"; throw new Error(\"Error\"); }"]}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"pageHeadline"},"webAction":"runScript","params":["(el) => { el.textContent = \"Changed\"; }"]}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"pageHeadline"},"webAction":"runScript","params":["(el) => { return el.textContent; }"]}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"pageHeadline"},"webAction":"runScript","params":["el => {\n          el.textContent = \"Changed\";\n        }"]}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"pageHeadline"},"webAction":"runScriptWithArgs","params":["(el, text) => { el.textContent = text; }",["Changed"]]}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"pageHeadline"},"webAction":"runScriptWithArgs","params":["(el, text) => {\n          el.textContent = text;\n        }",["Changed"]]}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"submit"},"webAction":"tap"}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"w3link"},"webAction":"tap"}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"tag","value":"body"},"webAction":"getCurrentUrl"}}
+{"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"tag","value":"body"},"webAction":"getTitle"}}
+{"type":"invoke","params":{"type":"webExpectation","predicate":{"type":"id","value":"webView","isRegex":false},"atIndex":0,"webPredicate":{"type":"id","value":"message"},"webExpectation":"toExist"}}
+{"type":"invoke","params":{"type":"webExpectation","predicate":{"type":"id","value":"webView","isRegex":false},"atIndex":1,"webPredicate":{"type":"id","value":"message"},"webExpectation":"toExist"}}
+{"type":"invoke","params":{"type":"webExpectation","predicate":{"type":"id","value":"webView","isRegex":false},"atIndex":2,"webPredicate":{"type":"id","value":"message"},"webExpectation":"toExist"}}
+{"type":"invoke","params":{"type":"webExpectation","predicate":{"type":"id","value":"webView","isRegex":false},"webPredicate":{"type":"id","value":"message"},"webExpectation":"toExist"}}
+{"type":"invoke","params":{"type":"webExpectation","predicate":{"type":"id","value":"webView","isRegex":false},"webPredicate":{"type":"id","value":"message"},"webExpectation":"toHaveText","params":["This is a dummy webview."]}}
+{"type":"invoke","params":{"type":"webExpectation","predicate":{"type":"id","value":"webView","isRegex":false},"webPredicate":{"type":"tag","value":"h1"},"webExpectation":"toExist"}}
+{"type":"invoke","params":{"type":"webExpectation","predicate":{"type":"id","value":"webView","isRegex":false},"webPredicate":{"type":"tag","value":"h1"},"webModifiers":["not"],"webExpectation":"toExist"}}
+{"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"class","value":"specialParagraph"},"webExpectation":"toExist"}}
+{"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"css","value":".specialParagraph"},"webExpectation":"toExist"}}
+{"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"href","value":"https://www.w3schools.com"},"webExpectation":"toExist"}}
+{"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"hrefContains","value":"w3schools"},"webExpectation":"toExist"}}
+{"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"contentEditable"},"webExpectation":"toHaveText","params":[""]}}
+{"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"contentEditable"},"webExpectation":"toHaveText","params":["Name: Tester"]}}
+{"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"contentEditable"},"webExpectation":"toHaveText","params":["Tester"]}}
+{"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"fname"},"webExpectation":"toHaveText","params":[""]}}
+{"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"fname"},"webExpectation":"toHaveText","params":["0123456789"]}}
+{"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"fname"},"webExpectation":"toHaveText","params":["Tester"]}}
+{"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"nonExistentElement"},"webExpectation":"toExist"}}
+{"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"nonExistentElement"},"webModifiers":["not"],"webExpectation":"toExist"}}
+{"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"pageHeadline"},"webExpectation":"toExist"}}
+{"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"pageHeadline"},"webExpectation":"toHaveText","params":["Changed"]}}
+{"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"label","value":"first-webview"},"webExpectation":"toExist"}}
+{"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"name","value":"fname"},"webExpectation":"toExist"}}
+{"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"tag","value":"body"},"webExpectation":"toExist"}}
+{"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"tag","value":"p"},"webAtIndex":0,"webExpectation":"toExist"}}
+{"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"tag","value":"p"},"webAtIndex":100,"webExpectation":"toExist"}}
+{"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"tag","value":"p"},"webAtIndex":100,"webModifiers":["not"],"webExpectation":"toExist"}}
+{"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"xpath","value":"//p[@class=\"specialParagraph\"]"},"webExpectation":"toExist"}}
+{"type":"isReady","params":{}}
+{"type":"loginSuccess","params":{"testerConnected":true,"appConnected":true}}
+{"type":"reactNativeReload","params":{}}
+{"type":"setOrientation","params":{"orientation":"landscape"}}
+{"type":"setOrientation","params":{"orientation":"portrait"}}
+{"type":"setSyncSettings","params":{"blacklistURLs":[".*localhost.*"]}}
+{"type":"setSyncSettings","params":{"enabled":false}}
+{"type":"setSyncSettings","params":{"enabled":true}}
+{"type":"shakeDevice","params":{}}
+{"type":"testerDisconnected"}
+{"type":"waitForActive","params":{}}
+{"type":"waitForBackground","params":{}}

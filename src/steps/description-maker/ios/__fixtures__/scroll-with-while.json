@@ -1,0 +1,27 @@
+{
+  "type": "invoke",
+  "params": {
+    "type": "action",
+    "action": "scroll",
+    "params": [
+      50,
+      "down",
+      null,
+      null
+    ],
+    "predicate": {
+      "type": "id",
+      "value": "ScrollView",
+      "isRegex": false
+    },
+    "while": {
+      "type": "expectation",
+      "predicate": {
+        "type": "text",
+        "value": "Text5",
+        "isRegex": false
+      },
+      "expectation": "toBeVisible"
+    }
+  }
+}

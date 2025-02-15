@@ -1,0 +1,14 @@
+{
+  "type": "invoke",
+  "params": {
+    "type": "action",
+    "action": "tap",
+    "predicate": {
+      "type": "and",
+      "predicates": [
+        { "type": "id", "value": "button" },
+        { "type": "label", "value": "Click me" }
+      ]
+    }
+  }
+}

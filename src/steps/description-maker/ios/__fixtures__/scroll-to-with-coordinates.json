@@ -1,0 +1,13 @@
+{
+  "type": "invoke",
+  "params": {
+    "type": "action",
+    "action": "scrollTo",
+    "params": ["bottom", 0.2, 0.4],
+    "predicate": {
+      "type": "id",
+      "value": "ScrollView161",
+      "isRegex": false
+    }
+  }
+}

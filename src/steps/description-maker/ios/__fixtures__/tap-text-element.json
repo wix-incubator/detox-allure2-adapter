@@ -1,0 +1,12 @@
+{
+  "type": "invoke",
+  "params": {
+    "type": "action",
+    "action": "tap",
+    "predicate": {
+      "type": "text",
+      "value": "Welcome",
+      "isRegex": false
+    }
+  }
+}

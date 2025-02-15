@@ -2,6 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 // eslint-disable-next-line import/no-internal-modules
+import detox from 'detox';
+// eslint-disable-next-line import/no-internal-modules
 import { worker } from 'detox/internals';
 // eslint-disable-next-line import/no-internal-modules
 import { allure, type MIMEInferer } from 'jest-allure2-reporter/api';
@@ -9,8 +11,20 @@ import { allure, type MIMEInferer } from 'jest-allure2-reporter/api';
 import type { EnvironmentListenerFn } from 'jest-environment-emit';
 
 import { createLogHandler, createZipHandler } from './file-handlers';
+import { wrapWithSteps } from './steps';
 
-const listener: EnvironmentListenerFn = ({ testEvents }) => {
+export type DetoxAllure2AdapterOptions = {
+  /**
+   * Whether to wrap device, element and other actions in Allure steps
+   * @default false
+   */
+  useSteps?: boolean;
+};
+
+const listener: EnvironmentListenerFn = (
+  { testEvents },
+  { useSteps = false }: DetoxAllure2AdapterOptions = {},
+) => {
   let logHandler: ReturnType<typeof createLogHandler>;
   let zipHandler: ReturnType<typeof createZipHandler>;
   let inferMimeType: MIMEInferer;
@@ -27,6 +41,9 @@ const listener: EnvironmentListenerFn = ({ testEvents }) => {
 
       artifactsManager = (worker as any)._artifactsManager;
       artifactsManager.on('trackArtifact', onTrackArtifact);
+    })
+    .on('setup', async () => {
+      if (useSteps) wrapWithSteps(detox, worker, allure);
     })
     .on('test_start', () => {
       $test = allure.$bind();

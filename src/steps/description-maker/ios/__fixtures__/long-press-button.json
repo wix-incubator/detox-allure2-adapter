@@ -1,0 +1,13 @@
+{
+  "type": "invoke",
+  "params": {
+    "type": "action",
+    "action": "longPress",
+    "params": [1000],
+    "predicate": {
+      "type": "id",
+      "value": "LongPressButton",
+      "isRegex": false
+    }
+  }
+}

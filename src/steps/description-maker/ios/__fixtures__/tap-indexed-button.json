@@ -1,0 +1,12 @@
+{
+  "type": "invoke",
+  "params": {
+    "type": "action",
+    "action": "tap",
+    "predicate": {
+      "type": "id",
+      "value": "IndexedButton",
+      "atIndex": 1
+    }
+  }
+}

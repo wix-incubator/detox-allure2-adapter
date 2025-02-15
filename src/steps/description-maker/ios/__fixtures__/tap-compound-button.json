@@ -1,0 +1,22 @@
+{
+  "type": "invoke",
+  "params": {
+    "type": "action",
+    "action": "tap",
+    "predicate": {
+      "type": "and",
+      "predicates": [
+        {
+          "type": "id",
+          "value": "CompoundButton",
+          "isRegex": false
+        },
+        {
+          "type": "label",
+          "value": "Compound Button",
+          "isRegex": false
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "invoke",
+  "params": {
+    "type": "action",
+    "action": "typeText",
+    "params": ["Hello World"],
+    "predicate": {
+      "type": "id",
+      "value": "TextInput",
+      "isRegex": false
+    }
+  }
+}

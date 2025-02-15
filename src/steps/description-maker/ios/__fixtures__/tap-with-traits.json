@@ -1,0 +1,11 @@
+{
+  "type": "invoke",
+  "params": {
+    "type": "action",
+    "action": "tap",
+    "predicate": {
+      "type": "traits",
+      "value": ["button", "selected"]
+    }
+  }
+}

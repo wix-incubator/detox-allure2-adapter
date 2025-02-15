@@ -1,0 +1,15 @@
+{
+  "type": "invoke",
+  "params": {
+    "type": "action",
+    "action": "tap",
+    "predicate": {
+      "type": "id",
+      "value": "childButton",
+      "ancestor": {
+        "type": "id",
+        "value": "parentView"
+      }
+    }
+  }
+}

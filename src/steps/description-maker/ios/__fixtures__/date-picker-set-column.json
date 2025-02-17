@@ -1,0 +1,16 @@
+{
+  "type": "invoke",
+  "params": {
+    "type": "action",
+    "action": "setColumnToValue",
+    "params": [
+      1,
+      "6"
+    ],
+    "predicate": {
+      "type": "id",
+      "value": "datePicker",
+      "isRegex": false
+    }
+  }
+}

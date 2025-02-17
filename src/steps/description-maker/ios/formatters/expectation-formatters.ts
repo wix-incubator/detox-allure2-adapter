@@ -1,19 +1,23 @@
 import type { StepDescription } from '../../types';
-import type { ExpectationInvocation } from '../detox-payload';
+import type { ExpectationInvocation, Invocation } from '../detox-payload';
 import { formatPredicate } from './predicate-formatters';
 import { concat, msg, percent, truncate } from './utils';
 
 const formatExpectationVerb = (invocation: ExpectationInvocation): string => {
   const hasNot = invocation.modifiers?.includes('not');
-  const verb = invocation.expectation
-    .replace(/([A-Z])/g, ' $1')
+  const verb = invocation
+    .expectation!.replace(/([A-Z])/g, ' $1')
     .toLowerCase()
     .trim();
   return `${hasNot ? 'not ' : ''}${verb}`;
 };
 
 const formatExpectationParams = (invocation: ExpectationInvocation): StepDescription | null => {
-  const [expected] = invocation.params || [];
+  if (!Array.isArray(invocation.params)) {
+    return null;
+  }
+
+  const [expected] = invocation.params;
 
   switch (invocation.expectation) {
     case 'toBeVisible': {
@@ -38,11 +42,15 @@ export const formatWhileCondition = (
     : null;
 };
 
-export const formatExpectation = (invocation: ExpectationInvocation): StepDescription => {
+export const formatExpectation = (invocation: Invocation): StepDescription | null => {
+  if (!invocation.expectation) {
+    return null;
+  }
+
   return concat(
     'Expect',
     formatPredicate(invocation.predicate),
-    formatExpectationVerb(invocation),
-    formatExpectationParams(invocation),
+    formatExpectationVerb(invocation as ExpectationInvocation),
+    formatExpectationParams(invocation as ExpectationInvocation),
   );
 };

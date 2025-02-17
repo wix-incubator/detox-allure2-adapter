@@ -4,12 +4,20 @@
     "type": "action",
     "action": "tap",
     "predicate": {
-      "type": "id",
-      "value": "childButton",
-      "ancestor": {
-        "type": "id",
-        "value": "parentView"
-      }
+      "type": "and",
+      "predicates": [
+        {
+          "type": "id",
+          "value": "childButton"
+        },
+        {
+          "type": "ancestor",
+          "predicate": {
+            "type": "id",
+            "value": "parentView"
+          }
+        }
+      ]
     }
   }
 }

@@ -1,0 +1,13 @@
+{
+  "type": "invoke",
+  "params": {
+    "type": "action",
+    "action": "multiTap",
+    "params": [3],
+    "predicate": {
+      "type": "id",
+      "value": "container",
+      "isRegex": false
+    }
+  }
+}

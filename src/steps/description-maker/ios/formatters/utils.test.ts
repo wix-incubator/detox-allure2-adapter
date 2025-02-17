@@ -39,11 +39,11 @@ describe('truncate', () => {
   });
 
   it('should truncate long string with ellipsis in the middle', () => {
-    const longString = '12345678901234567890123456789012345'; // 35 chars
-    const result = truncate(longString);
+    const longString = '123456';
+    const result = truncate(longString, 5);
 
-    expect(result.length).toBe(30); // MAX_LENGTH
-    expect(result).toBe('123456789012345…23456789012345');
+    expect(result.length).toBe(5);
+    expect(result).toBe('12…56');
   });
 
   it('should handle non-string values', () => {
@@ -52,7 +52,7 @@ describe('truncate', () => {
   });
 
   it('should handle string exactly at MAX_LENGTH', () => {
-    const exactString = '0'.repeat(30);
+    const exactString = '0'.repeat(40);
     expect(truncate(exactString)).toBe(exactString);
   });
 
@@ -60,7 +60,7 @@ describe('truncate', () => {
     // MAX_LENGTH (30) - 1 for ellipsis = 29 chars to distribute
     // Should be split as 15 chars front, 14 chars back
     const longString = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789';
-    const result = truncate(longString);
+    const result = truncate(longString, 30);
 
     const frontPart = result.split('…')[0];
     const backPart = result.split('…')[1];

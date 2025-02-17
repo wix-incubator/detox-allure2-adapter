@@ -15,17 +15,31 @@ const messageFormatters: MessageFormatterMap = {
     const invocation = message.params;
     return formatInvocation(invocation);
   },
-  deliverPayload: ({ params: { url, delayPayload } }) =>
-    msg('Deliver payload', { url, delayPayload }),
+  deliverPayload: (message) => {
+    const data = message.params
+      ? {
+          url: message.params.url,
+          delayPayload: message.params.delayPayload,
+        }
+      : undefined;
+
+    return msg('Deliver payload', data);
+  },
 };
 
-const formatInvocation = (invocation: Invocation): StepDescription | null => {
-  switch (invocation.type) {
+const formatInvocation = (invocation?: Invocation): StepDescription | null => {
+  switch (invocation?.type) {
     case 'action': {
       return formatAction(invocation);
     }
     case 'expectation': {
       return formatExpectation(invocation);
+    }
+    case 'webAction': {
+      return msg(`Web action: ${invocation.webAction}`);
+    }
+    case 'webExpectation': {
+      return msg(`Web expectation: ${invocation.webExpectation}`);
     }
     default: {
       return null;

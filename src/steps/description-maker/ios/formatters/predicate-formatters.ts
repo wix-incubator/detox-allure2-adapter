@@ -1,14 +1,79 @@
 import type { StepArgs, StepDescription } from '../../types';
-import type { Predicate } from '../detox-payload';
-import { concat, truncate } from './utils';
+import type {
+  AtomicPredicate,
+  Predicate,
+  CompoundPredicate,
+  DescendantPredicate,
+  AncestorPredicate,
+} from '../detox-payload';
+import { concat, msg, truncate } from './utils';
 
-function join(a: string, b: string): string {
-  return a && b ? `${a}_${b}` : a || b;
+export function formatPredicate(predicate?: Predicate, prefix = ''): StepDescription {
+  const result = _formatPredicate(predicate, prefix, false);
+  result.message = truncate(result.message);
+
+  return result;
 }
 
-function formatBasePredicate(predicate: Predicate, prefix = ''): StepDescription {
-  const { type, value, atIndex, isRegex } = predicate;
-  const _ = (name: string) => join(prefix, name);
+function _formatPredicate(
+  predicate: Predicate | undefined,
+  prefix: string,
+  prependAND: boolean,
+): StepDescription {
+  if (!predicate) {
+    return msg('?');
+  }
+
+  switch (predicate?.type) {
+    case 'and': {
+      return formatCompoundPredicate(predicate, prefix);
+    }
+    case 'descendant': {
+      return formatDescendantPredicate(predicate, prefix);
+    }
+    case 'ancestor': {
+      return formatAncestorPredicate(predicate, prefix);
+    }
+    default: {
+      const result = formatBasePredicate(predicate as AtomicPredicate, prefix);
+      return prependAND ? concat('&&', result) : result;
+    }
+  }
+}
+
+function formatCompoundPredicate(predicate: CompoundPredicate, prefix = ''): StepDescription {
+  const { predicates = [] } = predicate;
+  if (!Array.isArray(predicates)) {
+    return msg('?');
+  }
+
+  const result =
+    predicates
+      .map((p: Predicate, index: number) => _formatPredicate(p, prefix, index > 0))
+      .reduce((a: StepDescription | null, b: StepDescription) => (a ? concat(a, b) : b), null) ??
+    msg('?');
+
+  result.message = `(${result.message})`;
+  return result;
+}
+
+function formatDescendantPredicate(predicate: DescendantPredicate, prefix = ''): StepDescription {
+  const { predicate: descendant } = predicate;
+  return concat('containing', formatPredicate(descendant, join(prefix, 'descendant')));
+}
+
+function formatAncestorPredicate(predicate: AncestorPredicate, prefix = ''): StepDescription {
+  const { predicate: ancestor } = predicate;
+  return concat('inside', formatPredicate(ancestor, join(prefix, 'ancestor')));
+}
+
+function formatBasePredicate(predicate: AtomicPredicate, prefix = ''): StepDescription {
+  const { atIndex, isRegex, type, value } = predicate;
+  const _ = (name: string | undefined) => join(prefix, name);
+
+  if (value == null || value === '') {
+    return msg('(?)');
+  }
 
   const index$ = atIndex == null ? '' : `[${atIndex}]`;
   const args: StepArgs = { [_(type)]: value };
@@ -16,73 +81,78 @@ function formatBasePredicate(predicate: Predicate, prefix = ''): StepDescription
     args[_('index')] = atIndex;
   }
 
-  const value$ = truncate(value);
+  const value$ = String(value);
 
-  // Handle regex predicates
   if (isRegex) {
-    return {
-      message: `[${type}] ~ ${value$}` + index$,
-      args,
-    };
+    return formatRegexPredicate(type, value$, index$, args);
   }
 
-  // Handle text predicates
-  if (type === 'label' || type === 'accessibilityLabel' || type === 'text') {
-    return {
-      message: `"${value$}"${index$ ? ' ' : ''}${index$}`,
-      args,
-    };
+  if (isTextPredicate(type)) {
+    return formatTextPredicate(value$, index$, args);
   }
 
-  // Handle traits predicates
   if (type === 'traits') {
-    return {
-      message: `[${value$}]${index$}`,
-      args,
-    };
+    return formatTraitsPredicate(value$, index$, args);
   }
 
   if (type === 'id') {
-    return {
-      message: `#${value$}${index$}`,
-      args,
-    };
+    return formatIdPredicate(value$, index$, args);
   }
 
+  return formatDefaultPredicate(type, value$, index$, args);
+}
+
+function formatRegexPredicate(
+  type: string | undefined,
+  value: string,
+  index: string,
+  args: StepArgs,
+): StepDescription {
   return {
-    message: `[${type}] = ${value$}${index$}`,
+    message: `[${type}] ~ ${value}${index}`,
     args,
   };
 }
 
-export const formatPredicate = (predicate: Predicate, prefix = ''): StepDescription => {
-  const { predicates, ancestor, descendant } = predicate;
+function isTextPredicate(
+  type: string | undefined,
+): type is 'label' | 'accessibilityLabel' | 'text' {
+  return type === 'label' || type === 'accessibilityLabel' || type === 'text';
+}
 
-  // Handle compound predicates
-  if (predicates) {
-    const formattedPredicates = predicates.map((p) => formatPredicate(p));
-    return {
-      message: `(${formattedPredicates.map((p) => p.message).join(' AND ')})`,
-      args: formattedPredicates.reduce((acc, p) => ({ ...acc, ...p.args }), {}),
-    };
-  }
+function formatTextPredicate(value: string, index: string, args: StepArgs): StepDescription {
+  return {
+    message: `"${value}"${index ? ' ' : ''}${index}`,
+    args,
+  };
+}
 
-  // Handle ancestor/descendant relationships
-  if (ancestor) {
-    return concat(
-      formatBasePredicate(predicate),
-      'inside',
-      formatPredicate(ancestor, join(prefix, 'ancestor')),
-    );
-  }
+function formatTraitsPredicate(value: string, index: string, args: StepArgs): StepDescription {
+  return {
+    message: `[${value}]${index}`,
+    args,
+  };
+}
 
-  if (descendant) {
-    return concat(
-      formatBasePredicate(predicate),
-      'containing',
-      formatPredicate(descendant, join(prefix, 'descendant')),
-    );
-  }
+function formatIdPredicate(value: string, index: string, args: StepArgs): StepDescription {
+  return {
+    message: `#${value}${index}`,
+    args,
+  };
+}
 
-  return formatBasePredicate(predicate, prefix);
-};
+function formatDefaultPredicate(
+  type: string | undefined,
+  value: string,
+  index: string,
+  args: StepArgs,
+): StepDescription {
+  return {
+    message: `[${type}] = ${value}${index}`,
+    args,
+  };
+}
+
+function join(a: string | undefined, b: string | undefined): string {
+  return a && b ? `${a}_${b}` : a || b || '';
+}

@@ -1,0 +1,20 @@
+{
+  "type": "invoke",
+  "params": {
+    "type": "action",
+    "action": "swipe",
+    "atIndex": 0,
+    "params": [
+      "down",
+      "fast",
+      0.7,
+      null,
+      null
+    ],
+    "predicate": {
+      "type": "text",
+      "value": "Index",
+      "isRegex": false
+    }
+  }
+}

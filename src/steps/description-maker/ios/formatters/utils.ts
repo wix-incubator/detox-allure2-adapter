@@ -7,7 +7,7 @@ export function concat(...results: (StepDescription | string | null)[]): StepDes
   };
 }
 
-export function msg(message: string, args: StepArgs): StepDescription {
+export function msg(message: string, args?: StepArgs): StepDescription {
   return {
     message,
     args: omitEmpty(args),
@@ -25,7 +25,7 @@ export function percent(value?: unknown): string {
   return Number.isFinite(num) ? (num * 100).toFixed(0) + '%' : '';
 }
 
-export function truncate(value?: unknown, maxLength = 30): string {
+export function truncate(value?: unknown, maxLength = 40): string {
   if (!value) return '';
 
   const str = typeof value === 'string' ? value : String(value);

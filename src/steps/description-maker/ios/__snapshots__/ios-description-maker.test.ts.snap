@@ -1,5 +1,82 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`iOS description maker should not fail on broken.jsonl fixture 1`] = `
+"> 5
+
+> []
+
+> {}
+
+> "{}"
+
+> "abc"
+
+> {"type":"anything"}
+
+> {"type":"anything","params":null}
+
+> {"type":"deliverPayload","params":null}
+< Deliver payload
++ undefined
+
+> {"type":"invoke","params":null}
+
+> {"type":"invoke","params":{"type":"action","action":"accessibilityAction","params":null}}
+< Activate a11y action on ?
++ {}
+
+> {"type":"invoke","params":{"type":"action","action":"accessibilityAction","params":[]}}
+< Activate a11y action on ?
++ {}
+
+> {"type":"invoke","params":{"type":"action","action":"accessibilityAction","params":[],"predicate":null}}
+< Activate a11y action on ?
++ {}
+
+> {"type":"invoke","params":{"type":"action","action":"accessibilityAction","params":[],"predicate":{"type":"unknown"}}}
+< Activate a11y action on (?)
++ {}
+
+> {"type":"invoke","params":{"type":"action","action":"accessibilityAction","params":[],"predicate":{"type":"and"}}}
+< Activate a11y action on (?)
++ {}
+
+> {"type":"invoke","params":{"type":"action","action":"accessibilityAction","params":[],"predicate":{"type":"and","predicates":null}}}
+< Activate a11y action on ?
++ {}
+
+> {"type":"invoke","params":{"type":"action","action":"accessibilityAction","params":[],"predicate":{"type":"and","predicates":[]}}}
+< Activate a11y action on (?)
++ {}
+
+> {"type":"invoke","params":{"type":"action","action":"accessibilityAction","params":[],"predicate":{"type":"id"}}}
+< Activate a11y action on (?)
++ {}
+
+> {"type":"invoke","params":{"type":"action","action":"accessibilityAction","params":[],"predicate":{"type":"id","value":null}}}
+< Activate a11y action on (?)
++ {}
+
+> {"type":"invoke","params":{"type":"action","action":"longPress","params":[],"predicate":{"type":"id","value":"draggable"},"targetElement":null}}
+< Long press #draggable
++ {"id":"draggable"}
+
+> {"type":"invoke","params":{"type":"expectation","predicate":null,"modifiers":["not"],"expectation":"toExist"}}
+< Expect ? not to exist
++ null
+
+> {"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Father883","isRegex":false},{"type":"ancestor","predicate":{}}]},"modifiers":null,"expectation":"toExist"}}
+< Expect (#Father883 inside (?)) to exist
++ {"id":"Father883"}
+
+> {"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Father883","isRegex":false},{"type":"ancestor","predicate":{}}]},"modifiers":["not"],"expectation":null}}
+
+> {"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Father883","isRegex":false},{"type":"ancestor","predicate":{}}]},"modifiers":["not"],"expectation":"toBeWeird"}}
+< Expect (#Father883 inside (?)) not to be weird
++ {"id":"Father883"}
+"
+`;
+
 exports[`iOS description maker should process everything.jsonl fixture 1`] = `
 "> {"params":{"testerConnected":true,"appConnected":true},"type":"loginSuccess"}
 
@@ -144,25 +221,27 @@ exports[`iOS description maker should process everything.jsonl fixture 1`] = `
 + {"duration":{"x":5,"y":5},"text":"Long Press on Top Left"}
 
 > {"type":"invoke","params":{"type":"action","action":"multiTap","params":[3],"predicate":{"type":"id","value":"UniqueId819","isRegex":false}}}
+< Tap 3 times on #UniqueId819
++ {"count":3,"id":"UniqueId819"}
 
 > {"type":"invoke","params":{"type":"action","action":"replaceText","params":["1600"],"predicate":{"type":"id","value":"UniqueId_AnimationsScreen_delay","isRegex":false}}}
-< Replace text in #UniqueId_Animat…nsScreen_delay
+< Replace text in #UniqueId_AnimationsScreen_delay
 + {"text":"1600","id":"UniqueId_AnimationsScreen_delay"}
 
 > {"type":"invoke","params":{"type":"action","action":"replaceText","params":["2000"],"predicate":{"type":"id","value":"UniqueId_AnimationsScreen_duration","isRegex":false}}}
-< Replace text in #UniqueId_Animat…creen_duration
+< Replace text in #UniqueId_AnimationsScreen_duration
 + {"text":"2000","id":"UniqueId_AnimationsScreen_duration"}
 
 > {"type":"invoke","params":{"type":"action","action":"replaceText","params":["4"],"predicate":{"type":"id","value":"UniqueId_AnimationsScreen_numberOfIterations","isRegex":false}}}
-< Replace text in #UniqueId_Animat…erOfIterations
+< Replace text in #UniqueId_Animations…_numberOfIterations
 + {"text":"4","id":"UniqueId_AnimationsScreen_numberOfIterations"}
 
 > {"type":"invoke","params":{"type":"action","action":"replaceText","params":["500"],"predicate":{"type":"id","value":"UniqueId_AnimationsScreen_delay","isRegex":false}}}
-< Replace text in #UniqueId_Animat…nsScreen_delay
+< Replace text in #UniqueId_AnimationsScreen_delay
 + {"text":"500","id":"UniqueId_AnimationsScreen_delay"}
 
 > {"type":"invoke","params":{"type":"action","action":"replaceText","params":["5000"],"predicate":{"type":"id","value":"UniqueId_AnimationsScreen_duration","isRegex":false}}}
-< Replace text in #UniqueId_Animat…creen_duration
+< Replace text in #UniqueId_AnimationsScreen_duration
 + {"text":"5000","id":"UniqueId_AnimationsScreen_duration"}
 
 > {"type":"invoke","params":{"type":"action","action":"scroll","params":[10,"down",null,null],"predicate":{"type":"id","value":"FSScrollActions.scrollView","isRegex":false},"while":{"type":"expectation","predicate":{"type":"text","value":"Text16","isRegex":false},"expectation":"toBeVisible","params":[100]}}}
@@ -266,8 +345,12 @@ exports[`iOS description maker should process everything.jsonl fixture 1`] = `
 + {"edge":"top","id":"ScrollView161"}
 
 > {"type":"invoke","params":{"type":"action","action":"setColumnToValue","params":[0,"c"],"predicate":{"type":"id","value":"pickerView","isRegex":false}}}
+< Set #pickerView column [0] to: c
++ {"id":"pickerView","column":0,"value":"c"}
 
 > {"type":"invoke","params":{"type":"action","action":"setColumnToValue","params":[1,"6"],"predicate":{"type":"id","value":"datePicker","isRegex":false}}}
+< Set #datePicker column [1] to: 6
++ {"id":"datePicker","column":1,"value":"6"}
 
 > {"type":"invoke","params":{"type":"action","action":"setDatePickerDate","params":["2019-02-06T05:10:00-08:00","ISO8601"],"predicate":{"type":"id","value":"datePicker","isRegex":false}}}
 < Set date picker #datePicker 2019-02-06T05:10:00-08:00
@@ -282,6 +365,8 @@ exports[`iOS description maker should process everything.jsonl fixture 1`] = `
 + {"id":"datePicker","date":"2023-01-11T10:41:26Z","format":"ISO8601"}
 
 > {"type":"invoke","params":{"type":"action","action":"swipe","atIndex":0,"params":["down","fast",0.7,null,null],"predicate":{"type":"text","value":"Index","isRegex":false}}}
+< Swipe down on "Index"
++ {"direction":"down","speed":"fast","amount":0.7,"text":"Index"}
 
 > {"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["elementScreenshot.horiz"],"predicate":{"type":"id","value":"fancyElement","isRegex":false}}}
 
@@ -386,11 +471,11 @@ exports[`iOS description maker should process everything.jsonl fixture 1`] = `
 + {"id":"UniqueId819"}
 
 > {"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"UniqueId_AnimationsScreen_enableLoop","isRegex":false}}}
-< Tap #UniqueId_Animat…een_enableLoop
+< Tap #UniqueId_AnimationsScreen_enableLoop
 + {"id":"UniqueId_AnimationsScreen_enableLoop"}
 
 > {"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"UniqueId_AnimationsScreen_startButton","isRegex":false}}}
-< Tap #UniqueId_Animat…en_startButton
+< Tap #UniqueId_AnimationsScreen_startButton
 + {"id":"UniqueId_AnimationsScreen_startButton"}
 
 > {"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"id","value":"closeButton","isRegex":false}}}
@@ -742,67 +827,67 @@ exports[`iOS description maker should process everything.jsonl fixture 1`] = `
 + {"text":"Type Working 123 אֱבּג абв!!!","id":"UniqueId937"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Father883","isRegex":false},{"type":"ancestor","predicate":{"type":"id","value":"Grandson883","isRegex":false}}]},"modifiers":["not"],"expectation":"toExist"}}
-< Expect (#Father883 AND [ancestor] = ) not to exist
-+ {"id":"Father883"}
+< Expect (#Father883 inside #Grandson883) not to exist
++ {"id":"Father883","ancestor_id":"Grandson883"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Father883","isRegex":false},{"type":"descendant","predicate":{"type":"id","value":"Grandson883","isRegex":false}}]},"expectation":"toExist"}}
-< Expect (#Father883 AND [descendant] = ) to exist
-+ {"id":"Father883"}
+< Expect (#Father883 containing #Grandson883) to exist
++ {"id":"Father883","descendant_id":"Grandson883"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Grandfather883","isRegex":false},{"type":"ancestor","predicate":{"type":"id","value":"Grandson883","isRegex":false}}]},"modifiers":["not"],"expectation":"toExist"}}
-< Expect (#Grandfather883 AND [ancestor] = ) not to exist
-+ {"id":"Grandfather883"}
+< Expect (#Grandfather883 inside #Grandson883) not to exist
++ {"id":"Grandfather883","ancestor_id":"Grandson883"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Grandfather883","isRegex":false},{"type":"descendant","predicate":{"type":"id","value":"Grandson883","isRegex":false}}]},"expectation":"toExist"}}
-< Expect (#Grandfather883 AND [descendant] = ) to exist
-+ {"id":"Grandfather883"}
+< Expect (#Grandfather883 con…ining #Grandson883) to exist
++ {"id":"Grandfather883","descendant_id":"Grandson883"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Grandson883","isRegex":false},{"type":"ancestor","predicate":{"type":"id","value":"Father883","isRegex":false}}]},"expectation":"toExist"}}
-< Expect (#Grandson883 AND [ancestor] = ) to exist
-+ {"id":"Grandson883"}
+< Expect (#Grandson883 inside #Father883) to exist
++ {"id":"Grandson883","ancestor_id":"Father883"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Grandson883","isRegex":false},{"type":"ancestor","predicate":{"type":"id","value":"Grandfather883","isRegex":false}}]},"expectation":"toExist"}}
-< Expect (#Grandson883 AND [ancestor] = ) to exist
-+ {"id":"Grandson883"}
+< Expect (#Grandson883 inside #Grandfather883) to exist
++ {"id":"Grandson883","ancestor_id":"Grandfather883"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Grandson883","isRegex":false},{"type":"ancestor","predicate":{"type":"id","value":"Son883","isRegex":false}}]},"expectation":"toExist"}}
-< Expect (#Grandson883 AND [ancestor] = ) to exist
-+ {"id":"Grandson883"}
+< Expect (#Grandson883 inside #Son883) to exist
++ {"id":"Grandson883","ancestor_id":"Son883"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Grandson883","isRegex":false},{"type":"descendant","predicate":{"type":"id","value":"Father883","isRegex":false}}]},"modifiers":["not"],"expectation":"toExist"}}
-< Expect (#Grandson883 AND [descendant] = ) not to exist
-+ {"id":"Grandson883"}
+< Expect (#Grandson883 containing #Father883) not to exist
++ {"id":"Grandson883","descendant_id":"Father883"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Grandson883","isRegex":false},{"type":"descendant","predicate":{"type":"id","value":"Grandfather883","isRegex":false}}]},"modifiers":["not"],"expectation":"toExist"}}
-< Expect (#Grandson883 AND [descendant] = ) not to exist
-+ {"id":"Grandson883"}
+< Expect (#Grandson883 contai…ng #Grandfather883) not to exist
++ {"id":"Grandson883","descendant_id":"Grandfather883"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Grandson883","isRegex":false},{"type":"descendant","predicate":{"type":"id","value":"Son883","isRegex":false}}]},"modifiers":["not"],"expectation":"toExist"}}
-< Expect (#Grandson883 AND [descendant] = ) not to exist
-+ {"id":"Grandson883"}
+< Expect (#Grandson883 containing #Son883) not to exist
++ {"id":"Grandson883","descendant_id":"Son883"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Son883","isRegex":false},{"type":"ancestor","predicate":{"type":"id","value":"Grandson883","isRegex":false}}]},"modifiers":["not"],"expectation":"toExist"}}
-< Expect (#Son883 AND [ancestor] = ) not to exist
-+ {"id":"Son883"}
+< Expect (#Son883 inside #Grandson883) not to exist
++ {"id":"Son883","ancestor_id":"Grandson883"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"Son883","isRegex":false},{"type":"descendant","predicate":{"type":"id","value":"Grandson883","isRegex":false}}]},"expectation":"toExist"}}
-< Expect (#Son883 AND [descendant] = ) to exist
-+ {"id":"Son883"}
+< Expect (#Son883 containing #Grandson883) to exist
++ {"id":"Son883","descendant_id":"Grandson883"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"UniqueId345","isRegex":false},{"type":"label","value":"RandomJunk","isRegex":false}]},"modifiers":["not"],"expectation":"toExist"}}
-< Expect (#UniqueId345 AND "RandomJunk") not to exist
+< Expect (#UniqueId345 && "RandomJunk") not to exist
 + {"id":"UniqueId345","label":"RandomJunk"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"UniqueId345","isRegex":false},{"type":"text","value":"ID","isRegex":false}]},"expectation":"toExist"}}
-< Expect (#UniqueId345 AND "ID") to exist
+< Expect (#UniqueId345 && "ID") to exist
 + {"id":"UniqueId345","text":"ID"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"UniqueId345","isRegex":false},{"type":"text","value":"RandomJunk","isRegex":false}]},"modifiers":["not"],"expectation":"toExist"}}
-< Expect (#UniqueId345 AND "RandomJunk") not to exist
+< Expect (#UniqueId345 && "RandomJunk") not to exist
 + {"id":"UniqueId345","text":"RandomJunk"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"and","predicates":[{"type":"id","value":"UniqueId345","isRegex":false},{"type":"traits","value":["button"]}]},"modifiers":["not"],"expectation":"toExist"}}
-< Expect (#UniqueId345 AND [button]) not to exist
+< Expect (#UniqueId345 && [button]) not to exist
 + {"id":"UniqueId345","traits":["button"]}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"AlertScreen.Text","isRegex":false},"expectation":"toHaveText","params":["Cancel Pressed"]}}
@@ -850,19 +935,19 @@ exports[`iOS description maker should process everything.jsonl fixture 1`] = `
 + {"id":"UniqueId819","expected":"Taps: 3"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"UniqueId_AnimationsScreen_afterAnimationText","isRegex":false},"expectation":"toBeVisible"}}
-< Expect #UniqueId_Animat…rAnimationText to be visible
+< Expect #UniqueId_Animations…_afterAnimationText to be visible
 + {"id":"UniqueId_AnimationsScreen_afterAnimationText"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"UniqueId_AnimationsScreen_afterAnimationText","isRegex":false},"expectation":"toExist"}}
-< Expect #UniqueId_Animat…rAnimationText to exist
+< Expect #UniqueId_Animations…_afterAnimationText to exist
 + {"id":"UniqueId_AnimationsScreen_afterAnimationText"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"UniqueId_AnimationsScreen_afterAnimationText","isRegex":false},"modifiers":["not"],"expectation":"toExist"}}
-< Expect #UniqueId_Animat…rAnimationText not to exist
+< Expect #UniqueId_Animations…_afterAnimationText not to exist
 + {"id":"UniqueId_AnimationsScreen_afterAnimationText"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"UniqueId_AnimationsScreen_enableLoop","isRegex":false},"expectation":"toHaveValue","params":["1"]}}
-< Expect #UniqueId_Animat…een_enableLoop to have value 1
+< Expect #UniqueId_AnimationsScreen_enableLoop to have value 1
 + {"id":"UniqueId_AnimationsScreen_enableLoop","expected":"1"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"calendar","isRegex":false},"expectation":"toBeVisible"}}
@@ -1250,31 +1335,31 @@ exports[`iOS description maker should process everything.jsonl fixture 1`] = `
 + {"text":"/^[a-z]* working!+$/i"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Accessibility Action activate Working!!!","isRegex":false},"expectation":"toBeVisible"}}
-< Expect "Accessibility A…ate Working!!!" to be visible
+< Expect "Accessibility Actio…ctivate Working!!!" to be visible
 + {"text":"Accessibility Action activate Working!!!"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Accessibility Action custom Working!!!","isRegex":false},"expectation":"toBeVisible"}}
-< Expect "Accessibility A…tom Working!!!" to be visible
+< Expect "Accessibility Action custom Working!!!" to be visible
 + {"text":"Accessibility Action custom Working!!!"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Accessibility Action decrement Working!!!","isRegex":false},"expectation":"toBeVisible"}}
-< Expect "Accessibility A…ent Working!!!" to be visible
+< Expect "Accessibility Actio…crement Working!!!" to be visible
 + {"text":"Accessibility Action decrement Working!!!"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Accessibility Action escape Working!!!","isRegex":false},"expectation":"toBeVisible"}}
-< Expect "Accessibility A…ape Working!!!" to be visible
+< Expect "Accessibility Action escape Working!!!" to be visible
 + {"text":"Accessibility Action escape Working!!!"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Accessibility Action increment Working!!!","isRegex":false},"expectation":"toBeVisible"}}
-< Expect "Accessibility A…ent Working!!!" to be visible
+< Expect "Accessibility Actio…crement Working!!!" to be visible
 + {"text":"Accessibility Action increment Working!!!"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Accessibility Action longpress Working!!!","isRegex":false},"expectation":"toBeVisible"}}
-< Expect "Accessibility A…ess Working!!!" to be visible
+< Expect "Accessibility Actio…ngpress Working!!!" to be visible
 + {"text":"Accessibility Action longpress Working!!!"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Accessibility Action magicTap Working!!!","isRegex":false},"expectation":"toBeVisible"}}
-< Expect "Accessibility A…Tap Working!!!" to be visible
+< Expect "Accessibility Actio…agicTap Working!!!" to be visible
 + {"text":"Accessibility Action magicTap Working!!!"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Active","isRegex":false},"expectation":"toBeVisible"}}
@@ -1402,19 +1487,19 @@ exports[`iOS description maker should process everything.jsonl fixture 1`] = `
 + {"text":"Label Working!!!"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Long Network Request Working!!!","isRegex":false},"expectation":"toBeVisible","timeout":4000}}
-< Expect "Long Network Re…est Working!!!" to be visible
+< Expect "Long Network Request Working!!!" to be visible
 + {"text":"Long Network Request Working!!!"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Long Network Request Working!!!","isRegex":false},"expectation":"toBeVisible"}}
-< Expect "Long Network Re…est Working!!!" to be visible
+< Expect "Long Network Request Working!!!" to be visible
 + {"text":"Long Network Request Working!!!"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Long Network Request Working!!!","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible"}}
-< Expect "Long Network Re…est Working!!!" not to be visible
+< Expect "Long Network Request Working!!!" not to be visible
 + {"text":"Long Network Request Working!!!"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Long Press With Duration Working!!!","isRegex":false},"expectation":"toBeVisible"}}
-< Expect "Long Press With…ion Working!!!" to be visible
+< Expect "Long Press With Duration Working!!!" to be visible
 + {"text":"Long Press With Duration Working!!!"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Long Press Working!!!","isRegex":false},"expectation":"toBeVisible"}}
@@ -1422,11 +1507,11 @@ exports[`iOS description maker should process everything.jsonl fixture 1`] = `
 + {"text":"Long Press Working!!!"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Long Press on Top Left Working!!!","isRegex":false},"expectation":"toBeVisible"}}
-< Expect "Long Press on T…eft Working!!!" to be visible
+< Expect "Long Press on Top Left Working!!!" to be visible
 + {"text":"Long Press on Top Left Working!!!"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Long Press on Top Left Working!!!","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible"}}
-< Expect "Long Press on T…eft Working!!!" not to be visible
+< Expect "Long Press on Top Left Working!!!" not to be visible
 + {"text":"Long Press on Top Left Working!!!"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Long Timeout Ignored!!!","isRegex":false},"expectation":"toBeVisible"}}
@@ -1462,11 +1547,11 @@ exports[`iOS description maker should process everything.jsonl fixture 1`] = `
 + {"text":"Say World"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Screen Long Custom Duration Pressed","isRegex":false},"expectation":"toBeVisible"}}
-< Expect "Screen Long Cus…ration Pressed" to be visible
+< Expect "Screen Long Custom Duration Pressed" to be visible
 + {"text":"Screen Long Custom Duration Pressed"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Screen Long Custom Duration Pressed","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible"}}
-< Expect "Screen Long Cus…ration Pressed" not to be visible
+< Expect "Screen Long Custom Duration Pressed" not to be visible
 + {"text":"Screen Long Custom Duration Pressed"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Screen Long Pressed","isRegex":false},"expectation":"toBeVisible"}}
@@ -1482,7 +1567,7 @@ exports[`iOS description maker should process everything.jsonl fixture 1`] = `
 + {"text":"Shaken, not stirred"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Short Network Request Working!!!","isRegex":false},"expectation":"toBeVisible"}}
-< Expect "Short Network R…est Working!!!" to be visible
+< Expect "Short Network Request Working!!!" to be visible
 + {"text":"Short Network Request Working!!!"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Short Timeout Ignored!!!","isRegex":false},"expectation":"toBeVisible"}}
@@ -1566,11 +1651,11 @@ exports[`iOS description maker should process everything.jsonl fixture 1`] = `
 + {"text":"com.test.itemId"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"detoxtesturlscheme://such-string?arg1=first&arg2=second","isRegex":false},"expectation":"toBeVisible"}}
-< Expect "detoxtesturlsch…st&arg2=second" to be visible
+< Expect "detoxtesturlscheme:…=first&arg2=second" to be visible
 + {"text":"detoxtesturlscheme://such-string?arg1=first&arg2=second"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"detoxtesturlscheme://such-string?arg1=first&arg2=second","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible"}}
-< Expect "detoxtesturlsch…st&arg2=second" not to be visible
+< Expect "detoxtesturlscheme:…=first&arg2=second" not to be visible
 + {"text":"detoxtesturlscheme://such-string?arg1=first&arg2=second"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"https://my.deeplink.dtx","isRegex":false},"expectation":"toBeVisible"}}
@@ -1590,128 +1675,252 @@ exports[`iOS description maker should process everything.jsonl fixture 1`] = `
 + {"type":"RCTImageView"}
 
 > {"type":"invoke","params":{"type":"webAction","predicate":{"type":"id","value":"webView","isRegex":false},"webPredicate":{"type":"tag","value":"body"},"webAction":"getTitle"}}
+< Web action: getTitle
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"bottomParagraph"},"webAction":"scrollToView"}}
+< Web action: scrollToView
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"clearText"}}
+< Web action: clearText
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"focus"}}
+< Web action: focus
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"moveCursorToEnd"}}
+< Web action: moveCursorToEnd
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"replaceText","params":["Tester"]}}
+< Web action: replaceText
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"selectAllText"}}
+< Web action: selectAllText
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"typeText","params":["Tes"]}}
+< Web action: typeText
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"typeText","params":["Test"]}}
+< Web action: typeText
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"typeText","params":["er"]}}
+< Web action: typeText
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"typeText","params":["r"]}}
+< Web action: typeText
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"typeText","params":["te"]}}
+< Web action: typeText
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"clearText"}}
+< Web action: clearText
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"focus"}}
+< Web action: focus
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"moveCursorToEnd"}}
+< Web action: moveCursorToEnd
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"replaceText","params":["Tester"]}}
+< Web action: replaceText
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"runScript","params":["el => {\\n              el.type = 'email';\\n            }"]}}
+< Web action: runScript
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"selectAllText"}}
+< Web action: selectAllText
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"typeText","params":["0123456789 ABCDEF"]}}
+< Web action: typeText
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"typeText","params":["Temp"]}}
+< Web action: typeText
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"typeText","params":["Test"]}}
+< Web action: typeText
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"typeText","params":["Tester"]}}
+< Web action: typeText
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"typeText","params":["er"]}}
+< Web action: typeText
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"pageHeadline"},"webAction":"getText"}}
+< Web action: getText
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"pageHeadline"},"webAction":"runScript","params":["(el) => { el.textContent = \\"Changed\\"; throw new Error(\\"Error\\"); }"]}}
+< Web action: runScript
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"pageHeadline"},"webAction":"runScript","params":["(el) => { el.textContent = \\"Changed\\"; }"]}}
+< Web action: runScript
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"pageHeadline"},"webAction":"runScript","params":["(el) => { return el.textContent; }"]}}
+< Web action: runScript
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"pageHeadline"},"webAction":"runScript","params":["el => {\\n          el.textContent = \\"Changed\\";\\n        }"]}}
+< Web action: runScript
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"pageHeadline"},"webAction":"runScriptWithArgs","params":["(el, text) => { el.textContent = text; }",["Changed"]]}}
+< Web action: runScriptWithArgs
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"pageHeadline"},"webAction":"runScriptWithArgs","params":["(el, text) => {\\n          el.textContent = text;\\n        }",["Changed"]]}}
+< Web action: runScriptWithArgs
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"submit"},"webAction":"tap"}}
+< Web action: tap
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"w3link"},"webAction":"tap"}}
+< Web action: tap
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"tag","value":"body"},"webAction":"getCurrentUrl"}}
+< Web action: getCurrentUrl
++ undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"tag","value":"body"},"webAction":"getTitle"}}
+< Web action: getTitle
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","predicate":{"type":"id","value":"webView","isRegex":false},"atIndex":0,"webPredicate":{"type":"id","value":"message"},"webExpectation":"toExist"}}
+< Web expectation: toExist
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","predicate":{"type":"id","value":"webView","isRegex":false},"atIndex":1,"webPredicate":{"type":"id","value":"message"},"webExpectation":"toExist"}}
+< Web expectation: toExist
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","predicate":{"type":"id","value":"webView","isRegex":false},"atIndex":2,"webPredicate":{"type":"id","value":"message"},"webExpectation":"toExist"}}
+< Web expectation: toExist
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","predicate":{"type":"id","value":"webView","isRegex":false},"webPredicate":{"type":"id","value":"message"},"webExpectation":"toExist"}}
+< Web expectation: toExist
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","predicate":{"type":"id","value":"webView","isRegex":false},"webPredicate":{"type":"id","value":"message"},"webExpectation":"toHaveText","params":["This is a dummy webview."]}}
+< Web expectation: toHaveText
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","predicate":{"type":"id","value":"webView","isRegex":false},"webPredicate":{"type":"tag","value":"h1"},"webExpectation":"toExist"}}
+< Web expectation: toExist
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","predicate":{"type":"id","value":"webView","isRegex":false},"webPredicate":{"type":"tag","value":"h1"},"webModifiers":["not"],"webExpectation":"toExist"}}
+< Web expectation: toExist
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"class","value":"specialParagraph"},"webExpectation":"toExist"}}
+< Web expectation: toExist
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"css","value":".specialParagraph"},"webExpectation":"toExist"}}
+< Web expectation: toExist
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"href","value":"https://www.w3schools.com"},"webExpectation":"toExist"}}
+< Web expectation: toExist
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"hrefContains","value":"w3schools"},"webExpectation":"toExist"}}
+< Web expectation: toExist
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"contentEditable"},"webExpectation":"toHaveText","params":[""]}}
+< Web expectation: toHaveText
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"contentEditable"},"webExpectation":"toHaveText","params":["Name: Tester"]}}
+< Web expectation: toHaveText
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"contentEditable"},"webExpectation":"toHaveText","params":["Tester"]}}
+< Web expectation: toHaveText
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"fname"},"webExpectation":"toHaveText","params":[""]}}
+< Web expectation: toHaveText
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"fname"},"webExpectation":"toHaveText","params":["0123456789"]}}
+< Web expectation: toHaveText
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"fname"},"webExpectation":"toHaveText","params":["Tester"]}}
+< Web expectation: toHaveText
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"nonExistentElement"},"webExpectation":"toExist"}}
+< Web expectation: toExist
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"nonExistentElement"},"webModifiers":["not"],"webExpectation":"toExist"}}
+< Web expectation: toExist
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"pageHeadline"},"webExpectation":"toExist"}}
+< Web expectation: toExist
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"pageHeadline"},"webExpectation":"toHaveText","params":["Changed"]}}
+< Web expectation: toHaveText
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"label","value":"first-webview"},"webExpectation":"toExist"}}
+< Web expectation: toExist
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"name","value":"fname"},"webExpectation":"toExist"}}
+< Web expectation: toExist
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"tag","value":"body"},"webExpectation":"toExist"}}
+< Web expectation: toExist
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"tag","value":"p"},"webAtIndex":0,"webExpectation":"toExist"}}
+< Web expectation: toExist
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"tag","value":"p"},"webAtIndex":100,"webExpectation":"toExist"}}
+< Web expectation: toExist
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"tag","value":"p"},"webAtIndex":100,"webModifiers":["not"],"webExpectation":"toExist"}}
+< Web expectation: toExist
++ undefined
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"xpath","value":"//p[@class=\\"specialParagraph\\"]"},"webExpectation":"toExist"}}
+< Web expectation: toExist
++ undefined
 
 > {"type":"isReady","params":{}}
 

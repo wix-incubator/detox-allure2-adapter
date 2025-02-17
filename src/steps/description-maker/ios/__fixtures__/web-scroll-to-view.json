@@ -1,0 +1,11 @@
+{
+  "type": "invoke",
+  "params": {
+    "type": "webAction",
+    "webPredicate": {
+      "type": "id",
+      "value": "bottomParagraph"
+    },
+    "webAction": "scrollToView"
+  }
+}

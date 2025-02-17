@@ -52,11 +52,11 @@ describe('iOS description maker', () => {
       'Scroll to top on #ScrollView161',
       { edge: 'top', id: 'ScrollView161' },
     ],
-    ['tap-compound-and', 'Tap (#button AND "Click me")', { id: 'button', label: 'Click me' }],
+    ['tap-compound-and', 'Tap (#button && "Click me")', { id: 'button', label: 'Click me' }],
     ['tap-with-traits', 'Tap [button,selected]', { traits: ['button', 'selected'] }],
     [
       'tap-with-ancestor',
-      'Tap #childButton inside #parentView',
+      'Tap (#childButton inside #parentView)',
       { id: 'childButton', ancestor_id: 'parentView' },
     ],
     [
@@ -64,6 +64,24 @@ describe('iOS description maker', () => {
       'Scroll down on #ScrollView while waiting for "Text5" to be visible',
       { direction: 'down', distance: 50, id: 'ScrollView', while_text: 'Text5' },
     ],
+    [
+      'swipe-action',
+      'Swipe down on "Index"',
+      { text: 'Index', direction: 'down', speed: 'fast', amount: 0.7 },
+    ],
+    [
+      'date-picker-set-column',
+      'Set #datePicker column [1] to: 6',
+      { id: 'datePicker', column: 1, value: '6' },
+    ],
+    [
+      'web-scroll-to-view',
+      // 'Scroll to #bottomParagraph in webview',
+      // { webId: 'bottomParagraph', webAction: 'scrollToView' },
+      'Web action: scrollToView',
+      undefined,
+    ],
+    ['multi-tap', 'Tap 3 times on #container', { id: 'container', count: 3 }],
   ])('should handle %s selector', (fixture, message, args) => {
     const description = iosDescriptionMaker(loadFixture(fixture));
     expect(description).toEqual({ message, args });
@@ -73,6 +91,20 @@ describe('iOS description maker', () => {
     // Read and parse the JSONL file
     const fileContent = fs.readFileSync(
       path.join(__dirname, '__fixtures__', 'everything.jsonl'),
+      'utf8',
+    );
+    const lines = fileContent.split('\n').map(parseJsonLine).filter(Boolean);
+
+    // Format each payload and join them together
+    const results = lines.map(formatPayloadAndDescription).join('\n');
+
+    expect(results).toMatchSnapshot();
+  });
+
+  test('should not fail on broken.jsonl fixture', () => {
+    // Read and parse the JSONL file
+    const fileContent = fs.readFileSync(
+      path.join(__dirname, '__fixtures__', 'broken.jsonl'),
       'utf8',
     );
     const lines = fileContent.split('\n').map(parseJsonLine).filter(Boolean);

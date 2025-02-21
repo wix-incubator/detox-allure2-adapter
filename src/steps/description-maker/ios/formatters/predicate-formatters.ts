@@ -8,6 +8,10 @@ import type {
 } from '../detox-payload';
 import { concat, msg, truncate } from './utils';
 
+type Writable<T> = {
+  -readonly [P in keyof T]: T[P];
+};
+
 export function formatPredicate(predicate?: Predicate, prefix = ''): StepDescription {
   const result = _formatPredicate(predicate, prefix, false);
   result.message = truncate(result.message);
@@ -19,7 +23,7 @@ function _formatPredicate(
   predicate: Predicate | undefined,
   prefix: string,
   prependAND: boolean,
-): StepDescription {
+): Writable<StepDescription> {
   if (!predicate) {
     return msg('?');
   }
@@ -47,7 +51,7 @@ function formatCompoundPredicate(predicate: CompoundPredicate, prefix = ''): Ste
     return msg('?');
   }
 
-  const result =
+  const result: Writable<StepDescription> =
     predicates
       .map((p: Predicate, index: number) => _formatPredicate(p, prefix, index > 0))
       .reduce((a: StepDescription | null, b: StepDescription) => (a ? concat(a, b) : b), null) ??

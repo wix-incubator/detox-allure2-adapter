@@ -1051,19 +1051,19 @@ exports[`iOS description maker should process everything.jsonl fixture 1`] = `
 + {"id":"faceid","expected":"unavailable"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"halfVisible","isRegex":false},"expectation":"toBeVisible","params":[25],"timeout":2000}}
-< Expect #halfVisible to be visible by 2500%
+< Expect #halfVisible to be visible by 25%
 + {"id":"halfVisible","expected":25}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"halfVisible","isRegex":false},"expectation":"toBeVisible","params":[50]}}
-< Expect #halfVisible to be visible by 5000%
+< Expect #halfVisible to be visible by 50%
 + {"id":"halfVisible","expected":50}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"halfVisible","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible","params":[26],"timeout":2000}}
-< Expect #halfVisible not to be visible by 2600%
+< Expect #halfVisible not to be visible by 26%
 + {"id":"halfVisible","expected":26}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"halfVisible","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible","params":[51]}}
-< Expect #halfVisible not to be visible by 5100%
+< Expect #halfVisible not to be visible by 51%
 + {"id":"halfVisible","expected":51}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"id","value":"localDateLabel","isRegex":false},"expectation":"toHaveText","params":["Date (Local): Feb 6th, 2019"]}}
@@ -1427,7 +1427,7 @@ exports[`iOS description maker should process everything.jsonl fixture 1`] = `
 + {"text":"From push"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"HText1","isRegex":false},"expectation":"toBeVisible","params":[1]}}
-< Expect "HText1" to be visible by 100%
+< Expect "HText1" to be visible by 1%
 + {"text":"HText1","expected":1}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"HText1","isRegex":false},"expectation":"toBeVisible"}}
@@ -1583,7 +1583,7 @@ exports[`iOS description maker should process everything.jsonl fixture 1`] = `
 + {"text":"Tap Working!!!"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Text1","isRegex":false},"expectation":"toBeVisible","params":[1]}}
-< Expect "Text1" to be visible by 100%
+< Expect "Text1" to be visible by 1%
 + {"text":"Text1","expected":1}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Text1","isRegex":false},"expectation":"toBeVisible"}}
@@ -1607,7 +1607,7 @@ exports[`iOS description maker should process everything.jsonl fixture 1`] = `
 + {"text":"Text12"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Text16","isRegex":false},"modifiers":["not"],"expectation":"toBeVisible","params":[80]}}
-< Expect "Text16" not to be visible by 8000%
+< Expect "Text16" not to be visible by 80%
 + {"text":"Text16","expected":80}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"text","value":"Text4","isRegex":false},"expectation":"toBeVisible"}}

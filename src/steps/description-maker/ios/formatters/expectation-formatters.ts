@@ -1,7 +1,7 @@
 import type { StepDescription } from '../../types';
 import type { ExpectationInvocation, Invocation } from '../detox-payload';
 import { formatPredicate } from './predicate-formatters';
-import { concat, msg, percent, truncate } from './utils';
+import { concat, msg, percentVisible, truncate } from './utils';
 
 const formatExpectationVerb = (invocation: ExpectationInvocation): string => {
   const hasNot = invocation.modifiers?.includes('not');
@@ -21,7 +21,9 @@ const formatExpectationParams = (invocation: ExpectationInvocation): StepDescrip
 
   switch (invocation.expectation) {
     case 'toBeVisible': {
-      return typeof expected === 'number' ? msg(`by ${percent(expected)}`, { expected }) : null;
+      return typeof expected === 'number'
+        ? msg(`by ${percentVisible(expected)}`, { expected })
+        : null;
     }
 
     default: {

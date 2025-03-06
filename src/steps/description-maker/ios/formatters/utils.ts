@@ -25,6 +25,18 @@ export function percent(value?: unknown): string {
   return Number.isFinite(num) ? (num * 100).toFixed(0) + '%' : '';
 }
 
+// Separate function for toBeVisible call as it's parameter is directly in %
+export function percentVisible(value?: unknown): string {
+  const num =
+    typeof value === 'number'
+      ? value
+      : typeof value === 'string' && value
+        ? Number(value)
+        : Number.NaN;
+
+  return Number.isFinite(num) ? num.toFixed(0) + '%' : '';
+}
+
 export function truncate(value?: unknown, maxLength = 40): string {
   if (!value) return '';
 

@@ -1,4 +1,4 @@
-import { percent, truncate } from './utils';
+import { percent, percentVisible, truncate } from './utils';
 
 describe('percent', () => {
   it('should return empty string for abnormal values', () => {
@@ -23,6 +23,34 @@ describe('percent', () => {
     expect(percent('0.5')).toBe('50%');
     expect(percent('0')).toBe('0%');
     expect(percent('1')).toBe('100%');
+  });
+});
+
+describe('percentVisible', () => {
+  it('should return empty string for abnormal values', () => {
+    expect(percentVisible('')).toBe('');
+    expect(percentVisible(null)).toBe('');
+    expect(percentVisible()).toBe('');
+    expect(percentVisible(Number.NaN)).toBe('');
+    expect(percentVisible(Number.POSITIVE_INFINITY)).toBe('');
+    expect(percentVisible([])).toBe('');
+    expect(percentVisible({})).toBe('');
+    expect(percentVisible('')).toBe('');
+  });
+
+  it('should convert valid numbers to strings', () => {
+    expect(percentVisible(75)).toBe('75%');
+    expect(percentVisible(1)).toBe('1%');
+    expect(percentVisible(100)).toBe('100%');
+    expect(percentVisible(0)).toBe('0%');
+    expect(percentVisible(33)).toBe('33%');
+  });
+
+  it('should handle string numbers', () => {
+    expect(percentVisible('50')).toBe('50%');
+    expect(percentVisible('0')).toBe('0%');
+    expect(percentVisible('100')).toBe('100%');
+    expect(percentVisible('1')).toBe('1%');
   });
 });
 

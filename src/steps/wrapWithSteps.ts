@@ -25,13 +25,19 @@ export function wrapWithSteps(detox: typeof import('detox'), worker: any, allure
 
   if (device.getPlatform() === 'ios') {
     const ws = worker._client._asyncWebSocket;
-    const send = ws.send.bind(ws);
+    const send = ws.send.bind(ws) as (...args: any[]) => Promise<{ type?: string }>;
     ws.send = async (...args: any[]) => {
       const desc = iosDescriptionMaker(args[0]);
       return desc
         ? allure.step(desc.message, () => {
             if (desc.args) allure.parameters(desc.args);
-            return send(...args);
+            return send(...args).then((result: { type?: string }) => {
+              if (result?.type === 'testFailed') {
+                allure.status('failed');
+              }
+
+              return result;
+            });
           })
         : send(...args);
     };

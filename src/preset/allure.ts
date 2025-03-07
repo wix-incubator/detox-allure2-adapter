@@ -5,6 +5,7 @@ import type {
   ReporterOptions,
   TestCaseCustomizer,
   TestCaseExtractorContext,
+  StatusDetails,
 } from 'jest-allure2-reporter';
 
 const historyId: TestCaseCustomizer['historyId'] = ({ value }): string => {
@@ -32,6 +33,29 @@ const device: KeyedParameterCustomizer<unknown> = (): string | undefined => {
   }
 };
 
+const statusDetails: TestCaseCustomizer['statusDetails'] = ({ value }) => {
+  const maybeValue = value as StatusDetails | undefined;
+  const message = maybeValue?.message;
+  const trace = maybeValue?.trace;
+
+  if (typeof message === 'string' && (!trace || typeof trace === 'string')) {
+    const lines = message.split('\n');
+    if (lines.length > 1) {
+      const [first, ...rest] = message.split('\n');
+      if (trace) {
+        rest.push(trace);
+      }
+
+      return {
+        message: first,
+        trace: rest.join('\n').trimStart(),
+      };
+    }
+  }
+
+  return value;
+};
+
 const status: TestCaseCustomizer<TestCaseExtractorContext>['status'] = ({
   testCase: { failureMessages },
   value,
@@ -51,12 +75,14 @@ const options: ReporterOptions = {
   testCase: {
     historyId,
     status,
+    statusDetails,
     parameters: {
       device,
     },
   },
   testFile: {
     historyId,
+    statusDetails,
     parameters: {
       device,
     },

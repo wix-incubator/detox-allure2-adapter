@@ -133,3 +133,5 @@ dist
 .idea/
 
 !__fixtures__
+.DS_Store
+/.ai

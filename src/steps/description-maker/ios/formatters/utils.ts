@@ -53,7 +53,7 @@ export function truncate(value?: unknown, maxLength = 40): string {
 
 function stringify(desc: StepDescription | string | null | undefined): string | null {
   if (!desc) return null;
-  return typeof desc === 'string' ? desc : desc?.message;
+  return typeof desc === 'string' ? desc : (desc?.message ?? null);
 }
 
 function join(acc: string, desc: string | null): string {

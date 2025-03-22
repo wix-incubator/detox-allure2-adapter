@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/no-internal-modules
 import type { AllureRuntime } from 'jest-allure2-reporter/api';
-import { iosDescriptionMaker } from './description-maker';
+import { androidDescriptionMaker, iosDescriptionMaker } from './description-maker';
+import type { StepDescriptionMaker } from './description-maker';
 
 export function wrapWithSteps(detox: typeof import('detox'), worker: any, allure: AllureRuntime) {
   const { device } = detox;
@@ -23,12 +24,15 @@ export function wrapWithSteps(detox: typeof import('detox'), worker: any, allure
   device.matchFinger = allure.createStep('Match finger', [], device.matchFinger);
   device.unmatchFinger = allure.createStep('Unmatch finger', [], device.unmatchFinger);
 
-  if (device.getPlatform() === 'ios') {
+  const platform = device.getPlatform();
+  const descriptionMaker = initDescriptionMaker(platform);
+
+  if (descriptionMaker) {
     const ws = worker._client._asyncWebSocket;
     const send = ws.send.bind(ws) as (...args: any[]) => Promise<{ type?: string }>;
     ws.send = async (...args: any[]) => {
-      const desc = iosDescriptionMaker(args[0]);
-      return desc
+      const desc = descriptionMaker(args[0]);
+      return desc?.message
         ? allure.step(desc.message, () => {
             if (desc.args) allure.parameters(desc.args);
             return send(...args).then((result: { type?: string }) => {
@@ -42,4 +46,13 @@ export function wrapWithSteps(detox: typeof import('detox'), worker: any, allure
         : send(...args);
     };
   }
+}
+
+function initDescriptionMaker(platform: string): StepDescriptionMaker | undefined {
+  if (platform === 'ios') {
+    return iosDescriptionMaker;
+  } else if (platform === 'android') {
+    return androidDescriptionMaker;
+  }
+  return undefined;
 }

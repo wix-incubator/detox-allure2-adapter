@@ -1,47 +1,69 @@
 // eslint-disable-next-line import/no-internal-modules
 import type { AllureRuntime } from 'jest-allure2-reporter/api';
+import { type StepLogRecorder } from '../logs';
+import { type ScreenshotHelper } from '../screenshots';
 import { androidDescriptionMaker, iosDescriptionMaker } from './description-maker';
 import type { StepDescriptionMaker } from './description-maker';
 
-export function wrapWithSteps(detox: typeof import('detox'), worker: any, allure: AllureRuntime) {
+export interface WrapWithStepsOptions {
+  detox: typeof import('detox');
+  worker: any;
+  allure: AllureRuntime;
+  logs?: StepLogRecorder;
+  screenshots?: ScreenshotHelper;
+}
+
+export function wrapWithSteps(options: WrapWithStepsOptions) {
+  const { detox, worker, allure, logs, screenshots } = options;
   const { device } = detox;
-
-  device.launchApp = allure.createStep('Launch app', [], device.launchApp);
-  device.relaunchApp = allure.createStep('Relaunch app', [], device.relaunchApp);
-  device.terminateApp = allure.createStep('Terminate app', [], device.terminateApp);
-  device.openURL = allure.createStep('Open URL', [], device.openURL);
-  device.reloadReactNative = allure.createStep(
-    'Reload React Native bundle',
-    [],
-    device.reloadReactNative,
-  );
-
-  device.sendToHome = allure.createStep('Send app to background', [], device.sendToHome);
-  device.setOrientation = allure.createStep('Set orientation', [], device.setOrientation);
-
-  device.matchFace = allure.createStep('Match face', [], device.matchFace);
-  device.unmatchFace = allure.createStep('Unmatch face', [], device.unmatchFace);
-  device.matchFinger = allure.createStep('Match finger', [], device.matchFinger);
-  device.unmatchFinger = allure.createStep('Unmatch finger', [], device.unmatchFinger);
-
   const platform = device.getPlatform();
+
+  // Wrap device methods using the helper
+  wrapDeviceMethod(options, 'launchApp', 'Launch app');
+  wrapDeviceMethod(options, 'relaunchApp', 'Relaunch app');
+  wrapDeviceMethod(options, 'terminateApp', 'Terminate app');
+  wrapDeviceMethod(options, 'openURL', 'Open URL');
+  wrapDeviceMethod(options, 'reloadReactNative', 'Reload React Native bundle');
+  wrapDeviceMethod(options, 'sendToHome', 'Send app to background');
+  wrapDeviceMethod(options, 'setOrientation', 'Set orientation');
+  wrapDeviceMethod(options, 'matchFace', 'Match face');
+  wrapDeviceMethod(options, 'unmatchFace', 'Unmatch face');
+  wrapDeviceMethod(options, 'matchFinger', 'Match finger');
+  wrapDeviceMethod(options, 'unmatchFinger', 'Unmatch finger');
+
   const descriptionMaker = initDescriptionMaker(platform);
 
   if (descriptionMaker) {
     const ws = worker._client._asyncWebSocket;
     const send = ws.send.bind(ws) as (...args: any[]) => Promise<{ type?: string }>;
+    const onActionSuccess = async () => {
+      await logs?.attachAfterSuccess(allure);
+    };
+    const onActionFailure = async (shouldSetStatus: boolean) => {
+      if (shouldSetStatus) {
+        allure.status('failed');
+      }
+
+      await screenshots?.attachFailure(allure);
+      await logs?.attachAfterFailure(allure);
+    };
     ws.send = async (...args: any[]) => {
       const desc = descriptionMaker(args[0]);
       return desc?.message
-        ? allure.step(desc.message, () => {
+        ? allure.step(desc.message, async () => {
             if (desc.args) allure.parameters(desc.args);
-            return send(...args).then((result: { type?: string }) => {
-              if (result?.type === 'testFailed') {
-                allure.status('failed');
-              }
+            logs?.attachBefore(allure);
 
+            try {
+              const result = await send(...args);
+              const onActionDone =
+                result?.type === 'testFailed' ? onActionFailure : onActionSuccess;
+              await onActionDone(true);
               return result;
-            });
+            } catch (error) {
+              await onActionFailure(false);
+              throw error;
+            }
           })
         : send(...args);
     };
@@ -55,4 +77,42 @@ function initDescriptionMaker(platform: string): StepDescriptionMaker | undefine
     return androidDescriptionMaker;
   }
   return undefined;
+}
+
+const PID_CHANGING_METHODS = new Set(['launchApp', 'relaunchApp', 'openURL']);
+
+function wrapDeviceMethod(
+  { detox, allure, logs, screenshots }: WrapWithStepsOptions,
+  methodName: string,
+  stepDescription: string,
+) {
+  const device = detox.device as any;
+  const originalMethod = device[methodName];
+  if (typeof originalMethod !== 'function') return;
+
+  device[methodName] = async (...args: any[]) => {
+    return await allure.step(stepDescription, async () => {
+      if (PID_CHANGING_METHODS.has(methodName)) {
+        logs?.resetPid();
+      }
+
+      try {
+        const result = await originalMethod.apply(device, args);
+
+        if (PID_CHANGING_METHODS.has(methodName)) {
+          logs?.refreshPid();
+        }
+
+        await screenshots?.attach(allure, false);
+        await logs?.attachAfterSuccess(allure);
+
+        return result;
+      } catch (error) {
+        await screenshots?.attachFailure(allure);
+        await logs?.attachAfterFailure(allure);
+
+        throw error; // Re-throw the error
+      }
+    });
+  };
 }

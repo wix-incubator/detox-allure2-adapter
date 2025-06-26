@@ -6,11 +6,11 @@ To use Detox, Jest, and Allure together, please verify that the following module
 
 ```json
 "devDependencies": {
-  "detox": "^20.20.3",
-  "detox-allure2-adapter": "^1.0.0-alpha.4",
+  "detox": "^20.39.0",
+  "detox-allure2-adapter": "^1.0.0-alpha.19",
   "jest": "^29.7.0",
-  "jest-allure2-reporter": "^2.0.0",
-  "jest-metadata": "^1.5.2"
+  "jest-allure2-reporter": "^2.2.6",
+  "jest-metadata": "^1.6.0"
 }
 ```
 
@@ -45,7 +45,7 @@ module.exports = {
       eventListeners: [
         'jest-metadata/environment-listener',
         'jest-allure2-reporter/environment-listener',
-        'detox-allure2-adapter',
+        ['detox-allure2-adapter', { useSteps: true }],
       ],
     },
     // ...

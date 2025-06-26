@@ -107,6 +107,8 @@
     "node 16"
   ],
   "dependencies": {
-    "archiver": "^6.0.1"
+    "archiver": "^6.0.1",
+    "logkitten": "^1.3.0",
+    "screenkitten": "^1.0.0"
   }
 }

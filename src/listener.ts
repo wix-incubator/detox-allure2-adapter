@@ -22,6 +22,7 @@ export const listener: EnvironmentListenerFn = (
     useSteps = false,
     deviceLogs = false,
     deviceScreenshots = false,
+    onError,
   }: DetoxAllure2AdapterOptions = {},
 ) => {
   let logHandler: ReturnType<typeof createLogHandler>;
@@ -47,6 +48,7 @@ export const listener: EnvironmentListenerFn = (
         logs = new LogBuffer({
           device: detox.device,
           options: deviceLogs,
+          onError,
         });
       }
 
@@ -54,6 +56,7 @@ export const listener: EnvironmentListenerFn = (
         screenshots = new ScreenshotHelper({
           device: detox.device,
           options: deviceScreenshots,
+          onError,
         });
       }
     })

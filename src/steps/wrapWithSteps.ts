@@ -37,7 +37,7 @@ export function wrapWithSteps(options: WrapWithStepsOptions) {
     const ws = worker._client._asyncWebSocket;
     const send = ws.send.bind(ws) as (...args: any[]) => Promise<{ type?: string }>;
     const onActionSuccess = async () => {
-      await logs?.attachAfterSuccess(allure);
+      logs?.attachAfterSuccess(allure);
     };
     const onActionFailure = async (shouldSetStatus: boolean) => {
       if (shouldSetStatus) {
@@ -45,7 +45,7 @@ export function wrapWithSteps(options: WrapWithStepsOptions) {
       }
 
       await screenshots?.attachFailure(allure);
-      await logs?.attachAfterFailure(allure);
+      logs?.attachAfterFailure(allure);
     };
     ws.send = async (...args: any[]) => {
       const desc = descriptionMaker(args[0]);
@@ -97,6 +97,7 @@ function wrapDeviceMethod(
       }
 
       try {
+        logs?.attachBefore(allure);
         const result = await originalMethod.apply(device, args);
 
         if (PID_CHANGING_METHODS.has(methodName)) {
@@ -104,12 +105,12 @@ function wrapDeviceMethod(
         }
 
         await screenshots?.attach(allure, false);
-        await logs?.attachAfterSuccess(allure);
+        logs?.attachAfterSuccess(allure);
 
         return result;
       } catch (error) {
         await screenshots?.attachFailure(allure);
-        await logs?.attachAfterFailure(allure);
+        logs?.attachAfterFailure(allure);
 
         throw error; // Re-throw the error
       }

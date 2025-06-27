@@ -7,6 +7,7 @@ import type { DetoxAllure2AdapterDeviceScreenshotOptions } from '../types';
 export interface ScreenshotHelperConfig {
   device: Detox.Device;
   options: true | DetoxAllure2AdapterDeviceScreenshotOptions;
+  onError?: (error: Error) => void;
 }
 
 export class ScreenshotHelper {
@@ -15,13 +16,13 @@ export class ScreenshotHelper {
   private readonly _options: DetoxAllure2AdapterDeviceScreenshotOptions;
   private readonly _kitten: Screenkitten;
 
-  constructor({ device, options }: ScreenshotHelperConfig) {
+  constructor({ device, options, onError }: ScreenshotHelperConfig) {
     this._device = device;
     this._platform = device.getPlatform();
     this._options = typeof options === 'boolean' ? {} : options;
     this._kitten = screenkitten({
       platform: this._platform,
-      onError: 'ignore', // Don't throw on errors, just log them
+      onError: onError ?? 'ignore',
     });
   }
 

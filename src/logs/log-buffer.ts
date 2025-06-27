@@ -10,6 +10,7 @@ type AnyEntry = AndroidEntry & IosEntry;
 export interface LogBufferOptions {
   device: Detox.Device;
   options: true | DetoxAllure2AdapterDeviceLogsOptions;
+  onError?: (error: Error) => void;
 }
 
 export interface StepLogRecorder {
@@ -21,6 +22,8 @@ export interface StepLogRecorder {
   refreshPid(): void;
   close(): Promise<void>;
 }
+
+const noop = () => {};
 
 export class LogBuffer implements StepLogRecorder {
   private readonly _emitter: Emitter;
@@ -48,6 +51,7 @@ export class LogBuffer implements StepLogRecorder {
           });
 
     this._emitter.on('entry', this._onEntry);
+    this._emitter.on('error', this._config.onError ?? noop);
   }
 
   public resetPid() {
@@ -91,6 +95,7 @@ export class LogBuffer implements StepLogRecorder {
 
   public async close() {
     await this._emitter.close();
+    this._emitter.removeAllListeners();
   }
 
   public attachBefore(allure: AllureRuntime) {

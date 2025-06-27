@@ -14,6 +14,10 @@ export type DetoxAllure2AdapterOptions = {
    * Device screenshots configuration for per-step logging
    */
   deviceScreenshots?: boolean | DetoxAllure2AdapterDeviceScreenshotOptions;
+  /**
+   * Callback to handle errors
+   */
+  onError?: (error: Error) => void;
 };
 
 export interface DetoxAllure2AdapterDeviceLogsOptions {

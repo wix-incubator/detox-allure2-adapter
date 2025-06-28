@@ -1,10 +1,12 @@
 // eslint-disable-next-line import/no-internal-modules
 import type { AllureRuntime } from 'jest-allure2-reporter/api';
 
-import type { Emitter, AndroidEntry, IosEntry, Entry } from 'logkitten';
+import type { Emitter, AndroidEntry, IosEntry } from 'logkitten';
 import { Level, logkitten } from 'logkitten';
 import type { DetoxAllure2AdapterDeviceLogsOptions } from '../types';
 import type { DeviceWrapper } from '../utils';
+
+import { PIDEntryCollection } from './pid-entry-collection';
 
 type AnyEntry = AndroidEntry & IosEntry;
 
@@ -28,9 +30,8 @@ const noop = () => {};
 
 export class LogBuffer implements StepLogRecorder {
   private readonly _emitter: Emitter;
-  private _entries: AnyEntry[] = [];
-  private _purgatory: AnyEntry[] = [];
-  private _pid = Number.NaN;
+  private readonly _appEntries = new PIDEntryCollection();
+  private readonly _detoxEntries = new PIDEntryCollection();
   private _options: DetoxAllure2AdapterDeviceLogsOptions;
 
   constructor(readonly _config: LogBufferOptions) {
@@ -57,41 +58,14 @@ export class LogBuffer implements StepLogRecorder {
   }
 
   public resetPid() {
-    this._pid = Number.NaN;
+    this._appEntries.pid = Number.NaN;
+    this._detoxEntries.pid = Number.NaN;
   }
 
   public refreshPid() {
-    this._pid = this._config.device.getPid();
-
-    if (Number.isFinite(this._pid) && this._purgatory.length > 0) {
-      this._entries = [...this._entries, ...this._purgatory.splice(0).filter(this._matchesPid)];
-    }
-  }
-
-  public flush(failed?: boolean): string {
-    if (this._entries.length === 0) {
-      return '';
-    }
-
-    const entries = this._entries.splice(0);
-
-    // Check if we should save logs based on failure status
-    const saveAll = this._options.saveAll ?? false;
-    if (!saveAll && !failed) {
-      return '';
-    }
-
-    const result = entries
-      .map((entry) => {
-        const levelLetter = Level[entry.level as Level] || 'UNKNOWN';
-        const tagOrCategory = entry.tag || `${entry.subsystem}:${entry.category}`;
-        const msg = entry.msg;
-
-        return `${levelLetter}\t${tagOrCategory}\t${msg}`;
-      })
-      .join('\n');
-
-    return result + '\n';
+    const pid = this._config.device.getPid();
+    this._appEntries.pid = pid;
+    this._detoxEntries.pid = pid;
   }
 
   public async close() {
@@ -116,25 +90,39 @@ export class LogBuffer implements StepLogRecorder {
   }
 
   private readonly _attachLogs = (allure: AllureRuntime, failed: boolean, after: boolean) => {
-    const content = this.flush(failed);
+    // Check if we should save logs based on failure status
+    const saveAll = this._options.saveAll ?? false;
+    if (!saveAll && !failed) {
+      return;
+    }
 
-    if (content) {
+    const appContent = this._appEntries.flushAsString();
+    if (appContent) {
       const name = after ? 'app.log' : 'app-before.log';
-      allure.attachment(name, content, 'text/plain');
+      allure.attachment(name, appContent, 'text/plain');
+    }
+
+    const detoxContent = this._detoxEntries.flushAsString();
+    if (detoxContent) {
+      const name = after ? 'detox.log' : 'detox-before.log';
+      allure.attachment(name, detoxContent, 'text/plain');
     }
   };
 
   private readonly _onEntry = (entry: AnyEntry) => {
-    if (Number.isFinite(this._pid)) {
-      this._entries.push(entry);
-    } else {
-      this._purgatory.push(entry);
-    }
+    this._appEntries.push(entry);
   };
 
-  private readonly _matchesPid = (entry: Entry) => entry.pid === this._pid;
-
   private _iosFilter(entry: IosEntry): boolean {
+    if (entry.subsystem === 'com.wix.Detox') {
+      this._detoxEntries.push(entry);
+
+      // Exclude Detox logs from app logs unless they are errors
+      if (entry.level < Level.ERROR) {
+        return false;
+      }
+    }
+
     const userFilter = this._options.ios;
     const override = this._options.override;
     if (!override && !this._defaultIosFilter(entry)) {
@@ -145,6 +133,15 @@ export class LogBuffer implements StepLogRecorder {
   }
 
   private _androidFilter(entry: AndroidEntry): boolean {
+    if (entry.tag && entry.tag.startsWith('Detox')) {
+      this._detoxEntries.push(entry);
+
+      // Exclude Detox logs from app logs unless they are errors
+      if (entry.level < Level.ERROR) {
+        return false;
+      }
+    }
+
     const userFilter = this._options.android;
     const override = this._options.override;
     if (!override && !this._defaultAndroidFilter(entry)) {
@@ -155,8 +152,17 @@ export class LogBuffer implements StepLogRecorder {
   }
 
   private readonly _defaultIosFilter = (entry: IosEntry) => {
+    // Only handle React Native app logs, not Detox logs
     if (entry.subsystem.startsWith('com.facebook.react.')) {
+      if (entry.msg.startsWith('Unbalanced calls start/end for tag')) {
+        return false;
+      }
+
       return true;
+    }
+
+    if (entry.processImagePath.endsWith('/proactiveeventtrackerd')) {
+      return false;
     }
 
     if (entry.level >= Level.ERROR) {
@@ -167,7 +173,8 @@ export class LogBuffer implements StepLogRecorder {
   };
 
   private readonly _defaultAndroidFilter = (entry: AndroidEntry) => {
-    if (entry.tag.startsWith('Detox') || entry.tag.startsWith('React')) {
+    // Only handle React Native app logs, not Detox logs
+    if (entry.tag.startsWith('React')) {
       return true;
     }
 

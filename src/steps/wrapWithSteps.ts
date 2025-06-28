@@ -30,6 +30,7 @@ export function wrapWithSteps(options: WrapWithStepsOptions) {
   wrapDeviceMethod(options, 'unmatchFace', 'Unmatch face');
   wrapDeviceMethod(options, 'matchFinger', 'Match finger');
   wrapDeviceMethod(options, 'unmatchFinger', 'Unmatch finger');
+  wrapPilotMethod(options);
 
   const descriptionMaker = initDescriptionMaker(platform);
 
@@ -118,5 +119,28 @@ function wrapDeviceMethod(
         throw error; // Re-throw the error
       }
     });
+  };
+}
+
+function wrapPilotMethod({ detox, allure }: WrapWithStepsOptions) {
+  const pilot = (detox as any).pilot;
+  const originalInit = pilot?.init;
+  if (typeof originalInit !== 'function') return;
+
+  pilot.init = function () {
+    // eslint-disable-next-line prefer-rest-params
+    const result = Reflect.apply(originalInit, this, arguments);
+    const instance = pilot.pilot;
+    if (typeof instance?.performStep === 'function') {
+      instance.performStep = allure.createStep(
+        '{{0}}',
+        [null],
+        instance.performStep.bind(instance),
+      );
+    }
+    if (typeof instance?.autopilot === 'function') {
+      instance.autopilot = allure.createStep('{{0}}', [null], instance.autopilot.bind(instance));
+    }
+    return result;
   };
 }

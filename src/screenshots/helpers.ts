@@ -1,29 +1,35 @@
 // eslint-disable-next-line import/no-internal-modules
 import type { AllureRuntime } from 'jest-allure2-reporter/api';
-import { screenkitten, type Screenkitten } from 'screenkitten';
+import { screenkitten, type Screenkitten, ScreenkittenOptions } from 'screenkitten';
 
 import type { DetoxAllure2AdapterDeviceScreenshotOptions } from '../types';
+import type { DeviceWrapper } from '../utils';
 
 export interface ScreenshotHelperConfig {
-  device: Detox.Device;
+  device: DeviceWrapper;
   options: true | DetoxAllure2AdapterDeviceScreenshotOptions;
-  onError?: (error: Error) => void;
+  onError?: ScreenkittenOptions['onError'];
 }
 
 export class ScreenshotHelper {
-  private readonly _device: Detox.Device;
-  private readonly _platform: 'ios' | 'android';
+  private readonly _device: DeviceWrapper;
   private readonly _options: DetoxAllure2AdapterDeviceScreenshotOptions;
   private readonly _kitten: Screenkitten;
 
-  constructor({ device, options, onError }: ScreenshotHelperConfig) {
+  constructor({ device, options, onError = 'ignore' }: ScreenshotHelperConfig) {
     this._device = device;
-    this._platform = device.getPlatform();
     this._options = typeof options === 'boolean' ? {} : options;
-    this._kitten = screenkitten({
-      platform: this._platform,
-      onError: onError ?? 'ignore',
-    });
+    this._kitten =
+      this._device.platform === 'ios'
+        ? screenkitten({
+            platform: 'ios',
+            onError,
+          })
+        : screenkitten({
+            platform: 'android',
+            adbPath: this._device.adbPath,
+            onError,
+          });
   }
 
   async attachFailure(allure: AllureRuntime) {

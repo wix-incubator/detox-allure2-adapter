@@ -4,11 +4,12 @@ import type { AllureRuntime } from 'jest-allure2-reporter/api';
 import type { Emitter, AndroidEntry, IosEntry, Entry } from 'logkitten';
 import { Level, logkitten } from 'logkitten';
 import type { DetoxAllure2AdapterDeviceLogsOptions } from '../types';
+import type { DeviceWrapper } from '../utils';
 
 type AnyEntry = AndroidEntry & IosEntry;
 
 export interface LogBufferOptions {
-  device: Detox.Device;
+  device: DeviceWrapper;
   options: true | DetoxAllure2AdapterDeviceLogsOptions;
   onError?: (error: Error) => void;
 }
@@ -34,18 +35,19 @@ export class LogBuffer implements StepLogRecorder {
 
   constructor(readonly _config: LogBufferOptions) {
     const deviceId = this._config.device.id;
-    const platform = this._config.device.getPlatform();
+    const platform = this._config.device.platform;
 
     this._options = typeof this._config.options === 'boolean' ? {} : this._config.options;
     this._emitter =
       platform === 'android'
         ? logkitten({
-            platform,
+            platform: 'android',
             deviceId,
+            adbPath: this._config.device.adbPath,
             filter: this._androidFilter.bind(this),
           })
         : logkitten({
-            platform,
+            platform: 'ios',
             deviceId,
             filter: this._iosFilter.bind(this),
           });
@@ -59,8 +61,7 @@ export class LogBuffer implements StepLogRecorder {
   }
 
   public refreshPid() {
-    const processes = (this._config.device as any)._processes ?? {};
-    this._pid = Number(Object.values(processes)[0]);
+    this._pid = this._config.device.getPid();
 
     if (Number.isFinite(this._pid) && this._purgatory.length > 0) {
       this._entries = [...this._entries, ...this._purgatory.splice(0).filter(this._matchesPid)];

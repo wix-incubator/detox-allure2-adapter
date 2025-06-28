@@ -1,3 +1,5 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
 // eslint-disable-next-line import/no-internal-modules
 import type { AllureRuntime } from 'jest-allure2-reporter/api';
 import { screenkitten, type Screenkitten, ScreenkittenOptions } from 'screenkitten';
@@ -48,6 +50,36 @@ export class ScreenshotHelper {
     }
   }
 
+  async extractFromResult(allure: AllureRuntime, result: unknown) {
+    if (!result) {
+      return false;
+    }
+
+    const wsResult = result as WebSocketResult;
+    if (wsResult.type !== 'testFailed' || !wsResult.params) {
+      return false;
+    }
+
+    const { params } = wsResult;
+    const visibilityArtifactDirs = [
+      params.visibilityFailingScreenshotsURL,
+      params.visibilityFailingRectsURL,
+    ].filter(Boolean) as string[];
+
+    let attached = false;
+
+    for (const visibilityDir of visibilityArtifactDirs) {
+      const files = await fs.readdir(visibilityDir).catch(() => []);
+      for (const name of files) {
+        const filePath = path.join(visibilityDir, name);
+        allure.fileAttachment(filePath, { name, handler: 'copy' });
+        attached = true;
+      }
+    }
+
+    return attached;
+  }
+
   private async _attachScreenshot(allure: AllureRuntime, name = 'screenshot') {
     const filePath = await this._kitten.takeScreenshot({ deviceId: this._device.id });
 
@@ -56,4 +88,15 @@ export class ScreenshotHelper {
       handler: 'move',
     });
   }
+}
+
+/**
+ * Private interface for Detox WebSocket result that may contain testFailed payload
+ */
+interface WebSocketResult {
+  type?: string;
+  params?: {
+    visibilityFailingScreenshotsURL?: string;
+    visibilityFailingRectsURL?: string;
+  };
 }

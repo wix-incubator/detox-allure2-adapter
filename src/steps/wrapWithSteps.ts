@@ -39,12 +39,15 @@ export function wrapWithSteps(options: WrapWithStepsOptions) {
     const onActionSuccess = async () => {
       logs?.attachAfterSuccess(allure);
     };
-    const onActionFailure = async (shouldSetStatus: boolean) => {
+    const onActionFailure = async (shouldSetStatus: boolean, result?: unknown) => {
       if (shouldSetStatus) {
         allure.status('failed');
       }
 
-      await screenshots?.attachFailure(allure);
+      const attached = await screenshots?.extractFromResult(allure, result);
+      if (!attached) {
+        await screenshots?.attachFailure(allure);
+      }
       logs?.attachAfterFailure(allure);
     };
     ws.send = async (...args: any[]) => {
@@ -58,7 +61,7 @@ export function wrapWithSteps(options: WrapWithStepsOptions) {
               const result = await send(...args);
               const onActionDone =
                 result?.type === 'testFailed' ? onActionFailure : onActionSuccess;
-              await onActionDone(true);
+              await onActionDone(true, result);
               return result;
             } catch (error) {
               await onActionFailure(false);

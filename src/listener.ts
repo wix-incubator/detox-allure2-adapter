@@ -15,7 +15,7 @@ import { LogBuffer } from './logs';
 import { ScreenshotHelper } from './screenshots';
 import { wrapWithSteps } from './steps';
 import type { DetoxAllure2AdapterOptions } from './types';
-import { DeviceWrapper } from './utils';
+import { ArtifactsWrapper, DeviceWrapper } from './utils';
 
 export const listener: EnvironmentListenerFn = (
   { testEvents },
@@ -42,8 +42,8 @@ export const listener: EnvironmentListenerFn = (
         inferMimeType = context.inferMimeType;
       });
 
-      artifactsManager = (worker as any)._artifactsManager;
-      artifactsManager.on('trackArtifact', onTrackArtifact);
+      const artifactsWrapper = new ArtifactsWrapper(worker);
+      artifactsWrapper.artifactsManager.on('trackArtifact', onTrackArtifact);
 
       const device = new DeviceWrapper(detox.device);
       if (deviceLogs) {
@@ -104,6 +104,18 @@ export const listener: EnvironmentListenerFn = (
 
     artifact.doSave = async (artifactPath: string, ...args: unknown[]) => {
       const result = await originalSave(artifactPath, ...args);
+      if (logs && artifactPath.endsWith('.log')) {
+        return result;
+      }
+
+      if (screenshots && artifactPath.includes('DETOX_VISIBILITY_')) {
+        return result;
+      }
+
+      if (!fs.existsSync(artifactPath)) {
+        return result;
+      }
+
       const isDirectory = fs.lstatSync(artifactPath).isDirectory();
       const isLog = path.extname(artifactPath) === '.log';
       const isVideo = !!inferMimeType({ sourcePath: artifactPath })?.startsWith('video/');

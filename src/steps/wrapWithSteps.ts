@@ -83,8 +83,6 @@ function initDescriptionMaker(platform: string): StepDescriptionMaker | undefine
   return undefined;
 }
 
-const PID_CHANGING_METHODS = new Set(['launchApp', 'relaunchApp', 'openURL']);
-
 function wrapDeviceMethod(
   { detox, allure, logs, screenshots }: WrapWithStepsOptions,
   methodName: string,
@@ -96,18 +94,9 @@ function wrapDeviceMethod(
 
   device[methodName] = async (...args: any[]) => {
     return await allure.step(stepDescription, async () => {
-      if (PID_CHANGING_METHODS.has(methodName)) {
-        logs?.resetPid();
-      }
-
       try {
         logs?.attachBefore(allure);
         const result = await originalMethod.apply(device, args);
-
-        if (PID_CHANGING_METHODS.has(methodName)) {
-          logs?.refreshPid();
-        }
-
         await screenshots?.attach(allure, false);
         logs?.attachAfterSuccess(allure);
 

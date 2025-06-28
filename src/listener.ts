@@ -15,7 +15,7 @@ import { LogBuffer } from './logs';
 import { ScreenshotHelper } from './screenshots';
 import { wrapWithSteps } from './steps';
 import type { DetoxAllure2AdapterOptions } from './types';
-import { ArtifactsWrapper, DeviceWrapper } from './utils';
+import { DeviceWrapper, WorkerWrapper } from './utils';
 
 export const listener: EnvironmentListenerFn = (
   { testEvents },
@@ -42,8 +42,8 @@ export const listener: EnvironmentListenerFn = (
         inferMimeType = context.inferMimeType;
       });
 
-      const artifactsWrapper = new ArtifactsWrapper(worker);
-      artifactsWrapper.artifactsManager.on('trackArtifact', onTrackArtifact);
+      const workerWrapper = new WorkerWrapper(worker);
+      workerWrapper.artifactsManager.on('trackArtifact', onTrackArtifact);
 
       const device = new DeviceWrapper(detox.device);
       if (deviceLogs) {
@@ -52,6 +52,9 @@ export const listener: EnvironmentListenerFn = (
           options: deviceLogs,
           onError,
         });
+
+        workerWrapper.eventEmitter.on('launchApp', ({ pid }) => logs?.setPid(pid));
+        workerWrapper.eventEmitter.on('terminateApp', () => logs?.setPid(Number.NaN));
       }
 
       if (deviceScreenshots) {
@@ -82,9 +85,15 @@ export const listener: EnvironmentListenerFn = (
       await screenshots?.attachSuccess(allure);
       logs?.attachAfterSuccess(allure);
     })
-    .on('test_done', async ({ event }) => {
-      await screenshots?.attach(allure, event.test.failing);
-      logs?.attachAfter(allure, event.test.failing);
+    .on('test_fn_failure', async () => {
+      await screenshots?.attachFailure(allure);
+      logs?.attachAfterFailure(allure);
+    })
+    .on('test_fn_success', async () => {
+      await screenshots?.attachSuccess(allure);
+      logs?.attachAfterSuccess(allure);
+    })
+    .on('test_done', async () => {
       $test = undefined;
     })
     .on('teardown', flushArtifacts, -1)

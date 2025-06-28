@@ -1,8 +1,12 @@
-export class ArtifactsWrapper {
+export class WorkerWrapper {
   constructor(private readonly worker: any) {}
 
   get artifactsManager() {
     return this.worker._artifactsManager as ArtifactsManager;
+  }
+
+  get eventEmitter() {
+    return this.worker._eventEmitter as EventEmitter;
   }
 }
 
@@ -11,6 +15,12 @@ interface ArtifactsManager {
     log?: ArtifactPlugin;
   };
   on(event: string, callback: (...args: any[]) => void): void;
+}
+
+interface EventEmitter {
+  on(event: 'beforeLaunchApp', callback: () => void): void;
+  on(event: 'launchApp', callback: (event: { pid: number }) => void): void;
+  on(event: 'terminateApp', callback: () => void): void;
 }
 
 interface ArtifactPlugin {

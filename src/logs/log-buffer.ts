@@ -21,8 +21,7 @@ export interface StepLogRecorder {
   attachAfter(allure: AllureRuntime, failed: boolean): void;
   attachAfterSuccess(allure: AllureRuntime): void;
   attachAfterFailure(allure: AllureRuntime): void;
-  resetPid(): void;
-  refreshPid(): void;
+  setPid(pid: number): void;
   close(): Promise<void>;
 }
 
@@ -57,13 +56,7 @@ export class LogBuffer implements StepLogRecorder {
     this._emitter.on('error', this._config.onError ?? noop);
   }
 
-  public resetPid() {
-    this._appEntries.pid = Number.NaN;
-    this._detoxEntries.pid = Number.NaN;
-  }
-
-  public refreshPid() {
-    const pid = this._config.device.getPid();
+  public setPid(pid: number) {
     this._appEntries.pid = pid;
     this._detoxEntries.pid = pid;
   }

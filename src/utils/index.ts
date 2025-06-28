@@ -1,2 +1,2 @@
-export * from './artifacts-wrapper';
 export * from './device-wrapper';
+export * from './worker-wrapper';

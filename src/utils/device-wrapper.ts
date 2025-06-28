@@ -16,10 +16,4 @@ export class DeviceWrapper {
   get #deviceAny(): any {
     return this.device as any;
   }
-
-  getPid(bundleId?: string) {
-    const processes = this.#deviceAny._processes ?? {};
-    const key = bundleId ?? Object.keys(processes)[0];
-    return Number(processes[key]);
-  }
 }

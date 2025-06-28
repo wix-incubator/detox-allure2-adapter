@@ -24,6 +24,16 @@ export class PIDEntryCollection {
     }
   }
 
+  public static format(entry: Entry): string {
+    const level = Level[entry.level as Level] || 'UNKNOWN';
+    const tagOrCategory =
+      (entry as AndroidEntry).tag ||
+      join2((entry as IosEntry).subsystem, (entry as IosEntry).category);
+    const msg = entry.msg.replace(/\n/g, '\n\t\t');
+
+    return `${level}\t${tagOrCategory}\t${msg}`;
+  }
+
   public push(entry: Entry): void {
     this._current.push(entry);
   }
@@ -34,15 +44,17 @@ export class PIDEntryCollection {
       return '';
     }
 
-    const result = entries
-      .map((entry) => {
-        const level = Level[entry.level as Level] || 'UNKNOWN';
-        const tagOrCategory = entry.tag || join2(entry.subsystem, entry.category);
-        const msg = entry.msg.replace(/\n/g, '\n\t\t');
+    const result = entries.map(PIDEntryCollection.format).reduce((acc, entry, index, array) => {
+      if (index === 0) {
+        return entry;
+      }
 
-        return `${level}\t${tagOrCategory}\t${msg}`;
-      })
-      .join('\n');
+      if (entry === array[index - 1]) {
+        return acc;
+      }
+
+      return acc + '\n' + entry;
+    }, '');
 
     return result + '\n';
   }

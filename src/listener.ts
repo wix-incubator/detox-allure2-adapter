@@ -53,6 +53,7 @@ export const listener: EnvironmentListenerFn = (
           onError,
         });
 
+        workerWrapper.eventEmitter.on('beforeLaunchApp', () => logs?.setPid(Number.NaN));
         workerWrapper.eventEmitter.on('launchApp', ({ pid }) => logs?.setPid(pid));
         workerWrapper.eventEmitter.on('terminateApp', () => logs?.setPid(Number.NaN));
       }

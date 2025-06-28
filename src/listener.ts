@@ -15,6 +15,7 @@ import { LogBuffer } from './logs';
 import { ScreenshotHelper } from './screenshots';
 import { wrapWithSteps } from './steps';
 import type { DetoxAllure2AdapterOptions } from './types';
+import { DeviceWrapper } from './utils';
 
 export const listener: EnvironmentListenerFn = (
   { testEvents },
@@ -44,9 +45,10 @@ export const listener: EnvironmentListenerFn = (
       artifactsManager = (worker as any)._artifactsManager;
       artifactsManager.on('trackArtifact', onTrackArtifact);
 
+      const device = new DeviceWrapper(detox.device);
       if (deviceLogs) {
         logs = new LogBuffer({
-          device: detox.device,
+          device,
           options: deviceLogs,
           onError,
         });
@@ -54,7 +56,7 @@ export const listener: EnvironmentListenerFn = (
 
       if (deviceScreenshots) {
         screenshots = new ScreenshotHelper({
-          device: detox.device,
+          device,
           options: deviceScreenshots,
           onError,
         });

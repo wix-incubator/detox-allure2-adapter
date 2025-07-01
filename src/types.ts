@@ -25,6 +25,11 @@ export interface DetoxAllure2AdapterDeviceLogsOptions {
   android?: (entry: AndroidEntry) => boolean;
   override?: boolean;
   saveAll?: boolean;
+  /**
+   * Synchronization delay (ms) for log collection. 0 disables, number for both, or { ios, android } for per-platform.
+   * @default 500
+   */
+  syncDelay?: number | { ios?: number; android?: number };
 }
 
 export interface DetoxAllure2AdapterDeviceScreenshotOptions {

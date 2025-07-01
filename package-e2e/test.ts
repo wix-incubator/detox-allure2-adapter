@@ -28,6 +28,11 @@ assertType<DetoxAllure2AdapterDeviceLogsOptions>({
   android: () => true,
   override: true,
   saveAll: true,
+  syncDelay: 0,
+});
+
+assertType<DetoxAllure2AdapterDeviceLogsOptions>({
+  syncDelay: { ios: 0, android: 1000 },
 });
 
 assertType<DetoxAllure2AdapterDeviceScreenshotOptions>({

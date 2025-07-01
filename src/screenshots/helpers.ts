@@ -50,7 +50,14 @@ export class ScreenshotHelper {
     }
   }
 
-  async extractFromResult(allure: AllureRuntime, result: unknown) {
+  async attachFromResultOrFailure(allure: AllureRuntime, result: unknown) {
+    const attached = await this.attachFromResult(allure, result);
+    if (!attached) {
+      await this.attachFailure(allure);
+    }
+  }
+
+  async attachFromResult(allure: AllureRuntime, result: unknown) {
     if (!result) {
       return false;
     }

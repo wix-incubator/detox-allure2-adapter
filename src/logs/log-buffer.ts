@@ -5,6 +5,7 @@ import type { Emitter, AndroidEntry, IosEntry } from 'logkitten';
 import { Level, logkitten } from 'logkitten';
 import type { DetoxAllure2AdapterDeviceLogsOptions } from '../types';
 import type { DeviceWrapper } from '../utils';
+import { Deferred } from '../utils';
 
 import { PIDEntryCollection } from './pid-entry-collection';
 
@@ -18,26 +19,30 @@ export interface LogBufferOptions {
 
 export interface StepLogRecorder {
   attachBefore(allure: AllureRuntime): void;
-  attachAfter(allure: AllureRuntime, failed: boolean): void;
-  attachAfterSuccess(allure: AllureRuntime): void;
-  attachAfterFailure(allure: AllureRuntime): void;
+  attachAfter(allure: AllureRuntime, failed: boolean): Promise<void>;
+  attachAfterSuccess(allure: AllureRuntime): Promise<void>;
+  attachAfterFailure(allure: AllureRuntime): Promise<void>;
   setPid(pid: number): void;
   close(): Promise<void>;
 }
 
 const noop = () => {};
+const DEFAULT_SYNC_DELAY = 500;
 
 export class LogBuffer implements StepLogRecorder {
   private readonly _emitter: Emitter;
   private readonly _appEntries = new PIDEntryCollection();
   private readonly _detoxEntries = new PIDEntryCollection();
-  private _options: DetoxAllure2AdapterDeviceLogsOptions;
+  private readonly _options: DetoxAllure2AdapterDeviceLogsOptions;
+  private readonly _deferreds = new Set<Deferred<number>>();
+  private readonly _syncDelay: number;
 
   constructor(readonly _config: LogBufferOptions) {
     const deviceId = this._config.device.id;
     const platform = this._config.device.platform;
 
     this._options = typeof this._config.options === 'boolean' ? {} : this._config.options;
+    this._syncDelay = this._inferSyncDelay(platform, this._config.options);
     this._emitter =
       platform === 'android'
         ? logkitten({
@@ -70,16 +75,35 @@ export class LogBuffer implements StepLogRecorder {
     return this._attachLogs(allure, false, false);
   }
 
-  public attachAfter(allure: AllureRuntime, failed: boolean) {
+  public async attachAfter(allure: AllureRuntime, failed: boolean) {
+    await this._synchronize();
     return this._attachLogs(allure, failed, true);
   }
 
-  public attachAfterSuccess(allure: AllureRuntime) {
+  public async attachAfterSuccess(allure: AllureRuntime) {
+    await this._synchronize();
     return this._attachLogs(allure, false, true);
   }
 
-  public attachAfterFailure(allure: AllureRuntime) {
+  public async attachAfterFailure(allure: AllureRuntime) {
+    await this._synchronize();
     return this._attachLogs(allure, true, true);
+  }
+
+  private _synchronize(reference = Date.now()): Promise<void> {
+    if (this._syncDelay < 1) {
+      return Promise.resolve();
+    }
+
+    const deferred = new Deferred<number>({
+      timeoutMs: this._syncDelay,
+      predicate: (ts) => ts > reference,
+      cleanup: () => {
+        this._deferreds.delete(deferred);
+      },
+    });
+    this._deferreds.add(deferred);
+    return deferred.promise.then(() => {}); // resolve to void
   }
 
   private readonly _attachLogs = (allure: AllureRuntime, failed: boolean, after: boolean) => {
@@ -102,11 +126,19 @@ export class LogBuffer implements StepLogRecorder {
     }
   };
 
+  private _updateDeferreds(ts: number) {
+    for (const deferred of this._deferreds) {
+      deferred.update(ts);
+    }
+  }
+
   private readonly _onEntry = (entry: AnyEntry) => {
     this._appEntries.push(entry);
   };
 
   private _iosFilter(entry: IosEntry): boolean {
+    this._updateDeferreds(entry.ts);
+
     if (entry.subsystem === 'com.wix.Detox') {
       this._detoxEntries.push(entry);
 
@@ -126,6 +158,8 @@ export class LogBuffer implements StepLogRecorder {
   }
 
   private _androidFilter(entry: AndroidEntry): boolean {
+    this._updateDeferreds(entry.ts);
+
     if (entry.tag && entry.tag.startsWith('Detox')) {
       this._detoxEntries.push(entry);
 
@@ -177,4 +211,23 @@ export class LogBuffer implements StepLogRecorder {
 
     return false;
   };
+
+  /**
+   * Infers the sync delay (ms) for the given platform and options.
+   */
+  private _inferSyncDelay(
+    platform: string,
+    options: DetoxAllure2AdapterDeviceLogsOptions | boolean,
+  ): number {
+    if (typeof options !== 'boolean') {
+      const syncDelay = options.syncDelay;
+      if (typeof syncDelay === 'number') {
+        return syncDelay;
+      } else if (typeof syncDelay === 'object' && syncDelay !== null) {
+        return syncDelay[platform as keyof typeof syncDelay] ?? DEFAULT_SYNC_DELAY;
+      }
+    }
+
+    return DEFAULT_SYNC_DELAY;
+  }
 }

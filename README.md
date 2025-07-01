@@ -45,7 +45,11 @@ module.exports = {
       eventListeners: [
         'jest-metadata/environment-listener',
         'jest-allure2-reporter/environment-listener',
-        ['detox-allure2-adapter', { useSteps: true }],
+        ['detox-allure2-adapter', {
+          useSteps: true,
+          deviceLogs: true,
+          deviceScreenshots: true,
+        }],
       ],
     },
     // ...

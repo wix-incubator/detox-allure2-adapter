@@ -79,20 +79,16 @@ export const listener: EnvironmentListenerFn = (
       logs?.attachBefore(allure);
     })
     .on('hook_failure', async () => {
-      await screenshots?.attachFailure(allure);
-      logs?.attachAfterFailure(allure);
+      await Promise.all([logs?.attachAfterFailure(allure), screenshots?.attachFailure(allure)]);
     })
     .on('hook_success', async () => {
-      await screenshots?.attachSuccess(allure);
-      logs?.attachAfterSuccess(allure);
+      await Promise.all([logs?.attachAfterSuccess(allure), screenshots?.attachSuccess(allure)]);
     })
     .on('test_fn_failure', async () => {
-      await screenshots?.attachFailure(allure);
-      logs?.attachAfterFailure(allure);
+      await Promise.all([logs?.attachAfterFailure(allure), screenshots?.attachFailure(allure)]);
     })
     .on('test_fn_success', async () => {
-      await screenshots?.attachSuccess(allure);
-      logs?.attachAfterSuccess(allure);
+      await Promise.all([logs?.attachAfterSuccess(allure), screenshots?.attachSuccess(allure)]);
     })
     .on('test_done', async () => {
       $test = undefined;

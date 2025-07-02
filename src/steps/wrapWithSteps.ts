@@ -38,18 +38,18 @@ export function wrapWithSteps(options: WrapWithStepsOptions) {
     const ws = worker._client._asyncWebSocket;
     const send = ws.send.bind(ws) as (...args: any[]) => Promise<{ type?: string }>;
     const onActionSuccess = async () => {
-      logs?.attachAfterSuccess(allure);
+      await logs?.attachAfterSuccess(allure);
     };
+
     const onActionFailure = async (shouldSetStatus: boolean, result?: unknown) => {
       if (shouldSetStatus) {
         allure.status('failed');
       }
 
-      const attached = await screenshots?.extractFromResult(allure, result);
-      if (!attached) {
-        await screenshots?.attachFailure(allure);
-      }
-      logs?.attachAfterFailure(allure);
+      await Promise.all([
+        logs?.attachAfterFailure(allure),
+        screenshots?.attachFromResultOrFailure(allure, result),
+      ]);
     };
     ws.send = async (...args: any[]) => {
       const desc = descriptionMaker(args[0]);
@@ -97,13 +97,11 @@ function wrapDeviceMethod(
       try {
         logs?.attachBefore(allure);
         const result = await originalMethod.apply(device, args);
-        await screenshots?.attach(allure, false);
-        logs?.attachAfterSuccess(allure);
+        await Promise.all([logs?.attachAfterSuccess(allure), screenshots?.attach(allure, false)]);
 
         return result;
       } catch (error) {
-        await screenshots?.attachFailure(allure);
-        logs?.attachAfterFailure(allure);
+        await Promise.all([logs?.attachAfterFailure(allure), screenshots?.attachFailure(allure)]);
 
         throw error; // Re-throw the error
       }

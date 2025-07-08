@@ -28,6 +28,7 @@ export interface StepLogRecorder {
 
 const noop = () => {};
 const DEFAULT_SYNC_DELAY = 500;
+const IOS_CONNECTION_REGEX = /^Connection (?:\d+|for <APSConnection)/;
 
 export class LogBuffer implements StepLogRecorder {
   private readonly _emitter: Emitter;
@@ -193,7 +194,17 @@ export class LogBuffer implements StepLogRecorder {
     }
 
     if (entry.level >= Level.ERROR) {
-      return !entry.subsystem.startsWith('com.apple.'); // && !entry.msg.includes('(CFNetwork)');
+      if (!entry.subsystem && !entry.category) {
+        if (IOS_CONNECTION_REGEX.test(entry.msg)) {
+          return false;
+        }
+      }
+
+      if (entry.subsystem.startsWith('com.apple.')) {
+        return false;
+      }
+
+      return true;
     }
 
     return false;

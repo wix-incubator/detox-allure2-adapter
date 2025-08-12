@@ -11,6 +11,7 @@ export class WorkerWrapper {
 }
 
 interface ArtifactsManager {
+  _idlePromise: Promise<void>;
   _artifactPlugins: {
     log?: ArtifactPlugin;
   };

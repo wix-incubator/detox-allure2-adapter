@@ -49,6 +49,7 @@ module.exports = {
           useSteps: true,
           deviceLogs: true,
           deviceScreenshots: true,
+          deviceVideos: true,
         }],
       ],
     },
@@ -61,6 +62,89 @@ Here's a brief explanation of what you just added:
 - `reporters` section: We added Detox and the Allure2 reporter. The latter will enable us to generate Allure reports based on our Jest tests run with Detox.
 
 - `testEnvironmentOptions` section: We added three event listener modules that will run during our tests — `jest-metadata`, `jest-allure2-reporter`, and `detox-allure2-adapter`. These listeners will collect necessary metadata and feed test result data to our Allure reports.
+
+## Adapter Options
+
+### `useSteps: boolean`
+
+If set to true, the adapter will wrap all Detox device interactions (like `device.launchApp()`, `element(by.id('loginButton')).tap()`) into Allure steps. This provides a detailed, step-by-step report of your test execution.
+
+### `deviceLogs: boolean | DetoxAllure2AdapterDeviceLogsOptions`
+
+Enables capturing device (iOS/Android) logs for each step. This feature uses the [`logkitten`](https://www.npmjs.com/package/logkitten) library.
+
+**Configuration:**
+
+- **`true`**: Enables log capture with default settings.
+- **`false`** (default): Disables log capture.
+- **`DetoxAllure2AdapterDeviceLogsOptions`** (object): Enables log capture and provides fine-grained control over the settings.
+
+  - `ios: (entry: IosEntry) => boolean`: Filter function for iOS logs. Return `true` to include the log entry.
+  - `android: (entry: AndroidEntry) => boolean`: Filter function for Android logs. Return `true` to include the log entry.
+  - `override: boolean`: Whether to override existing log handlers.
+  - `saveAll: boolean` (default: `false`): If `true`, saves logs for all steps. By default, only logs for failed steps are kept.
+  - `syncDelay: number | { ios?: number; android?: number }` (default: `500`): Synchronization delay in milliseconds for log collection. Set to `0` to disable, or provide per-platform delays.
+
+### `deviceScreenshots: boolean | DetoxAllure2AdapterDeviceScreenshotOptions`
+
+Enables taking screenshots for each step. This feature uses the [`screenkitten`](https://www.npmjs.com/package/screenkitten) library.
+
+**Configuration:**
+
+- **`true`**: Enables screenshot capture with default settings.
+- **`false`** (default): Disables screenshot capture.
+- **`DetoxAllure2AdapterDeviceScreenshotOptions`** (object): Enables screenshot capture and provides fine-grained control over the settings.
+
+  - `saveAll: boolean` (default: `false`): If `true`, saves screenshots for all steps. By default, only screenshots for failed steps are kept.
+
+### `deviceVideos: boolean | DetoxAllure2AdapterDeviceVideoOptions`
+
+Enables "on-demand" video recording for your tests. This feature uses the [`videokitten`](https://www.npmjs.com/package/videokitten) library.
+The recording starts automatically upon the first interaction with the device and stops when the test is complete.
+
+**Configuration:**
+
+- **`true`**: Enables video recording with default settings.
+- **`false`** (default): Disables video recording.
+- **`DetoxAllure2AdapterDeviceVideoOptions`** (object): Enables recording and provides fine-grained control over the settings.
+
+  - `saveAll: boolean` (default: `false`): If `true`, saves videos for all tests. By default, only videos for failed tests are kept.
+  - `ios: Partial<VideokittenOptionsIOS>`: Custom options for iOS, as defined by `videokitten`.
+  - `android: Partial<VideokittenOptionsAndroid>`: Custom options for Android, as defined by `videokitten`.
+
+**Example with custom options:**
+
+```js
+// jest.config.js
+module.exports = {
+  eventListeners: [
+    'jest-metadata/environment-listener',
+    'jest-allure2-reporter/environment-listener',
+    ['detox-allure2-adapter', {
+      useSteps: true,
+      deviceLogs: {
+        saveAll: true,
+        ios: (entry) => entry.level === 'error',
+        android: (entry) => entry.priority === 'E',
+      },
+      deviceScreenshots: {
+        saveAll: true,
+      },
+      deviceVideos: {
+        saveAll: true,
+        ios: {
+          codec: 'hevc',
+        },
+        android: {
+          bitRate: 4_000_000,
+        }
+      }
+    }],
+  ],
+},
+```
+
+Refer to the [`videokitten` documentation](https://www.npmjs.com/package/videokitten) for a full list of options for each platform.
 
 ## Running Tests
 

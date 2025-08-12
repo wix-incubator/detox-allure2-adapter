@@ -2,6 +2,7 @@
 import type { AllureRuntime } from 'jest-allure2-reporter/api';
 import { type StepLogRecorder } from '../logs';
 import { type ScreenshotHelper } from '../screenshots';
+import { type VideoManager } from '../video';
 import { androidDescriptionMaker, iosDescriptionMaker } from './description-maker';
 import type { StepDescriptionMaker } from './description-maker';
 
@@ -11,10 +12,11 @@ export interface WrapWithStepsOptions {
   allure: AllureRuntime;
   logs?: StepLogRecorder;
   screenshots?: ScreenshotHelper;
+  videoManager?: VideoManager;
 }
 
 export function wrapWithSteps(options: WrapWithStepsOptions) {
-  const { detox, worker, allure, logs, screenshots } = options;
+  const { detox, worker, allure, logs, screenshots, videoManager } = options;
   const { device } = detox;
   const platform = device.getPlatform();
 
@@ -57,6 +59,7 @@ export function wrapWithSteps(options: WrapWithStepsOptions) {
         ? allure.step(desc.message, async () => {
             if (desc.args) allure.parameters(desc.args);
             logs?.attachBefore(allure);
+            await videoManager?.ensureRecording();
 
             try {
               const result = await send(...args);
@@ -84,7 +87,7 @@ function initDescriptionMaker(platform: string): StepDescriptionMaker | undefine
 }
 
 function wrapDeviceMethod(
-  { detox, allure, logs, screenshots }: WrapWithStepsOptions,
+  { detox, allure, logs, screenshots, videoManager }: WrapWithStepsOptions,
   methodName: string,
   stepDescription: string,
 ) {
@@ -93,6 +96,8 @@ function wrapDeviceMethod(
   if (typeof originalMethod !== 'function') return;
 
   device[methodName] = async (...args: any[]) => {
+    await videoManager?.ensureRecording();
+
     return await allure.step(stepDescription, async () => {
       try {
         logs?.attachBefore(allure);

@@ -1,7 +1,12 @@
 import type { ReporterOptions } from 'jest-allure2-reporter';
 
 import listener from 'detox-allure2-adapter';
-import type { DetoxAllure2AdapterOptions, DetoxAllure2AdapterDeviceLogsOptions, DetoxAllure2AdapterDeviceScreenshotOptions } from 'detox-allure2-adapter';
+import type {
+  DetoxAllure2AdapterOptions,
+  DetoxAllure2AdapterDeviceLogsOptions,
+  DetoxAllure2AdapterDeviceScreenshotOptions,
+  DetoxAllure2AdapterDeviceVideoOptions,
+} from 'detox-allure2-adapter';
 import DetoxAllurePathBuilder from 'detox-allure2-adapter/path-builder';
 import presetAllure from 'detox-allure2-adapter/preset-allure';
 import presetDetox from 'detox-allure2-adapter/preset-detox';
@@ -21,6 +26,7 @@ assertType<DetoxAllure2AdapterOptions>({
   useSteps: true,
   deviceLogs: true,
   deviceScreenshots: true,
+  deviceVideos: true,
 });
 
 assertType<DetoxAllure2AdapterDeviceLogsOptions>({
@@ -37,4 +43,16 @@ assertType<DetoxAllure2AdapterDeviceLogsOptions>({
 
 assertType<DetoxAllure2AdapterDeviceScreenshotOptions>({
   saveAll: true,
+});
+
+assertType<DetoxAllure2AdapterDeviceVideoOptions>({
+  saveAll: true,
+  ios: {
+    codec: 'hevc',
+  },
+  android: {
+    recording: {
+      bitRate: 4_000_000,
+    },
+  },
 });

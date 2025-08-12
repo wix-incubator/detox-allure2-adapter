@@ -1,4 +1,5 @@
 import type { AndroidEntry, IosEntry } from 'logkitten';
+import type { VideokittenOptionsIOS, VideokittenOptionsAndroid } from 'videokitten';
 
 export type DetoxAllure2AdapterOptions = {
   /**
@@ -14,6 +15,10 @@ export type DetoxAllure2AdapterOptions = {
    * Device screenshots configuration for per-step logging
    */
   deviceScreenshots?: boolean | DetoxAllure2AdapterDeviceScreenshotOptions;
+  /**
+   * Device video recording for failed tests
+   */
+  deviceVideos?: boolean | DetoxAllure2AdapterDeviceVideoOptions;
   /**
    * Callback to handle errors
    */
@@ -33,5 +38,28 @@ export interface DetoxAllure2AdapterDeviceLogsOptions {
 }
 
 export interface DetoxAllure2AdapterDeviceScreenshotOptions {
+  /**
+   * Whether to save all screenshots
+   * @default false
+   */
   saveAll?: boolean;
+}
+
+export interface DetoxAllure2AdapterDeviceVideoOptions {
+  /**
+   * Whether to save all videos
+   * @default false
+   */
+  saveAll?: boolean;
+  /**
+   * Controls when video recording starts.
+   * - If `true` (default), recording begins lazily on the first device interaction (step).
+   * - If `false`, recording starts immediately at the beginning of each test.
+   *
+   * This option is only effective when `useSteps` is enabled.
+   * @default true
+   */
+  lazyStart?: boolean;
+  ios?: Partial<VideokittenOptionsIOS>;
+  android?: Partial<VideokittenOptionsAndroid>;
 }

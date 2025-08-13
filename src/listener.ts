@@ -15,7 +15,8 @@ import { LogBuffer } from './logs';
 import { ScreenshotHelper } from './screenshots';
 import { wrapWithSteps } from './steps';
 import type { DetoxAllure2AdapterOptions } from './types';
-import { DeviceWrapper, WorkerWrapper } from './utils';
+import { DeviceWrapper, WorkerWrapper, once } from './utils';
+import { VideoManager } from './video';
 
 export const listener: EnvironmentListenerFn = (
   { testEvents },
@@ -23,16 +24,29 @@ export const listener: EnvironmentListenerFn = (
     useSteps = false,
     deviceLogs = false,
     deviceScreenshots = false,
+    deviceVideos = false,
     onError,
   }: DetoxAllure2AdapterOptions = {},
 ) => {
   let logHandler: ReturnType<typeof createLogHandler>;
   let zipHandler: ReturnType<typeof createZipHandler>;
   let inferMimeType: MIMEInferer;
-  let $test: ReturnType<typeof allure.$bind> | undefined;
-  let artifactsManager: any;
+  let workerWrapper: WorkerWrapper | undefined;
   let logs: LogBuffer | undefined;
   let screenshots: ScreenshotHelper | undefined;
+  let videoManager: VideoManager | undefined;
+
+  let $test: ReturnType<typeof allure.$bind> | undefined;
+  let $hook: ReturnType<typeof allure.$bind> | undefined;
+  let failing = false;
+
+  const flushArtifacts = once(async () => {
+    await workerWrapper?.artifactsManager?._idlePromise;
+    await Promise.all([logs?.close(), videoManager?.stopAndAttach($hook, failing)]);
+    workerWrapper = undefined;
+    logs = undefined;
+    videoManager = undefined;
+  });
 
   testEvents
     .on('setup', () => {
@@ -42,7 +56,7 @@ export const listener: EnvironmentListenerFn = (
         inferMimeType = context.inferMimeType;
       });
 
-      const workerWrapper = new WorkerWrapper(worker);
+      workerWrapper = new WorkerWrapper(worker);
       workerWrapper.artifactsManager.on('trackArtifact', onTrackArtifact);
 
       const device = new DeviceWrapper(detox.device);
@@ -65,43 +79,60 @@ export const listener: EnvironmentListenerFn = (
           onError,
         });
       }
+
+      if (deviceVideos) {
+        const baseOptions = deviceVideos === true ? {} : deviceVideos;
+        const effectiveOptions = useSteps ? baseOptions : { ...baseOptions, lazyStart: false };
+        videoManager = new VideoManager({ device, options: effectiveOptions });
+      }
     })
     .on('setup', async () => {
       if (useSteps) {
-        wrapWithSteps({ detox, worker, allure, logs, screenshots });
+        wrapWithSteps({ detox, worker, allure, logs, screenshots, videoManager });
       }
     })
-    .on('test_start', () => {
-      $test = allure.$bind();
-      logs?.attachBefore(allure);
+    .on('run_start', async () => {
+      // Only start early if configured (lazyStart === false)
+      await videoManager?.ensureRecordingEager();
     })
-    .on('hook_start', () => {
+    .on('test_started', async () => {
+      // Start recording eagerly if configured or when not using step wrappers
+      await videoManager?.ensureRecordingEager();
+    })
+    .on('test_start', async () => {
+      $test = allure.$bind();
+      $hook = undefined;
       logs?.attachBefore(allure);
+      failing = false;
+    })
+    .on('hook_start', async ({ event }) => {
+      logs?.attachBefore(allure);
+
+      if (event.hook.type === 'beforeAll' || event.hook.type === 'afterAll') {
+        $hook ??= allure.$bind();
+        await videoManager?.ensureRecordingEager();
+      }
     })
     .on('hook_failure', async () => {
+      failing = true;
       await Promise.all([logs?.attachAfterFailure(allure), screenshots?.attachFailure(allure)]);
     })
     .on('hook_success', async () => {
       await Promise.all([logs?.attachAfterSuccess(allure), screenshots?.attachSuccess(allure)]);
     })
     .on('test_fn_failure', async () => {
+      failing = true;
       await Promise.all([logs?.attachAfterFailure(allure), screenshots?.attachFailure(allure)]);
     })
     .on('test_fn_success', async () => {
       await Promise.all([logs?.attachAfterSuccess(allure), screenshots?.attachSuccess(allure)]);
     })
     .on('test_done', async () => {
+      await videoManager?.stopAndAttach($test, failing);
       $test = undefined;
     })
-    .on('teardown', flushArtifacts, -1)
-    .on('test_environment_teardown', flushArtifacts, -1);
-
-  async function flushArtifacts() {
-    await artifactsManager?._idlePromise;
-    await logs?.close();
-    artifactsManager = undefined;
-    logs = undefined;
-  }
+    .once('teardown', flushArtifacts, -1)
+    .once('test_environment_teardown', flushArtifacts, -1);
 
   function onTrackArtifact(artifact: any) {
     const $step = allure.$bind();

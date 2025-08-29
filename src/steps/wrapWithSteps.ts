@@ -15,6 +15,13 @@ export interface WrapWithStepsOptions {
   videoManager?: VideoManager;
 }
 
+interface WrapWithScreenshotTakingOptions {
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  method: Function;
+  screenshots?: ScreenshotHelper;
+  allure: AllureRuntime;
+}
+
 export function wrapWithSteps(options: WrapWithStepsOptions) {
   const { detox, worker, allure, logs, screenshots, videoManager } = options;
   const { device } = detox;
@@ -114,7 +121,7 @@ function wrapDeviceMethod(
   };
 }
 
-function wrapPilotMethod({ detox, allure }: WrapWithStepsOptions) {
+function wrapPilotMethod({ detox, allure, screenshots }: WrapWithStepsOptions) {
   const pilot = (detox as any).pilot;
   const originalInit = pilot?.init;
   if (typeof originalInit !== 'function') return;
@@ -127,12 +134,46 @@ function wrapPilotMethod({ detox, allure }: WrapWithStepsOptions) {
       instance.performStep = allure.createStep(
         '{{0}}',
         [null],
-        instance.performStep.bind(instance),
+        wrapWithScreenshotTaking({
+          method: instance.performStep.bind(instance),
+          screenshots,
+          allure,
+        }),
       );
     }
     if (typeof instance?.autopilot === 'function') {
-      instance.autopilot = allure.createStep('{{0}}', [null], instance.autopilot.bind(instance));
+      instance.autopilot = allure.createStep(
+        '{{0}}',
+        [null],
+        wrapWithScreenshotTaking({
+          method: instance.autopilot.bind(instance),
+          screenshots,
+          allure,
+        }),
+      );
     }
     return result;
+  };
+}
+
+function wrapWithScreenshotTaking({
+  method,
+  screenshots,
+  allure,
+}: WrapWithScreenshotTakingOptions) {
+  if (!screenshots || !allure) {
+    return method;
+  }
+
+  return async (...args: any[]) => {
+    try {
+      return await method(...args);
+    } catch (error) {
+      if (`${error}`.startsWith('Error:')) {
+        await screenshots?.attachFailure(allure);
+      }
+
+      throw error;
+    }
   };
 }

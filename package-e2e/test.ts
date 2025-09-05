@@ -23,7 +23,6 @@ assertType<EnvironmentListenerFn>(listener);
 assertType<DetoxAllurePathBuilder>(new DetoxAllurePathBuilder());
 assertType<ReporterOptions>(presetAllure);
 assertType<DetoxAllure2AdapterOptions>({
-  useSteps: true,
   deviceLogs: true,
   deviceScreenshots: true,
   deviceVideos: true,

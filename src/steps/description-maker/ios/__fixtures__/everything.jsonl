@@ -489,3 +489,10 @@
 {"type":"testerDisconnected"}
 {"type":"waitForActive","params":{}}
 {"type":"waitForBackground","params":{}}
+{"type":"systemExpectation","systemPredicate":{"type":"label","value":"Allow"},"systemExpectation":"toExist"}
+{"type":"systemAction","systemPredicate":{"type":"label","value":"Allow"},"systemAction":"tap"}
+{"type":"systemExpectation","systemPredicate":{"type":"type","value":"button"},"systemAtIndex":0,"systemExpectation":"toExist"}
+{"type":"systemAction","systemPredicate":{"type":"type","value":"button"},"systemAtIndex":0,"systemAction":"tap"}
+{"type":"systemExpectation","systemPredicate":{"type":"label","value":"NonExistent"},"systemModifiers":["not"],"systemExpectation":"toExist"}
+{"type":"systemExpectation","systemPredicate":{"type":"label","value":"NonExistent"},"systemExpectation":"toExist"}
+{"type":"systemAction","systemPredicate":{"type":"label","value":"NonExistent"},"systemAction":"tap"}

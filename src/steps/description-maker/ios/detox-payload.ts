@@ -1,4 +1,8 @@
-export type DetoxMessage = InvokeMessage | DeliverPayloadMessage;
+export type DetoxMessage =
+  | InvokeMessage
+  | DeliverPayloadMessage
+  | SystemActionMessage
+  | SystemExpectationMessage;
 
 //#region Predicates
 export type PredicateType =
@@ -7,7 +11,8 @@ export type PredicateType =
   | 'label'
   | 'traits'
   | 'accessibilityLabel'
-  | 'accessibilityIdentifier';
+  | 'accessibilityIdentifier'
+  | 'type';
 
 export type Predicate =
   | AtomicPredicate
@@ -203,6 +208,24 @@ export interface WebExpectationInvocation extends BaseWebExpectationInvocation {
   params?: readonly [expected?: string];
 }
 //#endregion Web Invocations
+
+//#region System Invocations
+export interface SystemActionMessage {
+  type: 'systemAction';
+  systemAction?: string;
+  systemPredicate?: Predicate;
+  systemAtIndex?: number;
+}
+
+export interface SystemExpectationMessage {
+  type: 'systemExpectation';
+  systemExpectation?: string;
+  systemPredicate?: Predicate;
+  systemAtIndex?: number;
+  systemModifiers?: ExpectationModifier[];
+  params?: readonly [expected?: string];
+}
+//#endregion System Invocations
 
 //#region Action Invocations
 export interface TapAction extends BaseActionInvocation {

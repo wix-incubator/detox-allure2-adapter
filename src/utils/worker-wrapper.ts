@@ -5,8 +5,17 @@ export class WorkerWrapper {
     return this.worker._artifactsManager as ArtifactsManager;
   }
 
+  get asyncWebSocket() {
+    return this.worker._client._asyncWebSocket as AsyncWebSocket;
+  }
+
   get eventEmitter() {
     return this.worker._eventEmitter as EventEmitter;
+  }
+
+  get xcuitestRunner() {
+    return this.worker.system().element(this.worker.by.system.label(''))
+      ._xcuitestRunner as XCUITestRunner;
   }
 }
 
@@ -40,4 +49,13 @@ interface ArtifactPlugin {
   onTestDone: () => void;
   onTestFnFailure: () => void;
   onTestStart: () => void;
+}
+
+interface AsyncWebSocket {
+  send: (...args: any[]) => Promise<{ type?: string }>;
+}
+
+interface XCUITestRunner {
+  // NOTE: { type?: string } is not accurate, but it does not cause bugs per se
+  execute: (...args: any[]) => Promise<{ type?: string }>;
 }

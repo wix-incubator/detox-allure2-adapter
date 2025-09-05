@@ -2,17 +2,23 @@
 import type { AllureRuntime } from 'jest-allure2-reporter/api';
 import { type StepLogRecorder } from '../logs';
 import { type ScreenshotHelper } from '../screenshots';
+import { type WorkerWrapper } from '../utils';
 import { type VideoManager } from '../video';
 import { androidDescriptionMaker, iosDescriptionMaker } from './description-maker';
 import type { StepDescriptionMaker } from './description-maker';
 
 export interface WrapWithStepsOptions {
   detox: typeof import('detox');
-  worker: any;
+  worker: WorkerWrapper;
   allure: AllureRuntime;
   logs?: StepLogRecorder;
   screenshots?: ScreenshotHelper;
   videoManager?: VideoManager;
+}
+
+interface WrapWithDescriptionMakerOptions extends WrapWithStepsOptions {
+  descriptionMaker: StepDescriptionMaker;
+  send: (...args: any[]) => Promise<{ type?: string }>;
 }
 
 interface WrapWithScreenshotTakingOptions {
@@ -23,7 +29,7 @@ interface WrapWithScreenshotTakingOptions {
 }
 
 export function wrapWithSteps(options: WrapWithStepsOptions) {
-  const { detox, worker, allure, logs, screenshots, videoManager } = options;
+  const { detox, worker } = options;
   const { device } = detox;
   const platform = device.getPlatform();
 
@@ -44,43 +50,20 @@ export function wrapWithSteps(options: WrapWithStepsOptions) {
   const descriptionMaker = initDescriptionMaker(platform);
 
   if (descriptionMaker) {
-    const ws = worker._client._asyncWebSocket;
-    const send = ws.send.bind(ws) as (...args: any[]) => Promise<{ type?: string }>;
-    const onActionSuccess = async () => {
-      await logs?.attachAfterSuccess(allure);
-    };
+    const ws = worker.asyncWebSocket;
 
-    const onActionFailure = async (shouldSetStatus: boolean, result?: unknown) => {
-      if (shouldSetStatus) {
-        allure.status('failed');
-      }
+    ws.send = wrapSendMethod({
+      ...options,
+      descriptionMaker,
+      send: ws.send.bind(ws) as (...args: any[]) => Promise<{ type?: string }>,
+    });
 
-      await Promise.all([
-        logs?.attachAfterFailure(allure),
-        screenshots?.attachFromResultOrFailure(allure, result),
-      ]);
-    };
-    ws.send = async (...args: any[]) => {
-      const desc = descriptionMaker(args[0]);
-      return desc?.message
-        ? allure.step(desc.message, async () => {
-            if (desc.args) allure.parameters(desc.args);
-            logs?.attachBefore(allure);
-            await videoManager?.ensureRecording();
-
-            try {
-              const result = await send(...args);
-              const onActionDone =
-                result?.type === 'testFailed' ? onActionFailure : onActionSuccess;
-              await onActionDone(true, result);
-              return result;
-            } catch (error) {
-              await onActionFailure(false);
-              throw error;
-            }
-          })
-        : send(...args);
-    };
+    const xcuitestRunner = worker.xcuitestRunner;
+    xcuitestRunner.execute = wrapSendMethod({
+      ...options,
+      descriptionMaker,
+      send: xcuitestRunner.execute.bind(xcuitestRunner),
+    });
   }
 }
 
@@ -175,5 +158,50 @@ function wrapWithScreenshotTaking({
 
       throw error;
     }
+  };
+}
+
+function wrapSendMethod({
+  descriptionMaker,
+  allure,
+  logs,
+  videoManager,
+  screenshots,
+  send,
+}: WrapWithDescriptionMakerOptions) {
+  const onActionSuccess = async () => {
+    await logs?.attachAfterSuccess(allure);
+  };
+
+  const onActionFailure = async (shouldSetStatus: boolean, result?: unknown) => {
+    if (shouldSetStatus) {
+      allure.status('failed');
+    }
+
+    await Promise.all([
+      logs?.attachAfterFailure(allure),
+      screenshots?.attachFromResultOrFailure(allure, result),
+    ]);
+  };
+
+  return async (...args: any[]) => {
+    const desc = descriptionMaker(args[0]);
+    return desc?.message
+      ? allure.step(desc.message, async () => {
+          if (desc.args) allure.parameters(desc.args);
+          logs?.attachBefore(allure);
+          await videoManager?.ensureRecording();
+
+          try {
+            const result = await send(...args);
+            const onActionDone = result?.type === 'testFailed' ? onActionFailure : onActionSuccess;
+            await onActionDone(true, result);
+            return result;
+          } catch (error) {
+            await onActionFailure(false);
+            throw error;
+          }
+        })
+      : send(...args);
   };
 }

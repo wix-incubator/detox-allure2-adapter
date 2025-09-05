@@ -819,7 +819,7 @@ exports[`iOS description maker should process everything.jsonl fixture 1`] = `
 + {"traits":["button"]}
 
 > {"type":"invoke","params":{"type":"action","action":"tap","predicate":{"type":"type","value":"RCTImageView"}}}
-< Tap [type] = RCTImageView
+< Tap RCTImageView
 + {"type":"RCTImageView"}
 
 > {"type":"invoke","params":{"type":"action","action":"typeText","params":["Type Working 123 אֱבּג абв!!!"],"predicate":{"type":"id","value":"UniqueId937","isRegex":false}}}
@@ -1667,11 +1667,11 @@ exports[`iOS description maker should process everything.jsonl fixture 1`] = `
 + {"text":"this is a new native root"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"type","value":"RCTImageView"},"expectation":"toBeVisible"}}
-< Expect [type] = RCTImageView to be visible
+< Expect RCTImageView to be visible
 + {"type":"RCTImageView"}
 
 > {"type":"invoke","params":{"type":"expectation","predicate":{"type":"type","value":"RCTImageView"},"modifiers":["not"],"expectation":"toBeVisible"}}
-< Expect [type] = RCTImageView not to be visible
+< Expect RCTImageView not to be visible
 + {"type":"RCTImageView"}
 
 > {"type":"invoke","params":{"type":"webAction","predicate":{"type":"id","value":"webView","isRegex":false},"webPredicate":{"type":"tag","value":"body"},"webAction":"getTitle"}}
@@ -1945,5 +1945,33 @@ exports[`iOS description maker should process everything.jsonl fixture 1`] = `
 > {"type":"waitForActive","params":{}}
 
 > {"type":"waitForBackground","params":{}}
+
+> {"type":"systemExpectation","systemPredicate":{"type":"label","value":"Allow"},"systemExpectation":"toExist"}
+< System: Expect "Allow" to exist
++ {"label":"Allow"}
+
+> {"type":"systemAction","systemPredicate":{"type":"label","value":"Allow"},"systemAction":"tap"}
+< System: Tap on "Allow"
++ {"label":"Allow"}
+
+> {"type":"systemExpectation","systemPredicate":{"type":"type","value":"button"},"systemAtIndex":0,"systemExpectation":"toExist"}
+< System: Expect button[0] to exist
++ {"type":"button","index":0}
+
+> {"type":"systemAction","systemPredicate":{"type":"type","value":"button"},"systemAtIndex":0,"systemAction":"tap"}
+< System: Tap on button[0]
++ {"type":"button","index":0}
+
+> {"type":"systemExpectation","systemPredicate":{"type":"label","value":"NonExistent"},"systemModifiers":["not"],"systemExpectation":"toExist"}
+< System: Expect "NonExistent" not to exist
++ {"label":"NonExistent"}
+
+> {"type":"systemExpectation","systemPredicate":{"type":"label","value":"NonExistent"},"systemExpectation":"toExist"}
+< System: Expect "NonExistent" to exist
++ {"label":"NonExistent"}
+
+> {"type":"systemAction","systemPredicate":{"type":"label","value":"NonExistent"},"systemAction":"tap"}
+< System: Tap on "NonExistent"
++ {"label":"NonExistent"}
 "
 `;

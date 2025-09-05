@@ -3,6 +3,7 @@ import { msg } from '../../utils';
 import type { DetoxMessage, Invocation } from '../detox-payload';
 import { formatAction } from './action-formatters';
 import { formatExpectation } from './expectation-formatters';
+import { formatSystemAction, formatSystemExpectation } from './system-formatters';
 import { formatWebAction, formatWebExpectation } from './web-formatters';
 
 type MessageFormatter<T extends DetoxMessage> = (message: T) => StepDescription | null;
@@ -26,6 +27,8 @@ const messageFormatters: MessageFormatterMap = {
 
     return msg('Deliver payload', data);
   },
+  systemAction: (message) => formatSystemAction(message),
+  systemExpectation: (message) => formatSystemExpectation(message),
 };
 
 const formatInvocation = (invocation?: Invocation): StepDescription | null => {

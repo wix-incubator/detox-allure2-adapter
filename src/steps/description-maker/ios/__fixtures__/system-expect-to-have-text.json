@@ -1,0 +1,9 @@
+{
+  "type": "systemExpectation",
+  "systemPredicate": {
+    "type": "label",
+    "value": "Notification"
+  },
+  "systemExpectation": "toHaveText",
+  "params": ["Your app has been updated."]
+}

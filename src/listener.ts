@@ -87,8 +87,8 @@ export const listener: EnvironmentListenerFn = (
       }
     })
     .on('setup', async () => {
-      if (useSteps) {
-        wrapWithSteps({ detox, worker, allure, logs, screenshots, videoManager });
+      if (useSteps && workerWrapper) {
+        wrapWithSteps({ detox, worker: workerWrapper, allure, logs, screenshots, videoManager });
       }
     })
     .on('run_start', async () => {

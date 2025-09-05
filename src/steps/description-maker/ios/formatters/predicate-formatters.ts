@@ -103,6 +103,10 @@ function formatBasePredicate(predicate: AtomicPredicate, prefix = ''): StepDescr
     return formatIdPredicate(value$, index$, args);
   }
 
+  if (type === 'type') {
+    return formatTypePredicate(value$, index$, args);
+  }
+
   return formatDefaultPredicate(type, value$, index$, args);
 }
 
@@ -141,6 +145,13 @@ function formatTraitsPredicate(value: string, index: string, args: StepArgs): St
 function formatIdPredicate(value: string, index: string, args: StepArgs): StepDescription {
   return {
     message: `#${value}${index}`,
+    args,
+  };
+}
+
+function formatTypePredicate(value: string, index: string, args: StepArgs): StepDescription {
+  return {
+    message: `${value}${index}`,
     args,
   };
 }

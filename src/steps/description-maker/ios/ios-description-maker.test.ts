@@ -76,6 +76,11 @@ describe('iOS description maker', () => {
     ],
     ['web-scroll-to-view', 'WebView: Scroll to #bottomParagraph', { web_id: 'bottomParagraph' }],
     ['multi-tap', 'Tap 3 times on #container', { id: 'container', count: 3 }],
+    [
+      'system-expect-to-have-text',
+      'System: Expect "Notification" to have text "Your app has been updated."',
+      { label: 'Notification', expected_text: 'Your app has been updated.' },
+    ],
   ])('should handle %s selector', (fixture, message, args) => {
     const description = iosDescriptionMaker(loadFixture(fixture));
     expect(description).toEqual({ message, args });

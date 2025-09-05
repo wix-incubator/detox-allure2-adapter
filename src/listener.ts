@@ -21,7 +21,6 @@ import { VideoManager } from './video';
 export const listener: EnvironmentListenerFn = (
   { testEvents },
   {
-    useSteps = false,
     deviceLogs = false,
     deviceScreenshots = false,
     deviceVideos = false,
@@ -82,12 +81,11 @@ export const listener: EnvironmentListenerFn = (
 
       if (deviceVideos) {
         const baseOptions = deviceVideos === true ? {} : deviceVideos;
-        const effectiveOptions = useSteps ? baseOptions : { ...baseOptions, lazyStart: false };
-        videoManager = new VideoManager({ device, options: effectiveOptions });
+        videoManager = new VideoManager({ device, options: baseOptions });
       }
     })
     .on('setup', async () => {
-      if (useSteps && workerWrapper) {
+      if (workerWrapper) {
         wrapWithSteps({ detox, worker: workerWrapper, allure, logs, screenshots, videoManager });
       }
     })

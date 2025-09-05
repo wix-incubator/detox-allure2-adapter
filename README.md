@@ -46,7 +46,6 @@ module.exports = {
         'jest-metadata/environment-listener',
         'jest-allure2-reporter/environment-listener',
         ['detox-allure2-adapter', {
-          useSteps: true,
           deviceLogs: true,
           deviceScreenshots: true,
           deviceVideos: true,
@@ -64,10 +63,6 @@ Here's a brief explanation of what you just added:
 - `testEnvironmentOptions` section: We added three event listener modules that will run during our tests — `jest-metadata`, `jest-allure2-reporter`, and `detox-allure2-adapter`. These listeners will collect necessary metadata and feed test result data to our Allure reports.
 
 ## Adapter Options
-
-### `useSteps: boolean`
-
-If set to true, the adapter will wrap all Detox device interactions (like `device.launchApp()`, `element(by.id('loginButton')).tap()`) into Allure steps. This provides a detailed, step-by-step report of your test execution.
 
 ### `deviceLogs: boolean | DetoxAllure2AdapterDeviceLogsOptions`
 
@@ -121,7 +116,6 @@ module.exports = {
     'jest-metadata/environment-listener',
     'jest-allure2-reporter/environment-listener',
     ['detox-allure2-adapter', {
-      useSteps: true,
       deviceLogs: {
         saveAll: true,
         ios: (entry) => entry.level === 'error',

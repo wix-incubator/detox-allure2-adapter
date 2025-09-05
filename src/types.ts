@@ -3,11 +3,6 @@ import type { VideokittenOptionsIOS, VideokittenOptionsAndroid } from 'videokitt
 
 export type DetoxAllure2AdapterOptions = {
   /**
-   * Whether to wrap device, element and other actions in Allure steps
-   * @default false
-   */
-  useSteps?: boolean;
-  /**
    * Device logs configuration for per-step logging
    */
   deviceLogs?: boolean | DetoxAllure2AdapterDeviceLogsOptions;
@@ -55,8 +50,6 @@ export interface DetoxAllure2AdapterDeviceVideoOptions {
    * Controls when video recording starts.
    * - If `true` (default), recording begins lazily on the first device interaction (step).
    * - If `false`, recording starts immediately at the beginning of each test.
-   *
-   * This option is only effective when `useSteps` is enabled.
    * @default true
    */
   lazyStart?: boolean;

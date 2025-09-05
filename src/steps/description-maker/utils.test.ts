@@ -1,4 +1,32 @@
-import { percent, percentVisible, truncate } from './utils';
+import { percent, percentVisible, truncate, msg, concat, glue } from './utils';
+
+describe('msg', () => {
+  it('should create a StepDescription with a message', () => {
+    expect(msg('Hello')).toEqual({ message: 'Hello', args: undefined });
+  });
+
+  it('should create a StepDescription with a message and args', () => {
+    expect(msg('Hello', { a: 1 })).toEqual({ message: 'Hello', args: { a: 1 } });
+  });
+
+  it('should omit empty args', () => {
+    expect(msg('Hello', { a: 1, b: null })).toEqual({ message: 'Hello', args: { a: 1 } });
+  });
+});
+
+describe('concat', () => {
+  it('should concatenate strings and StepDescriptions', () => {
+    const result = concat('Hello', msg('World', { a: 1 }), '!');
+    expect(result).toEqual({ message: 'Hello World !', args: { a: 1 } });
+  });
+});
+
+describe('glue', () => {
+  it('should glue strings and StepDescriptions without spaces', () => {
+    const result = glue(msg('WebView', { id: 'w' }), ':');
+    expect(result).toEqual({ message: 'WebView:', args: { id: 'w' } });
+  });
+});
 
 describe('percent', () => {
   it('should return empty string for abnormal values', () => {

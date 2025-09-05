@@ -1,4 +1,5 @@
 import type { StepArgs, StepDescription } from '../../types';
+import { concat, msg, truncate } from '../../utils';
 import type {
   AtomicPredicate,
   Predicate,
@@ -6,7 +7,6 @@ import type {
   DescendantPredicate,
   AncestorPredicate,
 } from '../detox-payload';
-import { concat, msg, truncate } from './utils';
 
 type Writable<T> = {
   -readonly [P in keyof T]: T[P];

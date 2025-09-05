@@ -1,8 +1,9 @@
 import type { StepDescription } from '../../types';
+import { msg } from '../../utils';
 import type { DetoxMessage, Invocation } from '../detox-payload';
 import { formatAction } from './action-formatters';
 import { formatExpectation } from './expectation-formatters';
-import { msg } from './utils';
+import { formatWebAction, formatWebExpectation } from './web-formatters';
 
 type MessageFormatter<T extends DetoxMessage> = (message: T) => StepDescription | null;
 
@@ -36,10 +37,10 @@ const formatInvocation = (invocation?: Invocation): StepDescription | null => {
       return formatExpectation(invocation);
     }
     case 'webAction': {
-      return msg(`Web action: ${invocation.webAction}`);
+      return formatWebAction(invocation);
     }
     case 'webExpectation': {
-      return msg(`Web expectation: ${invocation.webExpectation}`);
+      return formatWebExpectation(invocation);
     }
     default: {
       return null;

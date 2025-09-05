@@ -74,13 +74,7 @@ describe('iOS description maker', () => {
       'Set #datePicker column [1] to: 6',
       { id: 'datePicker', column: 1, value: '6' },
     ],
-    [
-      'web-scroll-to-view',
-      // 'Scroll to #bottomParagraph in webview',
-      // { webId: 'bottomParagraph', webAction: 'scrollToView' },
-      'Web action: scrollToView',
-      undefined,
-    ],
+    ['web-scroll-to-view', 'WebView: Scroll to #bottomParagraph', { web_id: 'bottomParagraph' }],
     ['multi-tap', 'Tap 3 times on #container', { id: 'container', count: 3 }],
   ])('should handle %s selector', (fixture, message, args) => {
     const description = iosDescriptionMaker(loadFixture(fixture));

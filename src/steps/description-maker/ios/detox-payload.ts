@@ -153,6 +153,11 @@ export interface WebGetTitleAction extends BaseWebActionInvocation {
   webAction: 'getTitle';
 }
 
+export interface WebGetCurrentUrlAction extends BaseWebActionInvocation {
+  type: 'webAction';
+  webAction: 'getCurrentUrl';
+}
+
 export interface WebScrollToViewAction extends BaseWebActionInvocation {
   type: 'webAction';
   webAction: 'scrollToView';
@@ -271,6 +276,7 @@ export type ActionInvocation =
 
 export type WebInvocation =
   | WebGetTitleAction
+  | WebGetCurrentUrlAction
   | WebScrollToViewAction
   | WebTapAction
   | WebTextAction

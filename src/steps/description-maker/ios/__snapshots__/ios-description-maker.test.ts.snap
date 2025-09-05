@@ -1675,252 +1675,252 @@ exports[`iOS description maker should process everything.jsonl fixture 1`] = `
 + {"type":"RCTImageView"}
 
 > {"type":"invoke","params":{"type":"webAction","predicate":{"type":"id","value":"webView","isRegex":false},"webPredicate":{"type":"tag","value":"body"},"webAction":"getTitle"}}
-< Web action: getTitle
-+ undefined
+< WebView #webView: Get title of body
++ {"id":"webView","web_tag":"body"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"bottomParagraph"},"webAction":"scrollToView"}}
-< Web action: scrollToView
-+ undefined
+< WebView: Scroll to #bottomParagraph
++ {"web_id":"bottomParagraph"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"clearText"}}
-< Web action: clearText
-+ undefined
+< WebView: Clear text in #contentEditable
++ {"web_id":"contentEditable"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"focus"}}
-< Web action: focus
-+ undefined
+< WebView: Focus on #contentEditable
++ {"web_id":"contentEditable"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"moveCursorToEnd"}}
-< Web action: moveCursorToEnd
-+ undefined
+< WebView: Move cursor to end in #contentEditable
++ {"web_id":"contentEditable"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"replaceText","params":["Tester"]}}
-< Web action: replaceText
-+ undefined
+< WebView: Replace text in #contentEditable with "Tester"
++ {"web_id":"contentEditable","text":"Tester"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"selectAllText"}}
-< Web action: selectAllText
-+ undefined
+< WebView: Select all text in #contentEditable
++ {"web_id":"contentEditable"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"typeText","params":["Tes"]}}
-< Web action: typeText
-+ undefined
+< WebView: Type "Tes" in #contentEditable
++ {"text":"Tes","web_id":"contentEditable"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"typeText","params":["Test"]}}
-< Web action: typeText
-+ undefined
+< WebView: Type "Test" in #contentEditable
++ {"text":"Test","web_id":"contentEditable"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"typeText","params":["er"]}}
-< Web action: typeText
-+ undefined
+< WebView: Type "er" in #contentEditable
++ {"text":"er","web_id":"contentEditable"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"typeText","params":["r"]}}
-< Web action: typeText
-+ undefined
+< WebView: Type "r" in #contentEditable
++ {"text":"r","web_id":"contentEditable"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"contentEditable"},"webAction":"typeText","params":["te"]}}
-< Web action: typeText
-+ undefined
+< WebView: Type "te" in #contentEditable
++ {"text":"te","web_id":"contentEditable"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"clearText"}}
-< Web action: clearText
-+ undefined
+< WebView: Clear text in #fname
++ {"web_id":"fname"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"focus"}}
-< Web action: focus
-+ undefined
+< WebView: Focus on #fname
++ {"web_id":"fname"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"moveCursorToEnd"}}
-< Web action: moveCursorToEnd
-+ undefined
+< WebView: Move cursor to end in #fname
++ {"web_id":"fname"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"replaceText","params":["Tester"]}}
-< Web action: replaceText
-+ undefined
+< WebView: Replace text in #fname with "Tester"
++ {"web_id":"fname","text":"Tester"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"runScript","params":["el => {\\n              el.type = 'email';\\n            }"]}}
-< Web action: runScript
-+ undefined
+< WebView: Run script on #fname
++ {"script":"el => {\\n              el.type = 'email';\\n            }","web_id":"fname"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"selectAllText"}}
-< Web action: selectAllText
-+ undefined
+< WebView: Select all text in #fname
++ {"web_id":"fname"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"typeText","params":["0123456789 ABCDEF"]}}
-< Web action: typeText
-+ undefined
+< WebView: Type "0123456789 ABCDEF" in #fname
++ {"text":"0123456789 ABCDEF","web_id":"fname"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"typeText","params":["Temp"]}}
-< Web action: typeText
-+ undefined
+< WebView: Type "Temp" in #fname
++ {"text":"Temp","web_id":"fname"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"typeText","params":["Test"]}}
-< Web action: typeText
-+ undefined
+< WebView: Type "Test" in #fname
++ {"text":"Test","web_id":"fname"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"typeText","params":["Tester"]}}
-< Web action: typeText
-+ undefined
+< WebView: Type "Tester" in #fname
++ {"text":"Tester","web_id":"fname"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"fname"},"webAction":"typeText","params":["er"]}}
-< Web action: typeText
-+ undefined
+< WebView: Type "er" in #fname
++ {"text":"er","web_id":"fname"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"pageHeadline"},"webAction":"getText"}}
-< Web action: getText
-+ undefined
+< WebView: Get text from #pageHeadline
++ {"web_id":"pageHeadline"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"pageHeadline"},"webAction":"runScript","params":["(el) => { el.textContent = \\"Changed\\"; throw new Error(\\"Error\\"); }"]}}
-< Web action: runScript
-+ undefined
+< WebView: Run script on #pageHeadline
++ {"script":"(el) => { el.textContent = \\"Changed\\"; throw new Error(\\"Error\\"); }","web_id":"pageHeadline"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"pageHeadline"},"webAction":"runScript","params":["(el) => { el.textContent = \\"Changed\\"; }"]}}
-< Web action: runScript
-+ undefined
+< WebView: Run script on #pageHeadline
++ {"script":"(el) => { el.textContent = \\"Changed\\"; }","web_id":"pageHeadline"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"pageHeadline"},"webAction":"runScript","params":["(el) => { return el.textContent; }"]}}
-< Web action: runScript
-+ undefined
+< WebView: Run script on #pageHeadline
++ {"script":"(el) => { return el.textContent; }","web_id":"pageHeadline"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"pageHeadline"},"webAction":"runScript","params":["el => {\\n          el.textContent = \\"Changed\\";\\n        }"]}}
-< Web action: runScript
-+ undefined
+< WebView: Run script on #pageHeadline
++ {"script":"el => {\\n          el.textContent = \\"Changed\\";\\n        }","web_id":"pageHeadline"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"pageHeadline"},"webAction":"runScriptWithArgs","params":["(el, text) => { el.textContent = text; }",["Changed"]]}}
-< Web action: runScriptWithArgs
-+ undefined
+< WebView: Run script with args on #pageHeadline
++ {"script":"(el, text) => { el.textContent = text; }","arg0":"Changed","web_id":"pageHeadline"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"pageHeadline"},"webAction":"runScriptWithArgs","params":["(el, text) => {\\n          el.textContent = text;\\n        }",["Changed"]]}}
-< Web action: runScriptWithArgs
-+ undefined
+< WebView: Run script with args on #pageHeadline
++ {"script":"(el, text) => {\\n          el.textContent = text;\\n        }","arg0":"Changed","web_id":"pageHeadline"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"submit"},"webAction":"tap"}}
-< Web action: tap
-+ undefined
+< WebView: Tap #submit
++ {"web_id":"submit"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"id","value":"w3link"},"webAction":"tap"}}
-< Web action: tap
-+ undefined
+< WebView: Tap #w3link
++ {"web_id":"w3link"}
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"tag","value":"body"},"webAction":"getCurrentUrl"}}
-< Web action: getCurrentUrl
+< WebView: Get current URL
 + undefined
 
 > {"type":"invoke","params":{"type":"webAction","webPredicate":{"type":"tag","value":"body"},"webAction":"getTitle"}}
-< Web action: getTitle
-+ undefined
+< WebView: Get title of body
++ {"web_tag":"body"}
 
 > {"type":"invoke","params":{"type":"webExpectation","predicate":{"type":"id","value":"webView","isRegex":false},"atIndex":0,"webPredicate":{"type":"id","value":"message"},"webExpectation":"toExist"}}
-< Web expectation: toExist
-+ undefined
+< WebView #webView: Expect #message to exist
++ {"id":"webView","web_id":"message"}
 
 > {"type":"invoke","params":{"type":"webExpectation","predicate":{"type":"id","value":"webView","isRegex":false},"atIndex":1,"webPredicate":{"type":"id","value":"message"},"webExpectation":"toExist"}}
-< Web expectation: toExist
-+ undefined
+< WebView #webView: Expect #message to exist
++ {"id":"webView","web_id":"message"}
 
 > {"type":"invoke","params":{"type":"webExpectation","predicate":{"type":"id","value":"webView","isRegex":false},"atIndex":2,"webPredicate":{"type":"id","value":"message"},"webExpectation":"toExist"}}
-< Web expectation: toExist
-+ undefined
+< WebView #webView: Expect #message to exist
++ {"id":"webView","web_id":"message"}
 
 > {"type":"invoke","params":{"type":"webExpectation","predicate":{"type":"id","value":"webView","isRegex":false},"webPredicate":{"type":"id","value":"message"},"webExpectation":"toExist"}}
-< Web expectation: toExist
-+ undefined
+< WebView #webView: Expect #message to exist
++ {"id":"webView","web_id":"message"}
 
 > {"type":"invoke","params":{"type":"webExpectation","predicate":{"type":"id","value":"webView","isRegex":false},"webPredicate":{"type":"id","value":"message"},"webExpectation":"toHaveText","params":["This is a dummy webview."]}}
-< Web expectation: toHaveText
-+ undefined
+< WebView #webView: Expect #message to have text "This is a dummy webview."
++ {"id":"webView","web_id":"message","expected_text":"This is a dummy webview."}
 
 > {"type":"invoke","params":{"type":"webExpectation","predicate":{"type":"id","value":"webView","isRegex":false},"webPredicate":{"type":"tag","value":"h1"},"webExpectation":"toExist"}}
-< Web expectation: toExist
-+ undefined
+< WebView #webView: Expect h1 to exist
++ {"id":"webView","web_tag":"h1"}
 
 > {"type":"invoke","params":{"type":"webExpectation","predicate":{"type":"id","value":"webView","isRegex":false},"webPredicate":{"type":"tag","value":"h1"},"webModifiers":["not"],"webExpectation":"toExist"}}
-< Web expectation: toExist
-+ undefined
+< WebView #webView: Expect h1 not to exist
++ {"id":"webView","web_tag":"h1"}
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"class","value":"specialParagraph"},"webExpectation":"toExist"}}
-< Web expectation: toExist
-+ undefined
+< WebView: Expect .specialParagraph to exist
++ {"web_class":"specialParagraph"}
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"css","value":".specialParagraph"},"webExpectation":"toExist"}}
-< Web expectation: toExist
-+ undefined
+< WebView: Expect .specialParagraph to exist
++ {"web_css":".specialParagraph"}
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"href","value":"https://www.w3schools.com"},"webExpectation":"toExist"}}
-< Web expectation: toExist
-+ undefined
+< WebView: Expect [href=https://www.w3schools.com] to exist
++ {"web_href":"https://www.w3schools.com"}
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"hrefContains","value":"w3schools"},"webExpectation":"toExist"}}
-< Web expectation: toExist
-+ undefined
+< WebView: Expect [href*=w3schools] to exist
++ {"web_hrefContains":"w3schools"}
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"contentEditable"},"webExpectation":"toHaveText","params":[""]}}
-< Web expectation: toHaveText
-+ undefined
+< WebView: Expect #contentEditable to have text ""
++ {"web_id":"contentEditable","expected_text":""}
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"contentEditable"},"webExpectation":"toHaveText","params":["Name: Tester"]}}
-< Web expectation: toHaveText
-+ undefined
+< WebView: Expect #contentEditable to have text "Name: Tester"
++ {"web_id":"contentEditable","expected_text":"Name: Tester"}
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"contentEditable"},"webExpectation":"toHaveText","params":["Tester"]}}
-< Web expectation: toHaveText
-+ undefined
+< WebView: Expect #contentEditable to have text "Tester"
++ {"web_id":"contentEditable","expected_text":"Tester"}
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"fname"},"webExpectation":"toHaveText","params":[""]}}
-< Web expectation: toHaveText
-+ undefined
+< WebView: Expect #fname to have text ""
++ {"web_id":"fname","expected_text":""}
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"fname"},"webExpectation":"toHaveText","params":["0123456789"]}}
-< Web expectation: toHaveText
-+ undefined
+< WebView: Expect #fname to have text "0123456789"
++ {"web_id":"fname","expected_text":"0123456789"}
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"fname"},"webExpectation":"toHaveText","params":["Tester"]}}
-< Web expectation: toHaveText
-+ undefined
+< WebView: Expect #fname to have text "Tester"
++ {"web_id":"fname","expected_text":"Tester"}
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"nonExistentElement"},"webExpectation":"toExist"}}
-< Web expectation: toExist
-+ undefined
+< WebView: Expect #nonExistentElement to exist
++ {"web_id":"nonExistentElement"}
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"nonExistentElement"},"webModifiers":["not"],"webExpectation":"toExist"}}
-< Web expectation: toExist
-+ undefined
+< WebView: Expect #nonExistentElement not to exist
++ {"web_id":"nonExistentElement"}
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"pageHeadline"},"webExpectation":"toExist"}}
-< Web expectation: toExist
-+ undefined
+< WebView: Expect #pageHeadline to exist
++ {"web_id":"pageHeadline"}
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"id","value":"pageHeadline"},"webExpectation":"toHaveText","params":["Changed"]}}
-< Web expectation: toHaveText
-+ undefined
+< WebView: Expect #pageHeadline to have text "Changed"
++ {"web_id":"pageHeadline","expected_text":"Changed"}
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"label","value":"first-webview"},"webExpectation":"toExist"}}
-< Web expectation: toExist
-+ undefined
+< WebView: Expect [label=first-webview] to exist
++ {"web_label":"first-webview"}
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"name","value":"fname"},"webExpectation":"toExist"}}
-< Web expectation: toExist
-+ undefined
+< WebView: Expect [name=fname] to exist
++ {"web_name":"fname"}
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"tag","value":"body"},"webExpectation":"toExist"}}
-< Web expectation: toExist
-+ undefined
+< WebView: Expect body to exist
++ {"web_tag":"body"}
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"tag","value":"p"},"webAtIndex":0,"webExpectation":"toExist"}}
-< Web expectation: toExist
-+ undefined
+< WebView: Expect p[0] to exist
++ {"web_tag":"p","web_tag_index":"0"}
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"tag","value":"p"},"webAtIndex":100,"webExpectation":"toExist"}}
-< Web expectation: toExist
-+ undefined
+< WebView: Expect p[100] to exist
++ {"web_tag":"p","web_tag_index":"100"}
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"tag","value":"p"},"webAtIndex":100,"webModifiers":["not"],"webExpectation":"toExist"}}
-< Web expectation: toExist
-+ undefined
+< WebView: Expect p[100] not to exist
++ {"web_tag":"p","web_tag_index":"100"}
 
 > {"type":"invoke","params":{"type":"webExpectation","webPredicate":{"type":"xpath","value":"//p[@class=\\"specialParagraph\\"]"},"webExpectation":"toExist"}}
-< Web expectation: toExist
-+ undefined
+< WebView: Expect xpath://p[@class="specialParagraph"] to exist
++ {"web_xpath":"//p[@class=\\"specialParagraph\\"]"}
 
 > {"type":"isReady","params":{}}
 

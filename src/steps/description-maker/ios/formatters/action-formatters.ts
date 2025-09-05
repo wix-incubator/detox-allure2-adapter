@@ -1,8 +1,8 @@
 import type { StepDescription } from '../../types';
+import { concat, msg, truncate } from '../../utils';
 import type { ActionInvocation } from '../detox-payload';
 import { formatWhileCondition } from './expectation-formatters';
 import { formatPredicate as p } from './predicate-formatters';
-import { concat, msg, truncate } from './utils';
 
 type ActionFormatter<T extends ActionInvocation> = (action: T) => StepDescription;
 

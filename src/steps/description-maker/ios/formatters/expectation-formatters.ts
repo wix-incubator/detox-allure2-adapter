@@ -1,7 +1,7 @@
 import type { StepDescription } from '../../types';
+import { concat, msg, percentVisible, truncate } from '../../utils';
 import type { ExpectationInvocation, Invocation } from '../detox-payload';
 import { formatPredicate } from './predicate-formatters';
-import { concat, msg, percentVisible, truncate } from './utils';
 
 const formatExpectationVerb = (invocation: ExpectationInvocation): string => {
   const hasNot = invocation.modifiers?.includes('not');

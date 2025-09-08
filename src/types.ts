@@ -1,6 +1,8 @@
 import type { AndroidEntry, IosEntry } from 'logkitten';
 import type { VideokittenOptionsIOS, VideokittenOptionsAndroid } from 'videokitten';
 
+export type OnErrorHandler = ((error: Error) => void) | 'throw' | 'ignore';
+
 export type DetoxAllure2AdapterOptions = {
   /**
    * Device logs configuration for per-step logging
@@ -15,9 +17,13 @@ export type DetoxAllure2AdapterOptions = {
    */
   deviceVideos?: boolean | DetoxAllure2AdapterDeviceVideoOptions;
   /**
+   * View hierarchy XML visualization for test failures
+   */
+  deviceViewHierarchy?: boolean | DetoxAllure2AdapterDeviceViewHierarchyOptions;
+  /**
    * Callback to handle errors
    */
-  onError?: (error: Error) => void;
+  onError?: OnErrorHandler;
 };
 
 export interface DetoxAllure2AdapterDeviceLogsOptions {
@@ -55,4 +61,8 @@ export interface DetoxAllure2AdapterDeviceVideoOptions {
   lazyStart?: boolean;
   ios?: Partial<VideokittenOptionsIOS>;
   android?: Partial<VideokittenOptionsAndroid>;
+}
+
+export interface DetoxAllure2AdapterDeviceViewHierarchyOptions {
+  // TODO: Add options
 }

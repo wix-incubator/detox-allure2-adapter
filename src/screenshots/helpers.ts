@@ -1,5 +1,3 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
 // eslint-disable-next-line import/no-internal-modules
 import type { AllureRuntime } from 'jest-allure2-reporter/api';
 import { screenkitten, type Screenkitten, ScreenkittenOptions } from 'screenkitten';
@@ -50,60 +48,16 @@ export class ScreenshotHelper {
     }
   }
 
-  async attachFromResultOrFailure(allure: AllureRuntime, result: unknown) {
-    const attached = await this.attachFromResult(allure, result);
-    if (!attached) {
-      await this.attachFailure(allure);
-    }
-  }
-
-  async attachFromResult(allure: AllureRuntime, result: unknown) {
-    if (!result) {
-      return false;
-    }
-
-    const wsResult = result as WebSocketResult;
-    if (wsResult.type !== 'testFailed' || !wsResult.params) {
-      return false;
-    }
-
-    const { params } = wsResult;
-    const visibilityArtifactDirs = [
-      params.visibilityFailingScreenshotsURL,
-      params.visibilityFailingRectsURL,
-    ].filter(Boolean) as string[];
-
-    let attached = false;
-
-    for (const visibilityDir of visibilityArtifactDirs) {
-      const files = await fs.readdir(visibilityDir).catch(() => []);
-      for (const name of files) {
-        const filePath = path.join(visibilityDir, name);
-        allure.fileAttachment(filePath, { name, handler: 'copy' });
-        attached = true;
-      }
-    }
-
-    return attached;
+  async takeScreenshot(): Promise<string> {
+    return this._kitten.takeScreenshot({ deviceId: this._device.id });
   }
 
   private async _attachScreenshot(allure: AllureRuntime, name = 'screenshot') {
-    const filePath = await this._kitten.takeScreenshot({ deviceId: this._device.id });
+    const filePath = await this.takeScreenshot();
 
     allure.fileAttachment(filePath, {
       name: `${name}.png`,
       handler: 'move',
     });
   }
-}
-
-/**
- * Private interface for Detox WebSocket result that may contain testFailed payload
- */
-interface WebSocketResult {
-  type?: string;
-  params?: {
-    visibilityFailingScreenshotsURL?: string;
-    visibilityFailingRectsURL?: string;
-  };
 }

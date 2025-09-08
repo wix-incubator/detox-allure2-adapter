@@ -2,8 +2,9 @@
 import type { AllureRuntime } from 'jest-allure2-reporter/api';
 import { type StepLogRecorder } from '../logs';
 import { type ScreenshotHelper } from '../screenshots';
-import { type WorkerWrapper } from '../utils';
+import type { DetoxTestFailedResult, WorkerWrapper } from '../utils';
 import { type VideoManager } from '../video';
+import { type ViewHierarchyHelper } from '../view-hierarchy';
 import { androidDescriptionMaker, iosDescriptionMaker } from './description-maker';
 import type { StepDescriptionMaker } from './description-maker';
 
@@ -14,6 +15,7 @@ export interface WrapWithStepsOptions {
   logs?: StepLogRecorder;
   screenshots?: ScreenshotHelper;
   videoManager?: VideoManager;
+  viewHierarchy?: ViewHierarchyHelper;
 }
 
 interface WrapWithDescriptionMakerOptions extends WrapWithStepsOptions {
@@ -29,7 +31,7 @@ interface WrapWithScreenshotTakingOptions {
 }
 
 export function wrapWithSteps(options: WrapWithStepsOptions) {
-  const { detox, worker } = options;
+  const { allure, detox, worker } = options;
   const { device } = detox;
   const platform = device.getPlatform();
 
@@ -45,6 +47,21 @@ export function wrapWithSteps(options: WrapWithStepsOptions) {
   wrapDeviceMethod(options, 'unmatchFace', 'Unmatch face');
   wrapDeviceMethod(options, 'matchFinger', 'Match finger');
   wrapDeviceMethod(options, 'unmatchFinger', 'Unmatch finger');
+
+  device.takeScreenshot = allure.createFileAttachment(device.takeScreenshot.bind(device), {
+    name: '{{firstOr "screenshot"}}.png',
+    handler: 'copy',
+  });
+
+  device.captureViewHierarchy = allure.createFileAttachment(
+    device.captureViewHierarchy.bind(device),
+    {
+      name: '{{firstOr "capture"}}.viewhierarchy.zip',
+      mimeType: 'application/zip',
+      handler: 'zip',
+    },
+  );
+
   wrapPilotMethod(options);
 
   const descriptionMaker = initDescriptionMaker(platform);
@@ -59,11 +76,13 @@ export function wrapWithSteps(options: WrapWithStepsOptions) {
     });
 
     const xcuitestRunner = worker.xcuitestRunner;
-    xcuitestRunner.execute = wrapSendMethod({
-      ...options,
-      descriptionMaker,
-      send: xcuitestRunner.execute.bind(xcuitestRunner),
-    });
+    if (xcuitestRunner) {
+      xcuitestRunner.execute = wrapSendMethod({
+        ...options,
+        descriptionMaker,
+        send: xcuitestRunner.execute.bind(xcuitestRunner),
+      });
+    }
   }
 }
 
@@ -167,21 +186,47 @@ function wrapSendMethod({
   logs,
   videoManager,
   screenshots,
+  viewHierarchy,
   send,
 }: WrapWithDescriptionMakerOptions) {
   const onActionSuccess = async () => {
     await logs?.attachAfterSuccess(allure);
   };
 
-  const onActionFailure = async (shouldSetStatus: boolean, result?: unknown) => {
+  const onActionFailure = async (shouldSetStatus: boolean, result?: DetoxTestFailedResult) => {
     if (shouldSetStatus) {
       allure.status('failed');
+
+      if (result?.params) {
+        const { NSLocalizedDescription, details, DetoxFailureInformation } = result.params;
+        let message = NSLocalizedDescription || details;
+        if (message) {
+          let trace = DetoxFailureInformation
+            ? `${DetoxFailureInformation.functionName || 'unknown'} at ${DetoxFailureInformation.file || 'unknown'}:${DetoxFailureInformation.lineNumber || 'unknown'}`
+            : undefined;
+
+          if (message.includes('\n')) {
+            const [first, ...rest] = message.split('\n');
+            if (trace) {
+              rest.push(trace);
+            }
+            message = first;
+            trace = rest.join('\n').trimStart();
+          }
+
+          allure.statusDetails({ message, trace });
+        }
+      }
     }
 
-    await Promise.all([
+    const [attachmentResult] = await Promise.all([
+      viewHierarchy?.attachFromResult(allure, result),
       logs?.attachAfterFailure(allure),
-      screenshots?.attachFromResultOrFailure(allure, result),
     ]);
+
+    if (!attachmentResult?.screenshotsAttached) {
+      await screenshots?.attachFailure(allure);
+    }
   };
 
   return async (...args: any[]) => {
@@ -194,8 +239,9 @@ function wrapSendMethod({
 
           try {
             const result = await send(...args);
-            const onActionDone = result?.type === 'testFailed' ? onActionFailure : onActionSuccess;
-            await onActionDone(true, result);
+            await (result?.type === 'testFailed'
+              ? onActionFailure(true, result as DetoxTestFailedResult)
+              : onActionSuccess());
             return result;
           } catch (error) {
             await onActionFailure(false);

@@ -70,8 +70,8 @@ Enables capturing device (iOS/Android) logs for each step. This feature uses the
 
 **Configuration:**
 
-- **`true`**: Enables log capture with default settings.
-- **`false`** (default): Disables log capture.
+- **`true`** (default): Enables log capture with default settings.
+- **`false`**: Disables log capture.
 - **`DetoxAllure2AdapterDeviceLogsOptions`** (object): Enables log capture and provides fine-grained control over the settings.
 
   - `ios: (entry: IosEntry) => boolean`: Filter function for iOS logs. Return `true` to include the log entry.
@@ -86,8 +86,8 @@ Enables taking screenshots for each step. This feature uses the [`screenkitten`]
 
 **Configuration:**
 
-- **`true`**: Enables screenshot capture with default settings.
-- **`false`** (default): Disables screenshot capture.
+- **`true`** (default): Enables screenshot capture with default settings.
+- **`false`**: Disables screenshot capture.
 - **`DetoxAllure2AdapterDeviceScreenshotOptions`** (object): Enables screenshot capture and provides fine-grained control over the settings.
 
   - `saveAll: boolean` (default: `false`): If `true`, saves screenshots for all steps. By default, only screenshots for failed steps are kept.
@@ -99,8 +99,8 @@ The recording starts automatically upon the first interaction with the device an
 
 **Configuration:**
 
-- **`true`**: Enables video recording with default settings.
-- **`false`** (default): Disables video recording.
+- **`true`** (default): Enables video recording with default settings.
+- **`false`**: Disables video recording.
 - **`DetoxAllure2AdapterDeviceVideoOptions`** (object): Enables recording and provides fine-grained control over the settings.
 
   - `saveAll: boolean` (default: `false`): If `true`, saves videos for all tests. By default, only videos for failed tests are kept.

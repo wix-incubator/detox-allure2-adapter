@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF_8' standalone='yes' ?>
+<ViewHierarchy platform="android">
+  <DecorView class="com.android.internal.policy.DecorView" width="1080" height="2400" visibility="visible" alpha="1.0" focused="false" x="0" y="0">
+    <LinearLayout class="android.widget.LinearLayout" width="1080" height="2274" visibility="visible" alpha="1.0" focused="false" x="0" y="63">
+      <ViewStub class="android.view.ViewStub" width="0" height="0" visibility="gone" alpha="1.0" focused="false" x="0" y="63" />
+      <FrameLayout class="android.widget.FrameLayout" width="1080" height="2274" visibility="visible" alpha="1.0" focused="false" x="0" y="63">
+        <FitWindowsLinearLayout class="androidx.appcompat.widget.FitWindowsLinearLayout" width="1080" height="2274" visibility="visible" alpha="1.0" focused="false" x="0" y="63">
+          <ViewStubCompat class="androidx.appcompat.widget.ViewStubCompat" width="0" height="0" visibility="gone" alpha="1.0" focused="false" x="0" y="63" />
+          <ContentFrameLayout class="androidx.appcompat.widget.ContentFrameLayout" width="1080" height="2274" visibility="visible" alpha="1.0" focused="false" x="0" y="63">
+            <ReactSurfaceView class="com.facebook.react.runtime.ReactSurfaceView" width="1080" height="2274" visibility="visible" alpha="1.0" focused="false" label="Choose a test Language Sanity Matchers Actions Visibility Expectation Integrative Actions FS Scroll Actions Assertions WaitFor Stress Switch Root Timeouts Orientation Permissions  |  Alerts Network RN Animations  |  Native Animation Device  |  Device Tap Location DatePicker WebView Attributes Crash  |  UI Crash  |  ANR Drag And Drop  |  Shape Match Element-Screenshots Init URL  |  Launch Args  |  Launch-Notification" x="0" y="63">
+              <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="293" height="65" visibility="visible" alpha="1.0" focused="false" label="Choose a test" x="393" y="293" text="Choose a test" />
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="162" height="72" visibility="visible" alpha="1.0" focused="false" label="Language" x="459" y="385">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="162" height="51" visibility="visible" alpha="1.0" focused="false" label="Language" x="459" y="385" text="Language" />
+              </ReactViewGroup>
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="101" height="72" visibility="visible" alpha="1.0" focused="false" label="Sanity" x="490" y="457">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="101" height="51" visibility="visible" alpha="1.0" focused="false" label="Sanity" x="490" y="457" text="Sanity" />
+              </ReactViewGroup>
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="155" height="72" visibility="visible" alpha="1.0" focused="false" label="Matchers" x="463" y="529">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="155" height="51" visibility="visible" alpha="1.0" focused="false" label="Matchers" x="463" y="529" text="Matchers" />
+              </ReactViewGroup>
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="124" height="72" visibility="visible" alpha="1.0" focused="false" label="Actions" x="478" y="601">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="124" height="51" visibility="visible" alpha="1.0" focused="false" label="Actions" x="478" y="601" text="Actions" />
+              </ReactViewGroup>
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="341" height="72" visibility="visible" alpha="1.0" focused="false" label="Visibility Expectation" x="370" y="673">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="341" height="51" visibility="visible" alpha="1.0" focused="false" label="Visibility Expectation" x="370" y="673" text="Visibility Expectation" />
+              </ReactViewGroup>
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="308" height="72" visibility="visible" alpha="1.0" focused="false" label="Integrative Actions" x="386" y="745">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="308" height="51" visibility="visible" alpha="1.0" focused="false" label="Integrative Actions" x="386" y="745" text="Integrative Actions" />
+              </ReactViewGroup>
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="277" height="72" visibility="visible" alpha="1.0" focused="false" label="FS Scroll Actions" x="402" y="817">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="277" height="51" visibility="visible" alpha="1.0" focused="false" label="FS Scroll Actions" x="402" y="817" text="FS Scroll Actions" />
+              </ReactViewGroup>
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="177" height="72" visibility="visible" alpha="1.0" focused="false" label="Assertions" x="452" y="889">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="177" height="51" visibility="visible" alpha="1.0" focused="false" label="Assertions" x="452" y="889" text="Assertions" />
+              </ReactViewGroup>
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="128" height="72" visibility="visible" alpha="1.0" focused="false" label="WaitFor" x="476" y="961">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="128" height="51" visibility="visible" alpha="1.0" focused="false" label="WaitFor" x="476" y="961" text="WaitFor" />
+              </ReactViewGroup>
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="105" height="72" visibility="visible" alpha="1.0" focused="false" label="Stress" x="488" y="1033">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="105" height="51" visibility="visible" alpha="1.0" focused="false" label="Stress" x="488" y="1033" text="Stress" />
+              </ReactViewGroup>
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="196" height="72" visibility="visible" alpha="1.0" focused="false" label="Switch Root" x="442" y="1105">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="196" height="51" visibility="visible" alpha="1.0" focused="false" label="Switch Root" x="442" y="1105" text="Switch Root" />
+              </ReactViewGroup>
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="155" height="72" visibility="visible" alpha="1.0" focused="false" label="Timeouts" x="463" y="1177">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="155" height="51" visibility="visible" alpha="1.0" focused="false" label="Timeouts" x="463" y="1177" text="Timeouts" />
+              </ReactViewGroup>
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="181" height="72" visibility="visible" alpha="1.0" focused="false" label="Orientation" x="450" y="1249">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="181" height="51" visibility="visible" alpha="1.0" focused="false" label="Orientation" x="450" y="1249" text="Orientation" />
+              </ReactViewGroup>
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="204" height="72" visibility="visible" alpha="1.0" focused="false" label="Permissions" x="350" y="1321">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="204" height="51" visibility="visible" alpha="1.0" focused="false" label="Permissions" x="350" y="1321" text="Permissions" />
+              </ReactViewGroup>
+              <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="80" height="72" visibility="visible" alpha="1.0" focused="false" label=" | " x="554" y="1321" text=" | " />
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="98" height="72" visibility="visible" alpha="1.0" focused="false" label="Alerts" x="633" y="1321">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="98" height="51" visibility="visible" alpha="1.0" focused="false" label="Alerts" x="633" y="1321" text="Alerts" />
+              </ReactViewGroup>
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="139" height="72" visibility="visible" alpha="1.0" focused="false" label="Network" x="471" y="1393">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="139" height="51" visibility="visible" alpha="1.0" focused="false" label="Network" x="471" y="1393" text="Network" />
+              </ReactViewGroup>
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="244" height="72" visibility="visible" alpha="1.0" focused="false" label="RN Animations" x="238" y="1465">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="244" height="51" visibility="visible" alpha="1.0" focused="false" label="RN Animations" x="238" y="1465" text="RN Animations" />
+              </ReactViewGroup>
+              <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="79" height="72" visibility="visible" alpha="1.0" focused="false" label=" | " x="482" y="1465" text=" | " />
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="281" height="72" visibility="visible" alpha="1.0" focused="false" label="Native Animation" x="561" y="1465">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="281" height="51" visibility="visible" alpha="1.0" focused="false" label="Native Animation" x="561" y="1465" text="Native Animation" />
+              </ReactViewGroup>
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="110" height="72" visibility="visible" alpha="1.0" focused="false" label="Device" x="356" y="1537">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="110" height="51" visibility="visible" alpha="1.0" focused="false" label="Device" x="356" y="1537" text="Device" />
+              </ReactViewGroup>
+              <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="80" height="72" visibility="visible" alpha="1.0" focused="false" label=" | " x="466" y="1537" text=" | " />
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="180" height="72" visibility="visible" alpha="1.0" focused="false" label="Device Tap" x="545" y="1537">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="180" height="51" visibility="visible" alpha="1.0" focused="false" label="Device Tap" x="545" y="1537" text="Device Tap" />
+              </ReactViewGroup>
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="142" height="72" visibility="visible" alpha="1.0" focused="false" label="Location" x="469" y="1609">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="142" height="51" visibility="visible" alpha="1.0" focused="false" label="Location" x="469" y="1609" text="Location" />
+              </ReactViewGroup>
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="179" height="72" visibility="visible" alpha="1.0" focused="false" label="DatePicker" x="451" y="1681">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="179" height="51" visibility="visible" alpha="1.0" focused="false" label="DatePicker" x="451" y="1681" text="DatePicker" />
+              </ReactViewGroup>
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="155" height="72" visibility="visible" alpha="1.0" focused="false" label="WebView" x="463" y="1753">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="155" height="51" visibility="visible" alpha="1.0" focused="false" label="WebView" x="463" y="1753" text="WebView" />
+              </ReactViewGroup>
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="162" height="72" visibility="visible" alpha="1.0" focused="false" label="Attributes" x="459" y="1825">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="162" height="51" visibility="visible" alpha="1.0" focused="false" label="Attributes" x="459" y="1825" text="Attributes" />
+              </ReactViewGroup>
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="96" height="72" visibility="visible" alpha="1.0" focused="false" label="Crash" x="307" y="1897">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="96" height="51" visibility="visible" alpha="1.0" focused="false" label="Crash" x="307" y="1897" text="Crash" />
+              </ReactViewGroup>
+              <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="79" height="72" visibility="visible" alpha="1.0" focused="false" label=" | " x="403" y="1897" text=" | " />
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="139" height="72" visibility="visible" alpha="1.0" focused="false" label="UI Crash" x="482" y="1897">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="139" height="51" visibility="visible" alpha="1.0" focused="false" label="UI Crash" x="482" y="1897" text="UI Crash" />
+              </ReactViewGroup>
+              <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="79" height="72" visibility="visible" alpha="1.0" focused="false" label=" | " x="620" y="1897" text=" | " />
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="73" height="72" visibility="visible" alpha="1.0" focused="false" label="ANR" x="700" y="1897">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="73" height="51" visibility="visible" alpha="1.0" focused="false" label="ANR" x="700" y="1897" text="ANR" />
+              </ReactViewGroup>
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="239" height="72" visibility="visible" alpha="1.0" focused="false" label="Drag And Drop" x="274" y="1969">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="239" height="51" visibility="visible" alpha="1.0" focused="false" label="Drag And Drop" x="274" y="1969" text="Drag And Drop" />
+              </ReactViewGroup>
+              <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="80" height="72" visibility="visible" alpha="1.0" focused="false" label=" | " x="513" y="1969" text=" | " />
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="215" height="72" visibility="visible" alpha="1.0" focused="false" label="Shape Match" x="592" y="1969">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="215" height="51" visibility="visible" alpha="1.0" focused="false" label="Shape Match" x="592" y="1969" text="Shape Match" />
+              </ReactViewGroup>
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="349" height="72" visibility="visible" alpha="1.0" focused="false" label="Element-Screenshots" x="366" y="2041">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="349" height="51" visibility="visible" alpha="1.0" focused="false" label="Element-Screenshots" x="366" y="2041" text="Element-Screenshots" />
+              </ReactViewGroup>
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="127" height="72" visibility="visible" alpha="1.0" focused="false" label="Init URL" x="136" y="2113">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="127" height="51" visibility="visible" alpha="1.0" focused="false" label="Init URL" x="136" y="2113" text="Init URL" />
+              </ReactViewGroup>
+              <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="80" height="72" visibility="visible" alpha="1.0" focused="false" label=" | " x="263" y="2113" text=" | " />
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="205" height="72" visibility="visible" alpha="1.0" focused="false" label="Launch Args" x="342" y="2113">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="205" height="51" visibility="visible" alpha="1.0" focused="false" label="Launch Args" x="342" y="2113" text="Launch Args" />
+              </ReactViewGroup>
+              <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="80" height="72" visibility="visible" alpha="1.0" focused="false" label=" | " x="546" y="2113" text=" | " />
+              <ReactViewGroup class="com.facebook.react.views.view.ReactViewGroup" width="319" height="72" visibility="visible" alpha="1.0" focused="false" label="Launch-Notification" x="626" y="2113">
+                <ReactTextView class="com.facebook.react.views.text.ReactTextView" width="319" height="51" visibility="visible" alpha="1.0" focused="false" label="Launch-Notification" x="626" y="2113" text="Launch-Notification" />
+              </ReactViewGroup>
+            </ReactSurfaceView>
+          </ContentFrameLayout>
+        </FitWindowsLinearLayout>
+      </FrameLayout>
+    </LinearLayout>
+  </DecorView>
+<ErrorMessage><![CDATA[No views in hierarchy found matching: (an instance of android.widget.TextView and view.getText() with or without transformation to match: is "supercalifragilisticexpialidocious" and view has effective visibility <VISIBLE>)
+]]></ErrorMessage></ViewHierarchy>

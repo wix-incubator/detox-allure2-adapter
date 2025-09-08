@@ -134,3 +134,5 @@ dist
 !__fixtures__
 .DS_Store
 /.ai
+*.temp.xml
+/src/view-hierarchy/xsl/index.ts

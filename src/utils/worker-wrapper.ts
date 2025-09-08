@@ -14,6 +14,10 @@ export class WorkerWrapper {
   }
 
   get xcuitestRunner() {
+    if (typeof this.worker.system !== 'function') {
+      return;
+    }
+
     return this.worker.system().element(this.worker.by.system.label(''))
       ._xcuitestRunner as XCUITestRunner;
   }
@@ -52,10 +56,25 @@ interface ArtifactPlugin {
 }
 
 interface AsyncWebSocket {
-  send: (...args: any[]) => Promise<{ type?: string }>;
+  send: (...args: any[]) => Promise<WebSocketResult>;
 }
 
 interface XCUITestRunner {
   // NOTE: { type?: string } is not accurate, but it does not cause bugs per se
   execute: (...args: any[]) => Promise<{ type?: string }>;
+}
+
+export interface WebSocketResult {
+  type?: string;
+  params?: {
+    viewHierarchy?: string;
+    viewHierarchyURL?: string;
+    NSLocalizedDescription?: string;
+    details?: string;
+    DetoxFailureInformation?: {
+      lineNumber?: number;
+      file?: string;
+      functionName?: string;
+    };
+  };
 }

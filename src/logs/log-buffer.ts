@@ -3,9 +3,8 @@ import type { AllureRuntime } from 'jest-allure2-reporter/api';
 
 import type { Emitter, AndroidEntry, IosEntry } from 'logkitten';
 import { Level, logkitten } from 'logkitten';
-import type { DetoxAllure2AdapterDeviceLogsOptions } from '../types';
-import type { DeviceWrapper } from '../utils';
-import { Deferred } from '../utils';
+import type { DetoxAllure2AdapterDeviceLogsOptions, OnErrorHandler } from '../types';
+import { createErrorHandler, Deferred, type DeviceWrapper } from '../utils';
 
 import { PIDEntryCollection } from './pid-entry-collection';
 
@@ -14,7 +13,7 @@ type AnyEntry = AndroidEntry & IosEntry;
 export interface LogBufferOptions {
   device: DeviceWrapper;
   options: true | DetoxAllure2AdapterDeviceLogsOptions;
-  onError?: (error: Error) => void;
+  onError?: OnErrorHandler;
 }
 
 export interface StepLogRecorder {
@@ -26,7 +25,6 @@ export interface StepLogRecorder {
   close(): Promise<void>;
 }
 
-const noop = () => {};
 const DEFAULT_SYNC_DELAY = 500;
 
 export class LogBuffer implements StepLogRecorder {
@@ -36,6 +34,7 @@ export class LogBuffer implements StepLogRecorder {
   private readonly _options: DetoxAllure2AdapterDeviceLogsOptions;
   private readonly _deferreds = new Set<Deferred<number>>();
   private readonly _syncDelay: number;
+  private readonly _errorHandler: (error: Error) => void;
 
   constructor(readonly _config: LogBufferOptions) {
     const deviceId = this._config.device.id;
@@ -43,6 +42,7 @@ export class LogBuffer implements StepLogRecorder {
 
     this._options = typeof this._config.options === 'boolean' ? {} : this._config.options;
     this._syncDelay = this._inferSyncDelay(platform, this._config.options);
+    this._errorHandler = createErrorHandler(this._config.onError ?? 'ignore');
     this._emitter =
       platform === 'android'
         ? logkitten({
@@ -58,7 +58,7 @@ export class LogBuffer implements StepLogRecorder {
           });
 
     this._emitter.on('entry', this._onEntry);
-    this._emitter.on('error', this._config.onError ?? noop);
+    this._emitter.on('error', this._errorHandler);
   }
 
   public setPid(pid: number) {

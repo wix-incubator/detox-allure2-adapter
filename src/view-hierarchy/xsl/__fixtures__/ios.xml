@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ViewHierarchy active-ptr="0x101c2d510">
+    <UIWindow alpha="1.0" class="UIWindow" focused="false" height="896" ptr="0x101729180" visibility="visible" width="414">
+        <UITransitionView alpha="1.0" class="UITransitionView" focused="false" height="896" ptr="0x101c10a30" visibility="visible" width="414" x="0" y="0">
+            <UIDropShadowView alpha="1.0" class="UIDropShadowView" focused="false" height="896" ptr="0x101c10e30" visibility="visible" width="414" x="0" y="0">
+                <RCTSurfaceHostingProxyRootView alpha="1.0" class="RCTSurfaceHostingProxyRootView" focused="false" height="896" ptr="0x101713c50" visibility="visible" width="414" x="0" y="0">
+                    <UIStackView alpha="1.0" class="UIStackView" focused="false" height="16" id="overlayStackView" ptr="0x101925470" visibility="visible" width="414" x="0" y="48" />
+                    <RCTSurfaceView alpha="1.0" class="RCTSurfaceView" focused="false" height="896" ptr="0x1018163e0" visibility="visible" width="414" x="0" y="0">
+                        <RCTRootComponentView alpha="1.0" class="RCTRootComponentView" focused="false" height="896" label="Tap Me Long Press Me 1.5s Long Press on Top Left Tap Me For Long Timeout Taps: 0 Toggle scroll overlays Text1 Text2 Text3 Text4 Text5 Text6 Text7 Text8 Text9 Text10 Text11 Text12 Horizontal scroll bar, 1 page Vertical scroll bar, 7 pages HText1 HText2 HText3 HText4 HText5 HText6 HText7 HText8 Horizontal scroll bar, 2 pages Vertical scroll bar, 2 pages Loading... Horizontal scroll bar, 1 page Vertical scroll bar, 1 page Horizontal scroll bar, 1 page Vertical scroll bar, 1 page" ptr="0x1018129d0" tag="1" visibility="visible" width="414" x="0" y="0">
+                            <RCTSafeAreaViewComponentView alpha="1.0" class="RCTSafeAreaViewComponentView" focused="false" height="896" id="View7990" label="Tap Me Long Press Me 1.5s Long Press on Top Left Tap Me For Long Timeout Taps: 0 Toggle scroll overlays Text1 Text2 Text3 Text4 Text5 Text6 Text7 Text8 Text9 Text10 Text11 Text12 Horizontal scroll bar, 1 page Vertical scroll bar, 7 pages HText1 HText2 HText3 HText4 HText5 HText6 HText7 HText8 Horizontal scroll bar, 2 pages Vertical scroll bar, 2 pages Loading... Horizontal scroll bar, 1 page Vertical scroll bar, 1 page Horizontal scroll bar, 1 page Vertical scroll bar, 1 page" ptr="0x101991bb0" tag="406" visibility="visible" width="414" x="0" y="0">
+                                <RCTViewComponentView alpha="1.0" class="RCTViewComponentView" focused="false" height="67" id="View7991" label="Tap Me" ptr="0x101c27270" tag="242" visibility="visible" width="414" x="0" y="48">
+                                    <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="17" label="Tap Me" ptr="0x101c262c0" tag="240" text="Tap Me" visibility="visible" width="414" x="0" y="40">
+                                        <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="17" ptr="0x101c26600" visibility="visible" width="414" x="0" y="0" />
+                                    </RCTParagraphComponentView>
+                                </RCTViewComponentView>
+                                <RCTViewComponentView alpha="1.0" class="RCTViewComponentView" focused="false" height="27" label="Long Press Me 1.5s" ptr="0x101c26f90" tag="248" visibility="visible" width="414" x="0" y="115">
+                                    <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="17" label="Long Press Me 1.5s" ptr="0x101c18c90" tag="246" text="Long Press Me 1.5s" visibility="visible" width="414" x="0" y="0">
+                                        <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="17" ptr="0x101c18fd0" visibility="visible" width="414" x="0" y="0" />
+                                    </RCTParagraphComponentView>
+                                </RCTViewComponentView>
+                                <RCTViewComponentView alpha="1.0" class="RCTViewComponentView" focused="false" height="27" label="Long Press on Top Left" ptr="0x101c26cb0" tag="254" visibility="visible" width="414" x="0" y="142">
+                                    <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="17" label="Long Press on Top Left" ptr="0x101c17b60" tag="252" text="Long Press on Top Left" visibility="visible" width="414" x="0" y="0">
+                                        <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="17" ptr="0x101c17ea0" visibility="visible" width="414" x="0" y="0" />
+                                    </RCTParagraphComponentView>
+                                </RCTViewComponentView>
+                                <RCTViewComponentView alpha="1.0" class="RCTViewComponentView" focused="false" height="27" label="Tap Me For Long Timeout" ptr="0x101c269d0" tag="260" visibility="visible" width="414" x="0" y="169">
+                                    <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="17" id="WhyDoAllTheTestIDsHaveTheseStrangeNames" label="Tap Me For Long Timeout" ptr="0x101c0efb0" tag="258" text="Tap Me For Long Timeout" visibility="visible" width="414" x="0" y="0">
+                                        <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="17" ptr="0x101c10440" visibility="visible" width="414" x="0" y="0" />
+                                    </RCTParagraphComponentView>
+                                </RCTViewComponentView>
+                                <RCTViewComponentView alpha="1.0" class="RCTViewComponentView" focused="false" height="17" label="Taps: 0" ptr="0x101c25fe0" tag="268" visibility="visible" width="47" x="183" y="196">
+                                    <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="17" id="UniqueId819" label="Taps: 0" ptr="0x101c357b0" tag="266" text="Taps: 0" visibility="visible" width="47" x="0" y="0">
+                                        <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="17" ptr="0x101c35af0" visibility="visible" width="47" x="0" y="0" />
+                                    </RCTParagraphComponentView>
+                                </RCTViewComponentView>
+                                <RCTViewComponentView alpha="1.0" class="RCTViewComponentView" focused="false" height="50" id="UniqueId937_wrapper" ptr="0x101c25d00" tag="274" visibility="visible" width="414" x="0" y="223">
+                                    <RCTTextInputComponentView alpha="1.0" class="RCTTextInputComponentView" focused="false" height="40" ptr="0x1019bffb0" tag="272" visibility="visible" width="374" x="20" y="0">
+                                        <RCTUITextField alpha="1.0" class="RCTUITextField" focused="false" height="38" id="UniqueId937" ptr="0x103878000" visibility="visible" width="372" x="1" y="1">
+                                            <_UITouchPassthroughView alpha="1.0" class="_UITouchPassthroughView" focused="false" height="0" ptr="0x1019d19d0" visibility="visible" width="0" x="0" y="0" />
+                                            <_UITextLayoutCanvasView alpha="1.0" class="_UITextLayoutCanvasView" focused="false" height="28" ptr="0x1019c04c0" visibility="visible" width="362" x="5" y="5">
+                                                <_UITextLayoutFragmentView alpha="1.0" class="_UITextLayoutFragmentView" focused="false" height="21" ptr="0x1019b5d70" visibility="visible" width="0" x="0" y="5" />
+                                            </_UITextLayoutCanvasView>
+                                        </RCTUITextField>
+                                    </RCTTextInputComponentView>
+                                </RCTViewComponentView>
+                                <RCTViewComponentView alpha="1.0" class="RCTViewComponentView" focused="false" height="40" id="NoTextInputInside" ptr="0x101c25a20" tag="276" visibility="visible" width="374" x="20" y="273" />
+                                <RCTTextInputComponentView alpha="1.0" class="RCTTextInputComponentView" focused="false" height="40" ptr="0x101979ce0" tag="278" visibility="visible" width="374" x="20" y="323">
+                                    <RCTUITextView alpha="1.0" class="RCTUITextView" focused="false" height="38" id="UniqueId005" ptr="0x1038d7600" text="some stuff here.." value="some stuff here.." visibility="visible" width="372" x="1" y="1">
+                                        <_UITextLayoutView alpha="1.0" class="_UITextLayoutView" focused="false" height="0" ptr="0x1019c9150" visibility="visible" width="0" x="0" y="0" />
+                                        <_UITextContainerView alpha="1.0" class="_UITextContainerView" focused="false" height="27" ptr="0x1019c8ad0" visibility="visible" width="372" x="0" y="0">
+                                            <_UITextLayoutCanvasView alpha="1.0" class="_UITextLayoutCanvasView" focused="false" height="27" ptr="0x1019c8f10" visibility="visible" width="372" x="0" y="0">
+                                                <UIView alpha="1.0" class="UIView" focused="false" height="27" ptr="0x1019c9730" visibility="visible" width="372" x="0" y="0" />
+                                                <_UITextLayoutFragmentView alpha="1.0" class="_UITextLayoutFragmentView" focused="false" height="19" ptr="0x1019b5760" visibility="visible" width="151" x="5" y="5" />
+                                            </_UITextLayoutCanvasView>
+                                        </_UITextContainerView>
+                                        <UILabel alpha="1.0" class="UILabel" focused="false" height="0" ptr="0x1019b2200" visibility="invisible" width="362" x="5" y="5" />
+                                        <_UIScrollViewScrollIndicator alpha="0.0" class="_UIScrollViewScrollIndicator" focused="false" height="3" label="Horizontal scroll bar, 1 page" ptr="0x101936a20" value="0%" visibility="visible" width="366" x="3" y="32">
+                                            <UIView alpha="1.0" class="UIView" focused="false" height="3" ptr="0x101986850" visibility="visible" width="366" x="0" y="0" />
+                                        </_UIScrollViewScrollIndicator>
+                                        <_UIScrollViewScrollIndicator alpha="0.0" class="_UIScrollViewScrollIndicator" focused="false" height="15" label="Vertical scroll bar, 1 page" ptr="0x1019c5a60" value="0%" visibility="visible" width="3" x="366" y="20">
+                                            <UIView alpha="1.0" class="UIView" focused="false" height="15" ptr="0x1019d1b70" visibility="visible" width="3" x="0" y="0" />
+                                        </_UIScrollViewScrollIndicator>
+                                    </RCTUITextView>
+                                </RCTTextInputComponentView>
+                                <RCTTextInputComponentView alpha="1.0" class="RCTTextInputComponentView" focused="false" height="40" ptr="0x1019ba030" tag="280" visibility="visible" width="374" x="20" y="373">
+                                    <RCTUITextField alpha="1.0" class="RCTUITextField" focused="false" height="38" id="UniqueId006" ptr="0x1038c2200" visibility="visible" width="372" x="1" y="1">
+                                        <_UITouchPassthroughView alpha="1.0" class="_UITouchPassthroughView" focused="false" height="28" ptr="0x1019d4070" visibility="visible" width="362" x="0" y="0" />
+                                        <_UITextLayoutCanvasView alpha="1.0" class="_UITextLayoutCanvasView" focused="false" height="28" ptr="0x1019ba740" visibility="visible" width="362" x="5" y="5">
+                                            <_UITextLayoutFragmentView alpha="1.0" class="_UITextLayoutFragmentView" focused="false" height="21" ptr="0x101974ee0" visibility="visible" width="0" x="0" y="5" />
+                                        </_UITextLayoutCanvasView>
+                                    </RCTUITextField>
+                                </RCTTextInputComponentView>
+                                <RCTViewComponentView alpha="1.0" class="RCTViewComponentView" focused="false" height="20" ptr="0x101c25740" tag="288" visibility="visible" width="414" x="0" y="423" />
+                                <RCTViewComponentView alpha="1.0" class="RCTViewComponentView" focused="false" height="17" label="Toggle scroll overlays" ptr="0x101c16bd0" tag="286" visibility="visible" width="139" x="137" y="424">
+                                    <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="17" id="toggleScrollOverlays" label="Toggle scroll overlays" ptr="0x101c350d0" tag="284" text="Toggle scroll overlays" visibility="visible" width="139" x="0" y="0">
+                                        <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="17" ptr="0x101c35410" visibility="visible" width="139" x="0" y="0" />
+                                    </RCTParagraphComponentView>
+                                </RCTViewComponentView>
+                                <RCTViewComponentView alpha="1.0" class="RCTViewComponentView" focused="false" height="100" ptr="0x101c0c950" tag="342" visibility="visible" width="414" x="0" y="443" />
+                                <RCTScrollViewComponentView alpha="1.0" class="RCTScrollViewComponentView" focused="false" height="98" id="ScrollView161" label="Text1 Text2 Text3 Text4 Text5 Text6 Text7 Text8 Text9 Text10 Text11 Text12 Horizontal scroll bar, 1 page Vertical scroll bar, 7 pages" ptr="0x1019bc160" tag="340" visibility="visible" width="412" x="1" y="444">
+                                    <RCTEnhancedScrollView alpha="1.0" class="RCTEnhancedScrollView" focused="false" height="98" ptr="0x1038d6c00" visibility="visible" width="412" x="0" y="0">
+                                        <UIView alpha="1.0" class="UIView" focused="false" height="600" ptr="0x101986a50" visibility="visible" width="412" x="0" y="0">
+                                            <RCTViewComponentView alpha="1.0" class="RCTViewComponentView" focused="false" height="600" label="Text1 Text2 Text3 Text4 Text5 Text6 Text7 Text8 Text9 Text10 Text11 Text12" ptr="0x101c19800" tag="338" visibility="visible" width="412" x="0" y="0">
+                                                <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="30" label="Text1" ptr="0x101c349f0" tag="292" text="Text1" visibility="visible" width="392" x="10" y="10">
+                                                    <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="30" ptr="0x101c34d30" visibility="visible" width="392" x="0" y="0" />
+                                                </RCTParagraphComponentView>
+                                                <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="30" label="Text2" ptr="0x101c34310" tag="296" text="Text2" visibility="visible" width="392" x="10" y="60">
+                                                    <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="30" ptr="0x101c34650" visibility="visible" width="392" x="0" y="0" />
+                                                </RCTParagraphComponentView>
+                                                <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="30" label="Text3" ptr="0x101c33c30" tag="300" text="Text3" visibility="visible" width="392" x="10" y="110">
+                                                    <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="30" ptr="0x101c33f70" visibility="visible" width="392" x="0" y="0" />
+                                                </RCTParagraphComponentView>
+                                                <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="30" label="Text4" ptr="0x101c33550" tag="304" text="Text4" visibility="visible" width="392" x="10" y="160">
+                                                    <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="30" ptr="0x101c33890" visibility="visible" width="392" x="0" y="0" />
+                                                </RCTParagraphComponentView>
+                                                <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="30" label="Text5" ptr="0x101c32e70" tag="308" text="Text5" visibility="visible" width="392" x="10" y="210">
+                                                    <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="30" ptr="0x101c331b0" visibility="visible" width="392" x="0" y="0" />
+                                                </RCTParagraphComponentView>
+                                                <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="30" label="Text6" ptr="0x101c32790" tag="312" text="Text6" visibility="visible" width="392" x="10" y="260">
+                                                    <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="30" ptr="0x101c32ad0" visibility="visible" width="392" x="0" y="0" />
+                                                </RCTParagraphComponentView>
+                                                <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="30" label="Text7" ptr="0x101c320b0" tag="316" text="Text7" visibility="visible" width="392" x="10" y="310">
+                                                    <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="30" ptr="0x101c323f0" visibility="visible" width="392" x="0" y="0" />
+                                                </RCTParagraphComponentView>
+                                                <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="30" label="Text8" ptr="0x101c319d0" tag="320" text="Text8" visibility="visible" width="392" x="10" y="360">
+                                                    <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="30" ptr="0x101c31d10" visibility="visible" width="392" x="0" y="0" />
+                                                </RCTParagraphComponentView>
+                                                <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="30" label="Text9" ptr="0x101c312f0" tag="324" text="Text9" visibility="visible" width="392" x="10" y="410">
+                                                    <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="30" ptr="0x101c31630" visibility="visible" width="392" x="0" y="0" />
+                                                </RCTParagraphComponentView>
+                                                <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="30" label="Text10" ptr="0x101c30c10" tag="328" text="Text10" visibility="visible" width="392" x="10" y="460">
+                                                    <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="30" ptr="0x101c30f50" visibility="visible" width="392" x="0" y="0" />
+                                                </RCTParagraphComponentView>
+                                                <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="30" label="Text11" ptr="0x101c30530" tag="332" text="Text11" visibility="visible" width="392" x="10" y="510">
+                                                    <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="30" ptr="0x101c30870" visibility="visible" width="392" x="0" y="0" />
+                                                </RCTParagraphComponentView>
+                                                <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="30" label="Text12" ptr="0x101c2fe50" tag="336" text="Text12" visibility="visible" width="392" x="10" y="560">
+                                                    <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="30" ptr="0x101c30190" visibility="visible" width="392" x="0" y="0" />
+                                                </RCTParagraphComponentView>
+                                            </RCTViewComponentView>
+                                        </UIView>
+                                        <_UIScrollViewScrollIndicator alpha="0.0" class="_UIScrollViewScrollIndicator" focused="false" height="3" label="Horizontal scroll bar, 1 page" ptr="0x1019ad450" value="0%" visibility="visible" width="403" x="3" y="92">
+                                            <UIView alpha="1.0" class="UIView" focused="false" height="3" ptr="0x1019b07f0" visibility="visible" width="403" x="0" y="0" />
+                                        </_UIScrollViewScrollIndicator>
+                                        <_UIScrollViewScrollIndicator alpha="0.0" class="_UIScrollViewScrollIndicator" focused="false" height="36" label="Vertical scroll bar, 7 pages" ptr="0x1019b0990" value="0%" visibility="visible" width="3" x="406" y="3">
+                                            <UIView alpha="1.0" class="UIView" focused="false" height="36" ptr="0x1019d4bd0" visibility="visible" width="3" x="0" y="0" />
+                                        </_UIScrollViewScrollIndicator>
+                                    </RCTEnhancedScrollView>
+                                </RCTScrollViewComponentView>
+                                <RCTViewComponentView alpha="1.0" class="RCTViewComponentView" focused="false" height="50" ptr="0x101c0c670" tag="380" visibility="visible" width="414" x="0" y="543" />
+                                <RCTScrollViewComponentView alpha="1.0" class="RCTScrollViewComponentView" focused="false" height="48" id="ScrollViewH" label="HText1 HText2 HText3 HText4 HText5 HText6 HText7 HText8 Horizontal scroll bar, 2 pages Vertical scroll bar, 2 pages" ptr="0x1019bd0f0" tag="378" visibility="visible" width="412" x="1" y="544">
+                                    <RCTEnhancedScrollView alpha="1.0" class="RCTEnhancedScrollView" focused="false" height="48" ptr="0x10385e000" visibility="visible" width="412" x="0" y="0">
+                                        <UIView alpha="1.0" class="UIView" focused="false" height="48" ptr="0x10193a070" visibility="visible" width="662" x="0" y="0">
+                                            <RCTViewComponentView alpha="1.0" class="RCTViewComponentView" focused="false" height="48" label="HText1 HText2 HText3 HText4 HText5 HText6 HText7 HText8" ptr="0x101c19520" tag="376" visibility="visible" width="662" x="0" y="0">
+                                                <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="28" label="HText1" ptr="0x101c2f770" tag="346" text="HText1" visibility="visible" width="63" x="10" y="10">
+                                                    <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="28" ptr="0x101c2fab0" visibility="visible" width="63" x="0" y="0" />
+                                                </RCTParagraphComponentView>
+                                                <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="28" label="HText2" ptr="0x101c2f090" tag="350" text="HText2" visibility="visible" width="63" x="92" y="10">
+                                                    <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="28" ptr="0x101c2f3d0" visibility="visible" width="63" x="0" y="0" />
+                                                </RCTParagraphComponentView>
+                                                <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="28" label="HText3" ptr="0x101c2e9b0" tag="354" text="HText3" visibility="visible" width="63" x="175" y="10">
+                                                    <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="28" ptr="0x101c2ecf0" visibility="visible" width="63" x="0" y="0" />
+                                                </RCTParagraphComponentView>
+                                                <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="28" label="HText4" ptr="0x101c2e2d0" tag="358" text="HText4" visibility="visible" width="63" x="258" y="10">
+                                                    <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="28" ptr="0x101c2e610" visibility="visible" width="63" x="0" y="0" />
+                                                </RCTParagraphComponentView>
+                                                <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="28" label="HText5" ptr="0x101c2dbf0" tag="362" text="HText5" visibility="visible" width="63" x="341" y="10">
+                                                    <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="28" ptr="0x101c2df30" visibility="visible" width="63" x="0" y="0" />
+                                                </RCTParagraphComponentView>
+                                                <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="28" label="HText6" ptr="0x101c2d510" tag="366" text="HText6" visibility="visible" width="63" x="424" y="10">
+                                                    <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="28" ptr="0x101c2d850" visibility="visible" width="63" x="0" y="0" />
+                                                </RCTParagraphComponentView>
+                                                <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="28" label="HText7" ptr="0x101c2ce30" tag="370" text="HText7" visibility="visible" width="63" x="506" y="10">
+                                                    <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="28" ptr="0x101c2d170" visibility="visible" width="63" x="0" y="0" />
+                                                </RCTParagraphComponentView>
+                                                <RCTParagraphComponentView alpha="1.0" class="RCTParagraphComponentView" focused="false" height="28" label="HText8" ptr="0x101c2c750" tag="374" text="HText8" visibility="visible" width="63" x="589" y="10">
+                                                    <RCTParagraphTextView alpha="1.0" class="RCTParagraphTextView" focused="false" height="28" ptr="0x101c2ca90" visibility="visible" width="63" x="0" y="0" />
+                                                </RCTParagraphComponentView>
+                                            </RCTViewComponentView>
+                                        </UIView>
+                                        <_UIScrollViewScrollIndicator alpha="0.0" class="_UIScrollViewScrollIndicator" focused="false" height="3" label="Horizontal scroll bar, 2 pages" ptr="0x1019d4d70" value="0%" visibility="visible" width="252" x="3" y="42">
+                                            <UIView alpha="1.0" class="UIView" focused="false" height="3" ptr="0x1019d4f40" visibility="visible" width="252" x="0" y="0" />
+                                        </_UIScrollViewScrollIndicator>
+                                        <_UIScrollViewScrollIndicator alpha="0.0" class="_UIScrollViewScrollIndicator" focused="false" height="42" label="Vertical scroll bar, 2 pages" ptr="0x1019d50e0" value="0%" visibility="visible" width="3" x="406" y="3">
+                                            <UIView alpha="1.0" class="UIView" focused="false" height="42" ptr="0x1019d52b0" visibility="visible" width="3" x="0" y="0" />
+                                        </_UIScrollViewScrollIndicator>
+                                    </RCTEnhancedScrollView>
+                                </RCTScrollViewComponentView>
+                                <RCTViewComponentView alpha="1.0" class="RCTViewComponentView" focused="false" height="100" ptr="0x101c19ae0" tag="388" visibility="visible" width="414" x="0" y="593" />
+                                <RCTScrollViewComponentView alpha="1.0" class="RCTScrollViewComponentView" focused="false" height="98" id="ScrollView799" label="Loading... Horizontal scroll bar, 1 page Vertical scroll bar, 1 page" ptr="0x1019bdad0" tag="386" visibility="visible" width="412" x="1" y="594">
+                                    <RCTEnhancedScrollView alpha="1.0" class="RCTEnhancedScrollView" focused="false" height="98" ptr="0x10385ee00" visibility="visible" width="412" x="0" y="0">
+                                        <UIRefreshControl alpha="1.0" class="UIRefreshControl" focused="false" height="81" ptr="0x101964b00" visibility="invisible" width="412" x="0" y="0">
+                                            <_UIRefreshControlModernContentView alpha="1.0" class="_UIRefreshControlModernContentView" focused="false" height="81" ptr="0x1019b9460" visibility="visible" width="412" x="0" y="0">
+                                                <UIView alpha="1.0" class="UIView" focused="false" height="100" ptr="0x1019739a0" visibility="visible" width="100" x="156" y="-9">
+                                                    <_UIRefreshControlModernReplicatorView alpha="1.0" class="_UIRefreshControlModernReplicatorView" focused="false" height="100" ptr="0x1019b9850" visibility="visible" width="100" x="0" y="0">
+                                                        <_UIRefreshControlSeedView alpha="1.0" class="_UIRefreshControlSeedView" focused="false" height="10" ptr="0x1019c58c0" visibility="visible" width="3" x="48" y="35" />
+                                                    </_UIRefreshControlModernReplicatorView>
+                                                </UIView>
+                                                <UILabel alpha="0.0" class="UILabel" focused="false" height="14" label="Loading..." ptr="0x1019c4990" text="Loading..." visibility="visible" width="392" x="10" y="59" />
+                                            </_UIRefreshControlModernContentView>
+                                        </UIRefreshControl>
+                                        <UIView alpha="1.0" class="UIView" focused="false" height="0" ptr="0x101936c20" visibility="visible" width="412" x="0" y="0">
+                                            <RCTPullToRefreshViewComponentView alpha="1.0" class="RCTPullToRefreshViewComponentView" focused="false" height="0" ptr="0x1019c2b60" tag="382" visibility="invisible" width="412" x="0" y="0" />
+                                            <RCTViewComponentView alpha="1.0" class="RCTViewComponentView" focused="false" height="0" ptr="0x101c19240" tag="384" visibility="visible" width="412" x="0" y="0" />
+                                        </UIView>
+                                        <_UIScrollViewScrollIndicator alpha="0.0" class="_UIScrollViewScrollIndicator" focused="false" height="3" label="Horizontal scroll bar, 1 page" ptr="0x1019d5450" value="0%" visibility="visible" width="406" x="3" y="92">
+                                            <UIView alpha="1.0" class="UIView" focused="false" height="3" ptr="0x1019d5620" visibility="visible" width="406" x="0" y="0" />
+                                        </_UIScrollViewScrollIndicator>
+                                        <_UIScrollViewScrollIndicator alpha="0.0" class="_UIScrollViewScrollIndicator" focused="false" height="7" label="Vertical scroll bar, 1 page" ptr="0x1019d58f0" value="0%" visibility="visible" width="3" x="406" y="88">
+                                            <UIView alpha="1.0" class="UIView" focused="false" height="7" ptr="0x1019d5ac0" visibility="visible" width="3" x="0" y="0" />
+                                        </_UIScrollViewScrollIndicator>
+                                    </RCTEnhancedScrollView>
+                                </RCTScrollViewComponentView>
+                                <RCTScrollViewComponentView alpha="1.0" class="RCTScrollViewComponentView" focused="false" height="30" id="PinchableScrollView" label="Horizontal scroll bar, 1 page Vertical scroll bar, 1 page" ptr="0x1019be660" tag="402" visibility="visible" width="414" x="0" y="748">
+                                    <RCTEnhancedScrollView alpha="1.0" class="RCTEnhancedScrollView" focused="false" height="30" ptr="0x103873800" visibility="visible" width="414" x="0" y="0">
+                                        <UIView alpha="1.0" class="UIView" focused="false" height="30" ptr="0x10192d430" visibility="visible" width="414" x="0" y="0">
+                                            <RCTViewComponentView alpha="1.0" class="RCTViewComponentView" focused="false" height="30" ptr="0x101c189b0" tag="400" visibility="visible" width="414" x="0" y="0">
+                                                <RCTViewComponentView alpha="1.0" class="RCTViewComponentView" focused="false" height="30" id="UniqueId007" ptr="0x101c186d0" tag="396" visibility="visible" width="30" x="0" y="0" />
+                                            </RCTViewComponentView>
+                                        </UIView>
+                                        <_UIScrollViewScrollIndicator alpha="0.0" class="_UIScrollViewScrollIndicator" focused="false" height="3" label="Horizontal scroll bar, 1 page" ptr="0x1019d5d90" value="0%" visibility="visible" width="408" x="3" y="24">
+                                            <UIView alpha="1.0" class="UIView" focused="false" height="3" ptr="0x1019d5f60" visibility="visible" width="408" x="0" y="0" />
+                                        </_UIScrollViewScrollIndicator>
+                                        <_UIScrollViewScrollIndicator alpha="0.0" class="_UIScrollViewScrollIndicator" focused="false" height="36" label="Vertical scroll bar, 1 page" ptr="0x1019d6230" value="0%" visibility="visible" width="3" x="408" y="-9">
+                                            <UIView alpha="1.0" class="UIView" focused="false" height="36" ptr="0x1019d6400" visibility="visible" width="3" x="0" y="0" />
+                                        </_UIScrollViewScrollIndicator>
+                                    </RCTEnhancedScrollView>
+                                </RCTScrollViewComponentView>
+                                <RNCSliderComponentView alpha="1.0" class="RNCSliderComponentView" focused="false" height="40" id="sliderWithASimpleID" ptr="0x1019bf1f0" tag="390" visibility="visible" width="374" x="20" y="708">
+                                    <RNCSlider alpha="1.0" class="RNCSlider" focused="false" height="40" ptr="0x1019bf740" value="25%" visibility="visible" width="374" x="0" y="0">
+                                        <_UISlideriOSVisualElement alpha="1.0" class="_UISlideriOSVisualElement" focused="false" height="40" ptr="0x1019bfb90" visibility="visible" width="374" x="0" y="0">
+                                            <UIView alpha="1.0" class="UIView" focused="false" height="4" ptr="0x10199a100" visibility="visible" width="269" x="102" y="18">
+                                                <UIImageView alpha="1.0" class="UIImageView" focused="false" height="4" ptr="0x101990d20" visibility="visible" width="368" x="-99" y="0" />
+                                            </UIView>
+                                            <UIView alpha="1.0" class="UIView" focused="false" height="4" ptr="0x1019b4990" visibility="visible" width="99" x="3" y="18">
+                                                <UIImageView alpha="1.0" class="UIImageView" focused="false" height="4" ptr="0x1019abc90" visibility="visible" width="368" x="0" y="0" />
+                                            </UIView>
+                                            <UISliderImageView alpha="1.0" class="UISliderImageView" focused="false" height="31" ptr="0x1019cc300" visibility="visible" width="31" x="86" y="4">
+                                                <UIImageView alpha="1.0" class="UIImageView" focused="false" height="56" ptr="0x1019cfcb0" visibility="visible" width="57" x="-13" y="-12" />
+                                            </UISliderImageView>
+                                        </_UISlideriOSVisualElement>
+                                    </RNCSlider>
+                                </RNCSliderComponentView>
+                            </RCTSafeAreaViewComponentView>
+                        </RCTRootComponentView>
+                    </RCTSurfaceView>
+                </RCTSurfaceHostingProxyRootView>
+            </UIDropShadowView>
+        </UITransitionView>
+    </UIWindow>
+  <ErrorMessage><![CDATA[View is not hittable at its visible point. Error: View is not visible around point.
+  - view point: {31.5, 14}
+  - visible bounds: {{inf, inf}, {0, 0}}
+  - view bounds: {{424, 10}, {63, 28}}
+  ---
+  Error: Error Domain=DetoxErrorDomain Code=0 "View "<RCTParagraphComponentView: 0x106026ef0>" is not visible: View is clipped by one or more of its superviews' bounds and does not pass visibility percent threshold (100)" UserInfo={NSLocalizedDescription=View "<RCTParagraphComponentView: 0x106026ef0>" is not visible: View is clipped by one or more of its superviews' bounds and does not pass visibility percent threshold (100)}]]></ErrorMessage>
+</ViewHierarchy>

@@ -1,39 +1,36 @@
-import fs from 'node:fs';
-import path from 'node:path';
-
 // eslint-disable-next-line import/no-internal-modules
 import detox from 'detox';
 // eslint-disable-next-line import/no-internal-modules
 import { worker } from 'detox/internals';
 // eslint-disable-next-line import/no-internal-modules
-import { allure, type MIMEInferer } from 'jest-allure2-reporter/api';
+import { allure } from 'jest-allure2-reporter/api';
 // eslint-disable-next-line node/no-extraneous-import
 import type { EnvironmentListenerFn } from 'jest-environment-emit';
 
-import { createLogHandler, createZipHandler } from './file-handlers';
+import { createZipHandler } from './file-handlers';
 import { LogBuffer } from './logs';
 import { ScreenshotHelper } from './screenshots';
 import { wrapWithSteps } from './steps';
 import type { DetoxAllure2AdapterOptions } from './types';
 import { DeviceWrapper, WorkerWrapper, once } from './utils';
 import { VideoManager } from './video';
+import { ViewHierarchyHelper } from './view-hierarchy';
 
 export const listener: EnvironmentListenerFn = (
   { testEvents },
   {
-    deviceLogs = false,
-    deviceScreenshots = false,
-    deviceVideos = false,
+    deviceLogs = true,
+    deviceScreenshots = true,
+    deviceVideos = true,
+    deviceViewHierarchy = true,
     onError,
   }: DetoxAllure2AdapterOptions = {},
 ) => {
-  let logHandler: ReturnType<typeof createLogHandler>;
-  let zipHandler: ReturnType<typeof createZipHandler>;
-  let inferMimeType: MIMEInferer;
   let workerWrapper: WorkerWrapper | undefined;
   let logs: LogBuffer | undefined;
   let screenshots: ScreenshotHelper | undefined;
   let videoManager: VideoManager | undefined;
+  let viewHierarchy: ViewHierarchyHelper | undefined;
 
   let $test: ReturnType<typeof allure.$bind> | undefined;
   let $hook: ReturnType<typeof allure.$bind> | undefined;
@@ -50,13 +47,16 @@ export const listener: EnvironmentListenerFn = (
   testEvents
     .on('setup', () => {
       allure.$plug((context) => {
-        logHandler = createLogHandler(context);
-        zipHandler = createZipHandler(context);
-        inferMimeType = context.inferMimeType;
+        context.fileAttachmentHandlers['zip'] ??= createZipHandler(context);
+        context.handlebars.registerHelper(
+          'firstOr',
+          function (this: unknown[], defaultValue: unknown) {
+            return this[0] || defaultValue;
+          },
+        );
       });
 
       workerWrapper = new WorkerWrapper(worker);
-      workerWrapper.artifactsManager.on('trackArtifact', onTrackArtifact);
 
       const device = new DeviceWrapper(detox.device);
       if (deviceLogs) {
@@ -83,10 +83,30 @@ export const listener: EnvironmentListenerFn = (
         const baseOptions = deviceVideos === true ? {} : deviceVideos;
         videoManager = new VideoManager({ device, options: baseOptions });
       }
+
+      if (deviceViewHierarchy) {
+        viewHierarchy = new ViewHierarchyHelper({
+          device,
+          onError,
+          screenshotsHelper: new ScreenshotHelper({
+            device,
+            options: true,
+            onError,
+          }),
+        });
+      }
     })
     .on('setup', async () => {
       if (workerWrapper) {
-        wrapWithSteps({ detox, worker: workerWrapper, allure, logs, screenshots, videoManager });
+        wrapWithSteps({
+          detox,
+          worker: workerWrapper,
+          allure,
+          logs,
+          screenshots,
+          videoManager,
+          viewHierarchy,
+        });
       }
     })
     .on('run_start', async () => {
@@ -131,41 +151,4 @@ export const listener: EnvironmentListenerFn = (
     })
     .once('teardown', flushArtifacts, -1)
     .once('test_environment_teardown', flushArtifacts, -1);
-
-  function onTrackArtifact(artifact: any) {
-    const $step = allure.$bind();
-    const $$test = $test;
-    const originalSave = artifact.doSave.bind(artifact);
-
-    artifact.doSave = async (artifactPath: string, ...args: unknown[]) => {
-      const result = await originalSave(artifactPath, ...args);
-      if (logs && artifactPath.endsWith('.log')) {
-        return result;
-      }
-
-      if (screenshots && artifactPath.includes('DETOX_VISIBILITY_')) {
-        return result;
-      }
-
-      if (!fs.existsSync(artifactPath)) {
-        return result;
-      }
-
-      const isDirectory = fs.lstatSync(artifactPath).isDirectory();
-      const isLog = path.extname(artifactPath) === '.log';
-      const isVideo = !!inferMimeType({ sourcePath: artifactPath })?.startsWith('video/');
-      const handler = isDirectory ? zipHandler : isLog ? logHandler : 'copy';
-      const mimeType = isLog ? 'text/plain' : isDirectory ? 'application/zip' : undefined;
-      const $allure = (isLog || isVideo ? $$test : $step) ?? $step;
-      const name = path.basename(artifactPath);
-
-      $allure.fileAttachment(artifactPath, {
-        name,
-        mimeType,
-        handler,
-      });
-
-      return result;
-    };
-  }
 };

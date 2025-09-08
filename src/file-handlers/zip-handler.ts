@@ -13,7 +13,7 @@ export function createZipHandler(pluginContext: AllureRuntimePluginContext): Fil
     return pluginContext.fileAttachmentHandlers.move({
       ...context,
       sourcePath: await packDirectory(context.sourcePath),
-      name: context.name + '.zip',
+      name: context.name.endsWith('.zip') ? context.name : `${context.name}.zip`,
       mimeType: 'application/zip',
     });
   };

@@ -49,6 +49,7 @@ module.exports = {
           deviceLogs: true,
           deviceScreenshots: true,
           deviceVideos: true,
+          deviceViewHierarchy: true,
         }],
       ],
     },
@@ -107,6 +108,18 @@ The recording starts automatically upon the first interaction with the device an
   - `ios: Partial<VideokittenOptionsIOS>`: Custom options for iOS, as defined by `videokitten`.
   - `android: Partial<VideokittenOptionsAndroid>`: Custom options for Android, as defined by `videokitten`.
 
+### `deviceViewHierarchy: boolean | DetoxAllure2AdapterDeviceViewHierarchyOptions`
+
+Enables capturing and visualizing the device's view hierarchy for test failures. This feature creates interactive HTML visualizations of the UI structure at the time of failure.
+
+**Configuration:**
+
+- **`true`** (default): Enables view hierarchy capture with default settings.
+- **`false`**: Disables view hierarchy capture.
+- **`DetoxAllure2AdapterDeviceViewHierarchyOptions`** (object): Enables capture and provides fine-grained control over the settings.
+
+  - Currently no additional options are available, but the interface is prepared for future enhancements.
+
 **Example with custom options:**
 
 ```js
@@ -132,7 +145,8 @@ module.exports = {
         android: {
           bitRate: 4_000_000,
         }
-      }
+      },
+      deviceViewHierarchy: true
     }],
   ],
 },

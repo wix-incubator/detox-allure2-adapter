@@ -18,6 +18,7 @@ const iosXmlPath = join(templateDir, '__fixtures__', 'ios.xml');
 const iosPngPath = join(templateDir, '__fixtures__', 'ios.png');
 const androidXmlPath = join(templateDir, '__fixtures__', 'android.xml');
 const androidPngPath = join(templateDir, '__fixtures__', 'android.png');
+const errorXmlPath = join(templateDir, '__fixtures__', 'error.xml');
 
 // Output paths
 const outputPath = join(templateDir, 'index.ts');
@@ -25,6 +26,7 @@ const iosNoBgPath = join(templateDir, '__fixtures__', 'ios-no-bg.temp.xml');
 const iosBgPath = join(templateDir, '__fixtures__', 'ios-bg.temp.xml');
 const androidNoBgPath = join(templateDir, '__fixtures__', 'android-no-bg.temp.xml');
 const androidBgPath = join(templateDir, '__fixtures__', 'android-bg.temp.xml');
+const errorTempPath = join(templateDir, '__fixtures__', 'error.temp.xml');
 
 console.log('🔄 Generating XSL template...');
 
@@ -97,12 +99,22 @@ export default ${JSON.stringify(dataUrl)};
   generatePlatformFiles('iOS', iosXmlPath, iosPngPath, iosNoBgPath, iosBgPath);
   generatePlatformFiles('Android', androidXmlPath, androidPngPath, androidNoBgPath, androidBgPath);
 
+  // Generate error temp file (no background version needed)
+  console.log('🔄 Processing test error fixture...');
+  const errorXml = readFileSync(errorXmlPath, 'utf-8');
+  const errorTemp = errorXml.replace(
+    '\n',
+    `\n${xslPi}\n`
+  );
+  writeFileSync(errorTempPath, errorTemp, 'utf-8');
+
   console.log('✅ Generated XSL template successfully');
   console.log(`📁 Output: ${outputPath}`);
   console.log(`📁 iOS No-bg fixture: ${iosNoBgPath}`);
   console.log(`📁 iOS Bg fixture: ${iosBgPath}`);
   console.log(`📁 Android No-bg fixture: ${androidNoBgPath}`);
   console.log(`📁 Android Bg fixture: ${androidBgPath}`);
+  console.log(`📁 Error test fixture: ${errorTempPath}`);
   console.log(`📊 Size: ${Math.round(combinedTemplate.length / 1024)}KB`);
 
 } catch (error) {

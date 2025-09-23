@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF_8' standalone='yes' ?>
-<ViewHierarchy platform="android">
+<ViewHierarchy platform="android" density="2.625">
   <DecorView class="com.android.internal.policy.DecorView" width="1080" height="2400" visibility="visible" alpha="1.0" focused="false" x="0" y="0">
     <LinearLayout class="android.widget.LinearLayout" width="1080" height="2274" visibility="visible" alpha="1.0" focused="false" x="0" y="63">
       <ViewStub class="android.view.ViewStub" width="0" height="0" visibility="gone" alpha="1.0" focused="false" x="0" y="63" />

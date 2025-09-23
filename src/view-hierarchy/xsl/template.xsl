@@ -5,6 +5,14 @@
   <xsl:variable name="activePtr" select="/ViewHierarchy/@active-ptr"/>
   <xsl:variable name="win" select="/ViewHierarchy/*[1]"/>
   <xsl:variable name="shot" select="/ViewHierarchy/@screenshot"/>
+  <xsl:variable name="density">
+    <xsl:choose>
+      <xsl:when test="/ViewHierarchy/@density">
+        <xsl:value-of select="/ViewHierarchy/@density"/>
+      </xsl:when>
+      <xsl:otherwise>1</xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
 
   <xsl:output method="html" indent="yes" encoding="utf-8"/>
 
@@ -38,8 +46,8 @@
           </xsl:attribute>
 
           <xsl:attribute name="style">
-            <xsl:if test="$win/@width">width: <xsl:value-of select="$win/@width"/>px;</xsl:if>
-            <xsl:if test="$win/@height">height: <xsl:value-of select="$win/@height"/>px;</xsl:if>
+            <xsl:if test="$win/@width">width: <xsl:value-of select="$win/@width div $density"/>px;</xsl:if>
+            <xsl:if test="$win/@height">height: <xsl:value-of select="$win/@height div $density"/>px;</xsl:if>
             <xsl:if test="$shot != ''">
               background: url('<xsl:value-of select="$shot"/>') 0 0/contain no-repeat;
             </xsl:if>
@@ -84,16 +92,16 @@
         position: absolute;
         <xsl:choose>
           <xsl:when test="/ViewHierarchy/@platform = 'android'">
-            left: <xsl:value-of select="sum(@x) - sum(parent::*/@x)"/>px;
-            top: <xsl:value-of select="sum(@y) - sum(parent::*/@y)"/>px;
+            left: <xsl:value-of select="(sum(@x) - sum(parent::*/@x)) div $density"/>px;
+            top: <xsl:value-of select="(sum(@y) - sum(parent::*/@y)) div $density"/>px;
           </xsl:when>
           <xsl:otherwise>
-            left: <xsl:value-of select="@x"/>px;
-            top: <xsl:value-of select="@y"/>px;
+            left: <xsl:value-of select="@x div $density"/>px;
+            top: <xsl:value-of select="@y div $density"/>px;
           </xsl:otherwise>
         </xsl:choose>
-        width: <xsl:value-of select="@width"/>px;
-        height: <xsl:value-of select="@height"/>px;
+        width: <xsl:value-of select="@width div $density"/>px;
+        height: <xsl:value-of select="@height div $density"/>px;
         <xsl:if test="@alpha">opacity: <xsl:value-of select="@alpha"/>;</xsl:if>
       </xsl:attribute>
 

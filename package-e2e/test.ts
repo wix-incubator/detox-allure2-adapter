@@ -6,6 +6,7 @@ import type {
   DetoxAllure2AdapterDeviceLogsOptions,
   DetoxAllure2AdapterDeviceScreenshotOptions,
   DetoxAllure2AdapterDeviceVideoOptions,
+  DetoxAllure2AdapterDeviceViewHierarchyOptions,
 } from 'detox-allure2-adapter';
 import DetoxAllurePathBuilder from 'detox-allure2-adapter/path-builder';
 import presetAllure from 'detox-allure2-adapter/preset-allure';
@@ -55,3 +56,5 @@ assertType<DetoxAllure2AdapterDeviceVideoOptions>({
     },
   },
 });
+
+assertType<DetoxAllure2AdapterDeviceViewHierarchyOptions>({});

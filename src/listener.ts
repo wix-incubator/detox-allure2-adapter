@@ -59,6 +59,10 @@ export const listener: EnvironmentListenerFn = (
       workerWrapper = new WorkerWrapper(worker);
 
       const device = new DeviceWrapper(detox.device);
+      if (device.platform !== 'ios' && device.platform !== 'android') {
+        return;
+      }
+
       if (deviceLogs) {
         logs = new LogBuffer({
           device,

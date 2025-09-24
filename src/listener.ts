@@ -37,11 +37,8 @@ export const listener: EnvironmentListenerFn = (
   let failing = false;
 
   const flushArtifacts = once(async () => {
-    await workerWrapper?.artifactsManager?._idlePromise;
     await Promise.all([logs?.close(), videoManager?.stopAndAttach($hook, failing)]);
-    workerWrapper = undefined;
-    logs = undefined;
-    videoManager = undefined;
+    workerWrapper = logs = screenshots = viewHierarchy = videoManager = undefined;
   });
 
   testEvents

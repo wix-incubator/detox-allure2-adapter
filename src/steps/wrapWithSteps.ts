@@ -47,6 +47,7 @@ export function wrapWithSteps(options: WrapWithStepsOptions) {
   wrapDeviceMethod(options, 'unmatchFace', 'Unmatch face');
   wrapDeviceMethod(options, 'matchFinger', 'Match finger');
   wrapDeviceMethod(options, 'unmatchFinger', 'Unmatch finger');
+  wrapDeviceMethod(options, 'resetAppState', 'Reset app state');
 
   device.takeScreenshot = allure.createFileAttachment(device.takeScreenshot.bind(device), {
     name: '{{firstOr "screenshot"}}.png',

@@ -5,12 +5,11 @@ import path from 'node:path';
 import type { AllureRuntime } from 'jest-allure2-reporter/api';
 
 import type { ScreenshotHelper } from '../screenshots';
-import type { OnErrorHandler } from '../types';
-import { createErrorHandler } from '../utils';
+import type { OnErrorHandlerFn } from '../types';
 
 export interface ScreenshotsCollectorConfig {
   screenshotsHelper: ScreenshotHelper;
-  onError: OnErrorHandler;
+  onError: OnErrorHandlerFn;
 }
 
 /**
@@ -18,10 +17,10 @@ export interface ScreenshotsCollectorConfig {
  */
 export class ScreenshotsCollector {
   private readonly _screenshotsHelper: ScreenshotHelper;
-  private readonly _handleError: (error: Error) => void;
+  private readonly _handleError: OnErrorHandlerFn;
 
   constructor({ screenshotsHelper, onError }: ScreenshotsCollectorConfig) {
-    this._handleError = createErrorHandler(onError);
+    this._handleError = onError;
     this._screenshotsHelper = screenshotsHelper;
   }
 

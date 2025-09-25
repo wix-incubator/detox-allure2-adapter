@@ -1,14 +1,14 @@
 // eslint-disable-next-line import/no-internal-modules
 import type { AllureRuntime } from 'jest-allure2-reporter/api';
-import { screenkitten, type Screenkitten, ScreenkittenOptions } from 'screenkitten';
+import { screenkitten, type Screenkitten } from 'screenkitten';
 
-import type { DetoxAllure2AdapterDeviceScreenshotOptions } from '../types';
+import type { DetoxAllure2AdapterDeviceScreenshotOptions, OnErrorHandlerFn } from '../types';
 import type { DeviceWrapper } from '../utils';
 
 export interface ScreenshotHelperConfig {
   device: DeviceWrapper;
   options: true | DetoxAllure2AdapterDeviceScreenshotOptions;
-  onError?: ScreenkittenOptions['onError'];
+  onError: OnErrorHandlerFn;
 }
 
 export class ScreenshotHelper {
@@ -16,7 +16,7 @@ export class ScreenshotHelper {
   private readonly _options: DetoxAllure2AdapterDeviceScreenshotOptions;
   private readonly _kitten: Screenkitten;
 
-  constructor({ device, options, onError = 'ignore' }: ScreenshotHelperConfig) {
+  constructor({ device, options, onError }: ScreenshotHelperConfig) {
     this._device = device;
     this._options = typeof options === 'boolean' ? {} : options;
     this._kitten =

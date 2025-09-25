@@ -1,7 +1,8 @@
 import type { AndroidEntry, IosEntry } from 'logkitten';
 import type { VideokittenOptionsIOS, VideokittenOptionsAndroid } from 'videokitten';
 
-export type OnErrorHandler = ((error: Error) => void) | 'throw' | 'ignore';
+export type OnErrorHandlerFn = (error: Error) => void;
+export type OnErrorHandler = OnErrorHandlerFn | 'throw' | 'ignore' | 'warn';
 
 export type DetoxAllure2AdapterOptions = {
   /**

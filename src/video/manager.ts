@@ -4,12 +4,13 @@ import path from 'node:path';
 import type { AllureRuntime } from 'jest-allure2-reporter/api';
 import { videokitten, type VideokittenOptions, type RecordingSession } from 'videokitten';
 
-import type { DetoxAllure2AdapterDeviceVideoOptions } from '../types';
+import type { DetoxAllure2AdapterDeviceVideoOptions, OnErrorHandlerFn } from '../types';
 import type { DeviceWrapper } from '../utils';
 
 export interface VideoManagerConfig {
   device: DeviceWrapper;
   options: Partial<DetoxAllure2AdapterDeviceVideoOptions> | true;
+  onError: OnErrorHandlerFn;
 }
 
 export class VideoManager {
@@ -31,6 +32,7 @@ export class VideoManager {
             platform: 'ios',
             deviceId: device.id,
             codec: 'h264',
+            onError: config.onError,
             ...options.ios,
           }
         : {
@@ -39,6 +41,7 @@ export class VideoManager {
             adbPath: device.adbPath,
             window: false,
             audio: false,
+            onError: config.onError,
             ...options.android,
           };
   }

@@ -12,7 +12,7 @@ import { LogBuffer } from './logs';
 import { ScreenshotHelper } from './screenshots';
 import { wrapWithSteps } from './steps';
 import type { DetoxAllure2AdapterOptions } from './types';
-import { DeviceWrapper, WorkerWrapper, once } from './utils';
+import { DeviceWrapper, WorkerWrapper, createErrorHandler, once } from './utils';
 import { VideoManager } from './video';
 import { ViewHierarchyHelper } from './view-hierarchy';
 
@@ -23,7 +23,7 @@ export const listener: EnvironmentListenerFn = (
     deviceScreenshots = true,
     deviceVideos = true,
     deviceViewHierarchy = true,
-    onError,
+    onError: onErrorOption,
   }: DetoxAllure2AdapterOptions = {},
 ) => {
   let workerWrapper: WorkerWrapper | undefined;
@@ -35,6 +35,8 @@ export const listener: EnvironmentListenerFn = (
   let $test: ReturnType<typeof allure.$bind> | undefined;
   let $hook: ReturnType<typeof allure.$bind> | undefined;
   let failing = false;
+
+  const onError = createErrorHandler(onErrorOption ?? 'warn');
 
   const flushArtifacts = once(async () => {
     await Promise.all([logs?.close(), videoManager?.stopAndAttach($hook, failing)]);
@@ -82,7 +84,7 @@ export const listener: EnvironmentListenerFn = (
 
       if (deviceVideos) {
         const baseOptions = deviceVideos === true ? {} : deviceVideos;
-        videoManager = new VideoManager({ device, options: baseOptions });
+        videoManager = new VideoManager({ device, options: baseOptions, onError });
       }
 
       if (deviceViewHierarchy) {

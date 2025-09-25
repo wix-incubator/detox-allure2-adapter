@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import type { AllureRuntime } from 'jest-allure2-reporter/api';
 
 import type { ScreenshotHelper } from '../screenshots';
-import type { OnErrorHandler } from '../types';
+import type { OnErrorHandlerFn } from '../types';
 import type { DetoxTestFailedResult, DeviceWrapper } from '../utils';
 import { ScreenshotsCollector } from './screenshots-collector';
 import { XmlBuilder } from './xml-processor';
@@ -14,7 +14,7 @@ const POINTER_REGEX = /(0x[\da-f]+)/;
 export interface ViewHierarchyHelperConfig {
   device: DeviceWrapper;
   screenshotsHelper: ScreenshotHelper;
-  onError?: OnErrorHandler;
+  onError: OnErrorHandlerFn;
 }
 
 /**
@@ -24,7 +24,7 @@ export class ViewHierarchyHelper {
   private readonly _screenshotsCollector: ScreenshotsCollector;
   private readonly _platform: 'ios' | 'android';
 
-  constructor({ device, screenshotsHelper, onError = 'ignore' }: ViewHierarchyHelperConfig) {
+  constructor({ device, screenshotsHelper, onError }: ViewHierarchyHelperConfig) {
     this._platform = device.platform;
     this._screenshotsCollector = new ScreenshotsCollector({
       onError,

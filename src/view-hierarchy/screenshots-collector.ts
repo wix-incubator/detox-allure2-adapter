@@ -29,7 +29,7 @@ export class ScreenshotsCollector {
    */
   async getBase64Screenshot(dir?: string): Promise<string | undefined> {
     // First, try to get screenshot from the provided directory
-    const directoryScreenshot = await this.getScreenshotFromDirectory(dir).catch(this._handleError);
+    const directoryScreenshot = await this.getScreenshotFromDirectory(dir);
     if (directoryScreenshot) {
       return directoryScreenshot;
     }
@@ -41,11 +41,22 @@ export class ScreenshotsCollector {
    * Attach all screenshots from a directory to Allure
    */
   async attachAllScreenshots(allure: AllureRuntime, dirPath?: string): Promise<boolean> {
-    if (!dirPath || !fs.existsSync(dirPath)) {
+    if (!dirPath) {
       return false;
     }
 
-    const files = await fs.promises.readdir(dirPath);
+    let files: string[];
+    try {
+      files = await fs.promises.readdir(dirPath);
+    } catch (error) {
+      this._handleError(error as Error);
+      return false;
+    }
+
+    if (files.length === 0) {
+      return false;
+    }
+
     await Promise.all(
       files.map((name) => {
         const screenshotPath = path.join(dirPath, name);
@@ -53,23 +64,27 @@ export class ScreenshotsCollector {
       }),
     );
 
-    return files.length > 0;
+    return true;
   }
 
   /**
    * Get base64 screenshot from a directory
    */
   private async getScreenshotFromDirectory(dir?: string): Promise<string | undefined> {
-    if (!dir || !fs.existsSync(dir)) {
+    if (!dir) {
       return undefined;
     }
 
-    const files = await fs.promises.readdir(dir);
-    const imageFiles = files.filter((file) => file.endsWith('.png'));
-    if (imageFiles.length > 0) {
-      const screenshotPath = path.join(dir, imageFiles[0]);
-      const buffer = await fs.promises.readFile(screenshotPath);
-      return buffer.toString('base64');
+    try {
+      const files = await fs.promises.readdir(dir);
+      const imageFiles = files.filter((file) => file.endsWith('.png'));
+      if (imageFiles.length > 0) {
+        const screenshotPath = path.join(dir, imageFiles[0]);
+        const buffer = await fs.promises.readFile(screenshotPath);
+        return buffer.toString('base64');
+      }
+    } catch (error) {
+      this._handleError(error as Error);
     }
 
     return undefined;
@@ -82,11 +97,18 @@ export class ScreenshotsCollector {
     let filePath: string | undefined;
     try {
       filePath = await this._screenshotsHelper.takeScreenshot();
-      const buffer = await fs.promises.readFile(filePath).catch(this._handleError);
-      return buffer ? buffer.toString('base64') : undefined;
+      const buffer = await fs.promises.readFile(filePath);
+      return buffer.toString('base64');
+    } catch (error) {
+      this._handleError(error as Error);
+      return undefined;
     } finally {
       if (filePath) {
-        await fs.promises.unlink(filePath).catch(this._handleError);
+        try {
+          await fs.promises.unlink(filePath);
+        } catch (error) {
+          this._handleError(error as Error);
+        }
       }
     }
   }

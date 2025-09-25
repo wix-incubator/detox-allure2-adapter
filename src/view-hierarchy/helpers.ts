@@ -1,5 +1,3 @@
-import fs from 'node:fs';
-
 // eslint-disable-next-line import/no-internal-modules
 import type { AllureRuntime } from 'jest-allure2-reporter/api';
 
@@ -23,9 +21,11 @@ export interface ViewHierarchyHelperConfig {
 export class ViewHierarchyHelper {
   private readonly _screenshotsCollector: ScreenshotsCollector;
   private readonly _platform: 'ios' | 'android';
+  private readonly _handleError: OnErrorHandlerFn;
 
   constructor({ device, screenshotsHelper, onError }: ViewHierarchyHelperConfig) {
     this._platform = device.platform;
+    this._handleError = onError;
     this._screenshotsCollector = new ScreenshotsCollector({
       onError,
       screenshotsHelper,
@@ -95,16 +95,21 @@ export class ViewHierarchyHelper {
     allure: AllureRuntime,
     dirPath?: string,
   ): Promise<boolean> {
-    if (!dirPath || !fs.existsSync(dirPath)) {
+    if (!dirPath) {
       return false;
     }
 
-    allure.fileAttachment(dirPath, {
-      name: 'ui.viewhierarchy.zip',
-      mimeType: 'application/zip',
-      handler: 'zip',
-    });
-    return true;
+    try {
+      await allure.fileAttachment(dirPath, {
+        name: 'ui.viewhierarchy.zip',
+        mimeType: 'application/zip',
+        handler: 'zip',
+      });
+      return true;
+    } catch (error) {
+      this._handleError(error as Error);
+      return false;
+    }
   }
 
   private extractPointer(str?: string): string | undefined {

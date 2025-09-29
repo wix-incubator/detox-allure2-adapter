@@ -16,6 +16,7 @@ export interface WrapWithStepsOptions {
   screenshots?: ScreenshotHelper;
   videoManager?: VideoManager;
   viewHierarchy?: ViewHierarchyHelper;
+  userArtifacts: 'ignore' | 'copy' | 'move';
 }
 
 interface WrapWithDescriptionMakerOptions extends WrapWithStepsOptions {
@@ -31,37 +32,72 @@ interface WrapWithScreenshotTakingOptions {
 }
 
 export function wrapWithSteps(options: WrapWithStepsOptions) {
-  const { allure, detox, worker } = options;
+  const { allure, detox, worker, userArtifacts } = options;
   const { device } = detox;
   const platform = device.getPlatform();
 
   // Wrap device methods using the helper
   wrapDeviceMethod(options, 'launchApp', 'Launch app');
   wrapDeviceMethod(options, 'relaunchApp', 'Relaunch app');
-  wrapDeviceMethod(options, 'terminateApp', 'Terminate app');
   wrapDeviceMethod(options, 'openURL', 'Open URL');
-  wrapDeviceMethod(options, 'reloadReactNative', 'Reload React Native bundle');
+  wrapDeviceMethod(options, 'reloadReactNative', 'Reload React Native');
   wrapDeviceMethod(options, 'sendToHome', 'Send app to background');
   wrapDeviceMethod(options, 'setOrientation', 'Set orientation');
   wrapDeviceMethod(options, 'matchFace', 'Match face');
   wrapDeviceMethod(options, 'unmatchFace', 'Unmatch face');
   wrapDeviceMethod(options, 'matchFinger', 'Match finger');
   wrapDeviceMethod(options, 'unmatchFinger', 'Unmatch finger');
-  wrapDeviceMethod(options, 'resetAppState', 'Reset app state');
 
-  device.takeScreenshot = allure.createFileAttachment(device.takeScreenshot.bind(device), {
-    name: '{{firstOr "screenshot"}}.png',
-    handler: 'copy',
-  });
-
-  device.captureViewHierarchy = allure.createFileAttachment(
-    device.captureViewHierarchy.bind(device),
-    {
-      name: '{{firstOr "capture"}}.viewhierarchy.zip',
-      mimeType: 'application/zip',
-      handler: 'zip',
-    },
+  device.installApp = allure.createStep('Install app', device.installApp.bind(device));
+  device.resetContentAndSettings = allure.createStep(
+    'Reset content and settings',
+    device.resetContentAndSettings.bind(device),
   );
+  device.uninstallApp = allure.createStep('Uninstall app', device.uninstallApp.bind(device));
+  device.terminateApp = allure.createStep('Terminate app', device.terminateApp.bind(device));
+  device.selectApp = allure.createStep('Select app {{0}}', device.selectApp.bind(device));
+
+  if (typeof device.resetAppState === 'function') {
+    device.resetAppState = allure.createStep('Reset app state', device.resetAppState.bind(device));
+  }
+
+  if (userArtifacts === 'copy' || userArtifacts === 'move') {
+    device.takeScreenshot = allure.createFileAttachment(device.takeScreenshot.bind(device), {
+      name: '{{firstOr "screenshot"}}.png',
+      handler: userArtifacts === 'move' ? 'mv-delayed' : 'copy',
+    });
+    device.takeScreenshot = allure.createStep('Take screenshot', [null], device.takeScreenshot);
+
+    device.captureViewHierarchy = allure.createFileAttachment(
+      device.captureViewHierarchy.bind(device),
+      {
+        name: '{{firstOr "capture"}}.viewhierarchy.zip',
+        mimeType: 'application/zip',
+        handler: userArtifacts === 'move' ? 'zip-rm' : 'zip',
+      },
+    );
+    device.captureViewHierarchy = allure.createStep(
+      'Capture view hierarchy',
+      [null],
+      device.captureViewHierarchy,
+    );
+
+    if (typeof device.generateViewHierarchyXml === 'function') {
+      device.generateViewHierarchyXml = allure.createAttachment(
+        device.generateViewHierarchyXml.bind(device),
+        {
+          name: 'viewhierarchy.xml',
+          mimeType: 'application/xml',
+        },
+      );
+
+      device.generateViewHierarchyXml = allure.createStep(
+        'Generate view hierarchy XML',
+        ['shouldInjectTestIds'],
+        device.generateViewHierarchyXml,
+      );
+    }
+  }
 
   wrapPilotMethod(options);
 

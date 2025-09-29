@@ -1,3 +1,5 @@
+import fs from 'node:fs/promises';
+
 // eslint-disable-next-line import/no-internal-modules
 import type { AllureRuntime } from 'jest-allure2-reporter/api';
 
@@ -100,10 +102,19 @@ export class ViewHierarchyHelper {
     }
 
     try {
+      const files = await fs.readdir(dirPath);
+      if (files.length === 0) {
+        return false;
+      }
+    } catch {
+      return false;
+    }
+
+    try {
       await allure.fileAttachment(dirPath, {
         name: 'ui.viewhierarchy.zip',
         mimeType: 'application/zip',
-        handler: 'zip',
+        handler: 'zip-rm',
       });
       return true;
     } catch (error) {

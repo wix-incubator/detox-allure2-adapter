@@ -1,5 +1,8 @@
 # detox-allure2-adapter
 
+> [!IMPORTANT]
+> **Breaking Change in v1.0.0-alpha.35**: This version introduces a major architectural change where the adapter replaces Detox's built-in artifacts manager. This means Detox's native screenshot, video, and UI hierarchy collection is disabled, and the adapter now handles all artifact collection. If you're upgrading from an earlier version, you may need to adjust your configuration and test expectations.
+
 ## Prerequisites
 
 To use Detox, Jest, and Allure together, please verify that the following modules are part of your `devDependencies` in your `package.json` file.
@@ -63,7 +66,29 @@ Here's a brief explanation of what you just added:
 
 - `testEnvironmentOptions` section: We added three event listener modules that will run during our tests — `jest-metadata`, `jest-allure2-reporter`, and `detox-allure2-adapter`. These listeners will collect necessary metadata and feed test result data to our Allure reports.
 
+## Important Notes
+
+### Artifacts Management
+
+This adapter replaces Detox's built-in artifacts manager with its own implementation to provide better integration with Allure reporting. This means:
+
+- All Detox's native artifacts (except `detox.log`) are disabled in favor of the adapter's implementation
+- User artifacts (like `device.takeScreenshot()`) are automatically integrated with Allure when `userArtifacts` is not set to `'ignore'`
+- All artifacts are stored in the `artifacts/` directory by default
+
 ## Adapter Options
+
+### `userArtifacts: 'ignore' | 'copy' | 'move'`
+
+Controls how user artifacts (like `device.takeScreenshot()`, `device.captureViewHierarchy()`, etc.) are handled by the adapter.
+
+**Configuration:**
+
+- **`'move'`** (default): Copy user artifacts to the Allure attachments directory and delete the temporary file after the test suite completes. This imitates Detox's default behavior.
+- **`'copy'`**: Copy user artifacts to the Allure attachments directory and keep the original file intact.
+- **`'ignore'`**: Disable automatic handling of user artifacts. You'll need to manually attach them to Allure reports.
+
+**Note:** When `userArtifacts` is set to `'copy'` or `'move'`, the adapter automatically wraps device methods like `takeScreenshot()` and `captureViewHierarchy()` to integrate them with Allure reporting.
 
 ### `deviceLogs: boolean | DetoxAllure2AdapterDeviceLogsOptions`
 
@@ -129,6 +154,7 @@ module.exports = {
     'jest-metadata/environment-listener',
     'jest-allure2-reporter/environment-listener',
     ['detox-allure2-adapter', {
+      userArtifacts: 'move',
       deviceLogs: {
         saveAll: true,
         ios: (entry) => entry.level === 'error',

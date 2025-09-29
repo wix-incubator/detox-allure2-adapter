@@ -1,18 +1,11 @@
 const config: Partial<Detox.DetoxConfig> = {
   artifacts: {
+    rootDir: 'artifacts/',
     plugins: {
-      log: 'failing',
-      screenshot: {
-        enabled: true,
-        keepOnlyFailedTestsArtifacts: true,
-        shouldTakeAutomaticSnapshots: true,
-        takeWhen: {
-          testStart: false,
-          testFailure: true,
-          testDone: false,
-          appNotReady: true,
-        },
-      },
+      log: 'all',
+      screenshot: 'manual',
+      video: 'none',
+      instruments: 'none',
       uiHierarchy: 'enabled',
     },
   },

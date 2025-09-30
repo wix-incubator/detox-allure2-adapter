@@ -9,10 +9,10 @@ To use Detox, Jest, and Allure together, please verify that the following module
 
 ```json
 "devDependencies": {
-  "detox": "^20.39.0",
-  "detox-allure2-adapter": "^1.0.0-alpha.30",
-  "jest": "^29.7.0",
-  "jest-allure2-reporter": "^2.2.6",
+  "detox": "^20.42.0",
+  "detox-allure2-adapter": "^1.0.0-alpha.35",
+  "jest": "^30.2.0",
+  "jest-allure2-reporter": "^2.2.7",
   "jest-metadata": "^1.6.0"
 }
 ```

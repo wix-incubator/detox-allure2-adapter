@@ -7,7 +7,12 @@ import { allure } from 'jest-allure2-reporter/api';
 // eslint-disable-next-line node/no-extraneous-import
 import type { EnvironmentListenerFn } from 'jest-environment-emit';
 
-import { createZipHandler } from './file-handlers';
+import {
+  createDelayedMvHandler,
+  createZipHandler,
+  createZipRmHandler,
+  RecycleBin,
+} from './file-handlers';
 import { LogBuffer } from './logs';
 import { ScreenshotHelper } from './screenshots';
 import { wrapWithSteps } from './steps';
@@ -23,6 +28,7 @@ export const listener: EnvironmentListenerFn = (
     deviceScreenshots = true,
     deviceVideos = true,
     deviceViewHierarchy = true,
+    userArtifacts = 'move',
     onError: onErrorOption,
   }: DetoxAllure2AdapterOptions = {},
 ) => {
@@ -37,16 +43,23 @@ export const listener: EnvironmentListenerFn = (
   let failing = false;
 
   const onError = createErrorHandler(onErrorOption ?? 'warn');
+  const recycleBin = RecycleBin.instance(onError);
 
   const flushArtifacts = once(async () => {
-    await Promise.all([logs?.close(), videoManager?.stopAndAttach($hook, failing)]);
+    await Promise.all([
+      logs?.close(),
+      videoManager?.stopAndAttach($hook, failing),
+      recycleBin.clear(),
+    ]);
     workerWrapper = logs = screenshots = viewHierarchy = videoManager = undefined;
   });
 
   testEvents
     .on('setup', () => {
       allure.$plug((context) => {
+        context.fileAttachmentHandlers['mv-delayed'] ??= createDelayedMvHandler(context);
         context.fileAttachmentHandlers['zip'] ??= createZipHandler(context);
+        context.fileAttachmentHandlers['zip-rm'] ??= createZipRmHandler(context);
         context.handlebars.registerHelper(
           'firstOr',
           function (this: unknown[], defaultValue: unknown) {
@@ -60,6 +73,22 @@ export const listener: EnvironmentListenerFn = (
       const device = new DeviceWrapper(detox.device);
       if (device.platform !== 'ios' && device.platform !== 'android') {
         return;
+      }
+
+      if (workerWrapper.artifactsManager) {
+        const noop = () => Promise.resolve();
+        const artifactsManager = workerWrapper.artifactsManager;
+
+        if (artifactsManager._artifactPlugins.uiHierarchy) {
+          artifactsManager._artifactPlugins.uiHierarchy._registerSnapshot = noop;
+        }
+
+        if (artifactsManager._artifactPlugins.screenshot) {
+          artifactsManager._artifactPlugins.screenshot._registerSnapshot = noop;
+        }
+
+        artifactsManager._callPlugins = noop;
+        artifactsManager._callSinglePlugin = noop;
       }
 
       if (deviceLogs) {
@@ -98,6 +127,18 @@ export const listener: EnvironmentListenerFn = (
           }),
         });
       }
+
+      if (device.platform === 'ios') {
+        workerWrapper.eventEmitter.on('beforeLaunchApp', (event) => {
+          if (viewHierarchy) {
+            event.launchArgs.detoxDebugVisibility = 'YES';
+            event.launchArgs.detoxDisableHierarchyDump = 'NO';
+          } else {
+            event.launchArgs.detoxDebugVisibility = 'NO';
+            event.launchArgs.detoxDisableHierarchyDump = 'YES';
+          }
+        });
+      }
     })
     .on('setup', async () => {
       if (workerWrapper) {
@@ -109,6 +150,7 @@ export const listener: EnvironmentListenerFn = (
           screenshots,
           videoManager,
           viewHierarchy,
+          userArtifacts,
         });
       }
     })

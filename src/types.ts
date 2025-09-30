@@ -25,6 +25,14 @@ export type DetoxAllure2AdapterOptions = {
    * Callback to handle errors
    */
   onError?: OnErrorHandler;
+  /**
+   * How to handle user artifacts (device.takeScreenshot(), etc)
+   * - `move`: Copy user artifacts to the allure attachments directory and delete the temporary file after the test suite completes
+   * - `copy`: Copy user artifacts to the allure attachments directory and keep the file intact
+   * - `ignore`: Ignore user artifacts
+   * @default 'move'
+   */
+  userArtifacts?: 'ignore' | 'copy' | 'move';
 };
 
 export interface DetoxAllure2AdapterDeviceLogsOptions {

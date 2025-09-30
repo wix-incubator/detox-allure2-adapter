@@ -8,6 +8,8 @@ import archiver from 'archiver';
 // eslint-disable-next-line import/no-internal-modules
 import type { AllureRuntimePluginContext, FileAttachmentHandler } from 'jest-allure2-reporter/api';
 
+import { RecycleBin } from './RecycleBin';
+
 export function createZipHandler(pluginContext: AllureRuntimePluginContext): FileAttachmentHandler {
   return async function zipHandler(context) {
     return pluginContext.fileAttachmentHandlers.move({
@@ -16,6 +18,17 @@ export function createZipHandler(pluginContext: AllureRuntimePluginContext): Fil
       name: context.name.endsWith('.zip') ? context.name : `${context.name}.zip`,
       mimeType: 'application/zip',
     });
+  };
+}
+
+export function createZipRmHandler(
+  pluginContext: AllureRuntimePluginContext,
+): FileAttachmentHandler {
+  const zipHandler = createZipHandler(pluginContext);
+
+  return function zipRmHandler(context) {
+    RecycleBin.instance().add(context.sourcePath);
+    return zipHandler(context);
   };
 }
 

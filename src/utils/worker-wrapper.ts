@@ -9,6 +9,10 @@ export class WorkerWrapper {
     return this.worker._eventEmitter as EventEmitter;
   }
 
+  get artifactsManager() {
+    return this.worker._artifactsManager as ArtifactsManager;
+  }
+
   get xcuitestRunner() {
     if (typeof this.worker.system !== 'function') {
       return;
@@ -20,9 +24,32 @@ export class WorkerWrapper {
 }
 
 interface EventEmitter {
-  on(event: 'beforeLaunchApp', callback: () => void): void;
+  on(
+    event: 'beforeLaunchApp',
+    callback: (event: {
+      bundleId: string;
+      deviceId: string;
+      launchArgs: Record<string, any>;
+    }) => void,
+  ): void;
   on(event: 'launchApp', callback: (event: { pid: number }) => void): void;
   on(event: 'terminateApp', callback: () => void): void;
+  on(
+    event: 'createExternalArtifact',
+    callback: (event: { pluginId: string; artifactName: string; artifactPath: string }) => void,
+  ): void;
+}
+
+type ArtifactPluginKey = 'instruments' | 'log' | 'screenshot' | 'video' | 'uiHierarchy';
+
+interface ArtifactsManager {
+  _artifactPlugins: Record<ArtifactPluginKey, ArtifactPlugin | undefined>;
+  _callPlugins: (...args: unknown[]) => Promise<void>;
+  _callSinglePlugin: (...args: unknown[]) => Promise<void>;
+}
+
+interface ArtifactPlugin {
+  _registerSnapshot?: (...args: unknown[]) => unknown;
 }
 
 interface AsyncWebSocket {

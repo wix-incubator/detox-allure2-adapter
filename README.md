@@ -133,6 +133,8 @@ The recording starts automatically upon the first interaction with the device an
   - `ios: Partial<VideokittenOptionsIOS>`: Custom options for iOS, as defined by `videokitten`.
   - `android: Partial<VideokittenOptionsAndroid>`: Custom options for Android, as defined by `videokitten`.
 
+Refer to the [`videokitten` documentation](https://www.npmjs.com/package/videokitten) for a full list of options for each platform.
+
 ### `deviceViewHierarchy: boolean | DetoxAllure2AdapterDeviceViewHierarchyOptions`
 
 Enables capturing and visualizing the device's view hierarchy for test failures. This feature creates interactive HTML visualizations of the UI structure at the time of failure.
@@ -196,10 +198,8 @@ module.exports = {
 },
 ```
 
-Refer to the [`videokitten` documentation](https://www.npmjs.com/package/videokitten) for a full list of options for each platform.
-
 ## Running Tests
 
 After making these changes, you can run your tests as usual. The tests will run with Detox and Jest, and the results will be reported using Allure. Configure your `npm test` script in the `package.json` file to run your Detox tests.
 
-Depending on how `jest-allure2-reporter` is configured, you should be able to see the Allure reports in the output directory `allure-results` (or the one that is specified by you). You will need the Allure command line tool to generate a report in a browser viewable format. The report data is present but needs Allure to view it in a human-readable format.
+Depending on how `jest-allure2-reporter` is configured, you should be able to see the Allure reports in the output directory `artifacts` (or `allure-results`, or the one that is specified by you). You will need the Allure command line tool to generate a report in a browser viewable format. The report data is present but needs Allure to view it in a human-readable format.

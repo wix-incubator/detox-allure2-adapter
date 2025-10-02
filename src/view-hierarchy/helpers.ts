@@ -4,7 +4,7 @@ import fs from 'node:fs/promises';
 import type { AllureRuntime } from 'jest-allure2-reporter/api';
 
 import type { ScreenshotHelper } from '../screenshots';
-import type { OnErrorHandlerFn } from '../types';
+import type { OnErrorHandlerFn, DetoxAllure2AdapterDeviceViewHierarchyOptions } from '../types';
 import type { DetoxTestFailedResult, DeviceWrapper } from '../utils';
 import { ScreenshotsCollector } from './screenshots-collector';
 import { XmlBuilder } from './xml-processor';
@@ -15,6 +15,7 @@ export interface ViewHierarchyHelperConfig {
   device: DeviceWrapper;
   screenshotsHelper: ScreenshotHelper;
   onError: OnErrorHandlerFn;
+  options: DetoxAllure2AdapterDeviceViewHierarchyOptions;
 }
 
 /**
@@ -24,10 +25,12 @@ export class ViewHierarchyHelper {
   private readonly _screenshotsCollector: ScreenshotsCollector;
   private readonly _platform: 'ios' | 'android';
   private readonly _handleError: OnErrorHandlerFn;
+  private readonly _options: DetoxAllure2AdapterDeviceViewHierarchyOptions;
 
-  constructor({ device, screenshotsHelper, onError }: ViewHierarchyHelperConfig) {
+  constructor({ device, screenshotsHelper, onError, options }: ViewHierarchyHelperConfig) {
     this._platform = device.platform;
     this._handleError = onError;
+    this._options = options;
     this._screenshotsCollector = new ScreenshotsCollector({
       onError,
       screenshotsHelper,
@@ -84,10 +87,11 @@ export class ViewHierarchyHelper {
     const activePtr = this.extractPointer(params.viewDescription);
 
     const xml = new XmlBuilder(params.viewHierarchy)
+      .withStylesheet(this._options.stylesheet)
+      .withPlatform(this._platform)
       .withScreenshot(screenshotBase64)
       .withActivePointer(activePtr)
-      .withErrorMessage(params.details)
-      .withPlatform(this._platform);
+      .withErrorMessage(params.details);
 
     allure.attachment('viewhierarchy.xml', `${xml}`, 'text/html');
     return true;

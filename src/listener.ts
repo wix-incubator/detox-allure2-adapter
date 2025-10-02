@@ -120,6 +120,7 @@ export const listener: EnvironmentListenerFn = (
         viewHierarchy = new ViewHierarchyHelper({
           device,
           onError,
+          options: deviceViewHierarchy === true ? {} : deviceViewHierarchy,
           screenshotsHelper: new ScreenshotHelper({
             device,
             options: true,

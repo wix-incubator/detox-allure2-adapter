@@ -73,5 +73,31 @@ export interface DetoxAllure2AdapterDeviceVideoOptions {
 }
 
 export interface DetoxAllure2AdapterDeviceViewHierarchyOptions {
-  // TODO: Add options
+  /**
+   * Path or content for a custom XSL stylesheet to control view hierarchy visualization.
+   *
+   * - If a URL is provided, it is used as an external stylesheet.
+   * - If the string starts with {@code <?xml}, it is embedded as a data URI.
+   * - If `false`, `null`, or empty string, no stylesheet is applied (raw XML output).
+   * - If `undefined`, the default stylesheet is used.
+   * - For best browser compatibility, host your stylesheet on the same domain as your Allure reports.
+   *
+   * @see https://unpkg.com/detox-allure2-adapter@alpha/view-hierarchy.xsl
+   * @see node_modules/detox-allure2-adapter/view-hierarchy.xsl
+   *
+   * @example
+   * // Use an external stylesheet URL
+   * 'https://my-allure-reports-domain.com/path/to/view-hierarchy.xsl'
+   *
+   * @example
+   * // Use an inline stylesheet (data URI)
+   * '<?xml version="1.0" encoding="utf-8"?><xsl:stylesheet...'
+   *
+   * @example
+   * // Disable stylesheet (raw XML output)
+   * false
+   * null
+   * ''
+   */
+  stylesheet?: string | null | false;
 }

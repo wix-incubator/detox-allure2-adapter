@@ -60,7 +60,7 @@ export class ScreenshotsCollector {
     await Promise.all(
       files.map((name) => {
         const screenshotPath = path.join(dirPath, name);
-        return allure.fileAttachment(screenshotPath, { handler: 'copy' });
+        return allure.fileAttachment(screenshotPath, { handler: 'move' });
       }),
     );
 

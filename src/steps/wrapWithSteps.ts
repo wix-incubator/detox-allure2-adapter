@@ -148,7 +148,7 @@ function wrapDeviceMethod(
       try {
         logs?.attachBefore(allure);
         const result = await originalMethod.apply(device, args);
-        await Promise.all([logs?.attachAfterSuccess(allure), screenshots?.attach(allure, false)]);
+        await Promise.all([logs?.attachAfterSuccess(allure), screenshots?.attachSuccess(allure)]);
 
         return result;
       } catch (error) {

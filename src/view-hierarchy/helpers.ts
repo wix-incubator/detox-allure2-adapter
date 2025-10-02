@@ -1,40 +1,41 @@
 import fs from 'node:fs/promises';
 
 // eslint-disable-next-line import/no-internal-modules
-import type { AllureRuntime } from 'jest-allure2-reporter/api';
+import type { AllureRuntime, ContentAttachmentHandler } from 'jest-allure2-reporter/api';
 
+import type { ViewHierarchyHandlerFactory } from '../file-handlers';
 import type { ScreenshotHelper } from '../screenshots';
-import type { OnErrorHandlerFn, DetoxAllure2AdapterDeviceViewHierarchyOptions } from '../types';
-import type { DetoxTestFailedResult, DeviceWrapper } from '../utils';
+import type { OnErrorHandlerFn } from '../types';
+import type { DetoxTestFailedResult } from '../utils';
 import { ScreenshotsCollector } from './screenshots-collector';
-import { XmlBuilder } from './xml-processor';
 
 const POINTER_REGEX = /(0x[\da-f]+)/;
 
 export interface ViewHierarchyHelperConfig {
-  device: DeviceWrapper;
+  createContentHandler: ViewHierarchyHandlerFactory;
   screenshotsHelper: ScreenshotHelper;
   onError: OnErrorHandlerFn;
-  options: DetoxAllure2AdapterDeviceViewHierarchyOptions;
 }
 
 /**
  * Helper class for handling viewHierarchy XML data from test failures
  */
 export class ViewHierarchyHelper {
-  private readonly _screenshotsCollector: ScreenshotsCollector;
-  private readonly _platform: 'ios' | 'android';
-  private readonly _handleError: OnErrorHandlerFn;
-  private readonly _options: DetoxAllure2AdapterDeviceViewHierarchyOptions;
+  public readonly defaultHandler: ContentAttachmentHandler;
 
-  constructor({ device, screenshotsHelper, onError, options }: ViewHierarchyHelperConfig) {
-    this._platform = device.platform;
+  private readonly _screenshotsCollector: ScreenshotsCollector;
+  private readonly _handleError: OnErrorHandlerFn;
+  private readonly _createContentHandler: ViewHierarchyHandlerFactory;
+
+  constructor({ createContentHandler, screenshotsHelper, onError }: ViewHierarchyHelperConfig) {
+    this._createContentHandler = createContentHandler;
     this._handleError = onError;
-    this._options = options;
     this._screenshotsCollector = new ScreenshotsCollector({
       onError,
       screenshotsHelper,
     });
+
+    this.defaultHandler = this._createContentHandler();
   }
 
   /**
@@ -84,16 +85,19 @@ export class ViewHierarchyHelper {
       return false;
     }
 
-    const activePtr = this.extractPointer(params.viewDescription);
+    allure.attachment('viewhierarchy.xml', params.viewHierarchy, {
+      /**
+       * @todo change to application/xhtml+xml when this PR is merged:
+       * @link https://github.com/allure-framework/allure2/pull/3133
+       */
+      mimeType: 'text/html',
+      handler: this._createContentHandler({
+        screenshot: screenshotBase64,
+        activePointer: this.extractPointer(params.viewDescription),
+        errorMessage: params.details,
+      }),
+    });
 
-    const xml = new XmlBuilder(params.viewHierarchy)
-      .withStylesheet(this._options.stylesheet)
-      .withPlatform(this._platform)
-      .withScreenshot(screenshotBase64)
-      .withActivePointer(activePtr)
-      .withErrorMessage(params.details);
-
-    allure.attachment('viewhierarchy.xml', `${xml}`, 'text/html');
     return true;
   }
 

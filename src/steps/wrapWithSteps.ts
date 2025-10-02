@@ -32,7 +32,7 @@ interface WrapWithScreenshotTakingOptions {
 }
 
 export function wrapWithSteps(options: WrapWithStepsOptions) {
-  const { allure, detox, worker, userArtifacts } = options;
+  const { allure, detox, worker, userArtifacts, viewHierarchy } = options;
   const { device } = detox;
   const platform = device.getPlatform();
 
@@ -53,9 +53,17 @@ export function wrapWithSteps(options: WrapWithStepsOptions) {
     'Reset content and settings',
     device.resetContentAndSettings.bind(device),
   );
-  device.uninstallApp = allure.createStep('Uninstall app', device.uninstallApp.bind(device));
-  device.terminateApp = allure.createStep('Terminate app', device.terminateApp.bind(device));
-  device.selectApp = allure.createStep('Select app {{0}}', device.selectApp.bind(device));
+  device.uninstallApp = allure.createStep(
+    'Uninstall app',
+    ['bundleId'],
+    device.uninstallApp.bind(device),
+  );
+  device.terminateApp = allure.createStep(
+    'Terminate app',
+    ['bundleId'],
+    device.terminateApp.bind(device),
+  );
+  device.selectApp = allure.createStep('Select app {{0}}', [null], device.selectApp.bind(device));
 
   if (typeof device.resetAppState === 'function') {
     device.resetAppState = allure.createStep('Reset app state', device.resetAppState.bind(device));
@@ -87,7 +95,12 @@ export function wrapWithSteps(options: WrapWithStepsOptions) {
         device.generateViewHierarchyXml.bind(device),
         {
           name: 'viewhierarchy.xml',
-          mimeType: 'application/xml',
+          /**
+           * @todo change to application/xhtml+xml when this PR is merged:
+           * @link https://github.com/allure-framework/allure2/pull/3133
+           */
+          mimeType: 'text/html',
+          handler: viewHierarchy?.defaultHandler,
         },
       );
 

@@ -9,8 +9,10 @@ import type { EnvironmentListenerFn } from 'jest-environment-emit';
 
 import {
   createDelayedMvHandler,
+  createViewHierarchyHandlerFactory,
   createZipHandler,
   createZipRmHandler,
+  ViewHierarchyHandlerFactory$1,
   RecycleBin,
 } from './file-handlers';
 import { LogBuffer } from './logs';
@@ -37,6 +39,7 @@ export const listener: EnvironmentListenerFn = (
   let screenshots: ScreenshotHelper | undefined;
   let videoManager: VideoManager | undefined;
   let viewHierarchy: ViewHierarchyHelper | undefined;
+  let viewHierarchyFactory: ViewHierarchyHandlerFactory$1 | undefined;
 
   let $test: ReturnType<typeof allure.$bind> | undefined;
   let $hook: ReturnType<typeof allure.$bind> | undefined;
@@ -57,6 +60,8 @@ export const listener: EnvironmentListenerFn = (
   testEvents
     .on('setup', () => {
       allure.$plug((context) => {
+        viewHierarchyFactory = createViewHierarchyHandlerFactory(context);
+
         context.fileAttachmentHandlers['mv-delayed'] ??= createDelayedMvHandler(context);
         context.fileAttachmentHandlers['zip'] ??= createZipHandler(context);
         context.fileAttachmentHandlers['zip-rm'] ??= createZipRmHandler(context);
@@ -116,11 +121,13 @@ export const listener: EnvironmentListenerFn = (
         videoManager = new VideoManager({ device, options: baseOptions, onError });
       }
 
-      if (deviceViewHierarchy) {
+      if (deviceViewHierarchy && viewHierarchyFactory) {
         viewHierarchy = new ViewHierarchyHelper({
-          device,
+          createContentHandler: viewHierarchyFactory({
+            platform: device.platform,
+            stylesheet: deviceViewHierarchy === true ? undefined : deviceViewHierarchy?.stylesheet,
+          }),
           onError,
-          options: deviceViewHierarchy === true ? {} : deviceViewHierarchy,
           screenshotsHelper: new ScreenshotHelper({
             device,
             options: true,

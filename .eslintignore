@@ -3,4 +3,4 @@ dist/**
 package-e2e/**
 *.js
 *.mjs
-src/view-hierarchy/xsl/index.ts
+src/file-handlers/view-hierarchy/xsl/index.ts

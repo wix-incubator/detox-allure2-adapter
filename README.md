@@ -10,7 +10,7 @@ To use Detox, Jest, and Allure together, please verify that the following module
 ```json
 "devDependencies": {
   "detox": "^20.42.0",
-  "detox-allure2-adapter": "^1.0.0-alpha.36",
+  "detox-allure2-adapter": "^1.0.0-alpha.37",
   "jest": "^30.2.0",
   "jest-allure2-reporter": "^2.2.8",
   "jest-metadata": "^1.6.0"
@@ -143,7 +143,18 @@ Enables capturing and visualizing the device's view hierarchy for test failures.
 - **`false`**: Disables view hierarchy capture.
 - **`DetoxAllure2AdapterDeviceViewHierarchyOptions`** (object): Enables capture and provides fine-grained control over the settings.
 
-  - Currently no additional options are available, but the interface is prepared for future enhancements.
+  - `stylesheet?: string | null | false`: Path or content for a custom XSL stylesheet to control view hierarchy visualization.
+    - If you provide a URL, it will be used as an external stylesheet.
+    - If you provide a string starting with `<?xml`, it will be embedded directly as a data URI.
+    - If `false`, `null`, or empty string, no stylesheet is applied (raw XML output).
+    - If `undefined`, the default stylesheet is used.
+    - Note: Some browsers (like Safari) may block embedded stylesheets for security reasons. For best compatibility, host your stylesheet on the same domain as your Allure reports.
+
+> [!TIP]
+> The [default XSL template](https://unpkg.com/detox-allure2-adapter@alpha/view-hierarchy.xsl) is available for reference and modification at:
+> - `node_modules/detox-allure2-adapter/view-hierarchy.xsl`
+>
+> Download and modify this file as needed, then host it and provide its URL to use your custom visualization.
 
 **Example with custom options:**
 
@@ -172,7 +183,14 @@ module.exports = {
           bitRate: 4_000_000,
         }
       },
-      deviceViewHierarchy: true
+      deviceViewHierarchy: {
+        // external URL
+        stylesheet: 'https://my-allure-reports-domain.com/path/to/view-hierarchy.xsl',
+        // or inline stylesheet (data URI)
+        // stylesheet: '<?xml version="1.0" encoding="utf-8"?><xsl:stylesheet...',
+        // or disable stylesheet (raw XML output)
+        // stylesheet: false,
+      }
     }],
   ],
 },

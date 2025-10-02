@@ -1,4 +1,4 @@
-import xslStylesheet from './xsl';
+import defaultXslStylesheet from './xsl';
 
 const VIEW_HIERARCHY_TAG_REGEX = /<ViewHierarchy/;
 
@@ -11,6 +11,7 @@ export class XmlBuilder {
   private activePointer?: string;
   private errorMessage?: string;
   private platform?: 'ios' | 'android';
+  private stylesheet?: string | null | boolean;
 
   constructor(xml: string) {
     this.xml = xml;
@@ -20,9 +21,8 @@ export class XmlBuilder {
    * Add screenshot to the XML (accepts base64 string, adds data URL prefix)
    */
   withScreenshot(base64Screenshot?: string): this {
-    if (base64Screenshot) {
-      this.screenshot = `data:image/png;base64,${base64Screenshot}`;
-    }
+    this.screenshot = base64Screenshot ? `data:image/png;base64,${base64Screenshot}` : undefined;
+
     return this;
   }
 
@@ -30,10 +30,7 @@ export class XmlBuilder {
    * Add active pointer to the XML
    */
   withActivePointer(pointer: string | undefined): this {
-    if (pointer) {
-      this.activePointer = pointer;
-    }
-
+    this.activePointer = pointer;
     return this;
   }
 
@@ -49,10 +46,17 @@ export class XmlBuilder {
    * Add platform to the XML
    */
   withPlatform(platform: 'ios' | 'android' | undefined): this {
-    if (platform) {
-      this.platform = platform;
-    }
+    this.platform = platform;
+    return this;
+  }
 
+  /**
+   * Add custom stylesheet to the XML
+   * Undefined means use default stylesheet.
+   * Null, false, empty string means no stylesheet.
+   */
+  withStylesheet(stylesheet: string | null | undefined | boolean): this {
+    this.stylesheet = stylesheet;
     return this;
   }
 
@@ -108,13 +112,32 @@ export class XmlBuilder {
     // Find the XML declaration and inject XSL stylesheet after it
     const xmlDeclarationMatch = xmlContent.match(/^<\?xml[^>]*\?>/);
     if (xmlDeclarationMatch) {
-      const xslProcessingInstruction = `<?xml-stylesheet type="text/xsl" href="${xslStylesheet}"?>\n`;
-      return xmlContent.replace(
-        xmlDeclarationMatch[0],
-        xmlDeclarationMatch[0] + '\n' + xslProcessingInstruction,
-      );
+      const stylesheetToUse = this.getStylesheet();
+      if (stylesheetToUse) {
+        const xslProcessingInstruction = `<?xml-stylesheet type="text/xsl" href="${stylesheetToUse}"?>\n`;
+        return xmlContent.replace(
+          xmlDeclarationMatch[0],
+          xmlDeclarationMatch[0] + '\n' + xslProcessingInstruction,
+        );
+      }
     }
 
     return xmlContent;
+  }
+
+  /**
+   * Get the stylesheet to use (custom or default)
+   */
+  private getStylesheet(): string | undefined {
+    if (this.stylesheet === false) return;
+    if (this.stylesheet === null) return;
+
+    const stylesheet = typeof this.stylesheet === 'string' ? this.stylesheet : defaultXslStylesheet;
+    if (stylesheet.startsWith('<?xml')) {
+      const encodedStylesheet = encodeURIComponent(stylesheet);
+      return `data:application/xml;charset=utf-8,${encodedStylesheet}`;
+    }
+
+    return stylesheet;
   }
 }

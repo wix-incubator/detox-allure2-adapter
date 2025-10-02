@@ -136,3 +136,4 @@ dist
 /.ai
 *.temp.xml
 /src/view-hierarchy/xsl/index.ts
+/view-hierarchy.xsl

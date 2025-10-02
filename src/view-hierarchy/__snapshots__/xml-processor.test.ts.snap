@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`XmlBuilder Integration tests should handle all methods combined with complex XML 1`] = `
+"<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="custom-test.xsl"?>
+
+<ViewHierarchy screenshot="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" active-ptr="0x12345678" platform="ios">
+  <UIView>
+    <UILabel text="Hello World"/>
+    <UIButton title="Click Me"/>
+  </UIView>
+<ErrorMessage><![CDATA[Test failed with multiple errors]]></ErrorMessage></ViewHierarchy>"
+`;
+
+exports[`XmlBuilder Integration tests should handle chaining and overriding values 1`] = `
+"<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="final-stylesheet.xsl"?>
+<ViewHierarchy screenshot="data:image/png;base64,second-screenshot" active-ptr="0x22222222" platform="ios"><TestNode/><ErrorMessage><![CDATA[Second error]]></ErrorMessage></ViewHierarchy>"
+`;
+
+exports[`XmlBuilder withActivePointer should add active-ptr attribute when provided 1`] = `"<?xml version="1.0"?><ViewHierarchy active-ptr="0xdeadbeef"><TestNode/></ViewHierarchy>"`;
+
+exports[`XmlBuilder withErrorMessage should add error message when provided 1`] = `"<?xml version="1.0"?><ViewHierarchy><TestNode/><ErrorMessage><![CDATA[Test error message]]></ErrorMessage></ViewHierarchy>"`;
+
+exports[`XmlBuilder withPlatform should add platform attribute when provided 1`] = `"<?xml version="1.0"?><ViewHierarchy platform="ios"><TestNode/></ViewHierarchy>"`;
+
+exports[`XmlBuilder withScreenshot should add screenshot attribute when provided 1`] = `"<?xml version="1.0"?><ViewHierarchy screenshot="data:image/png;base64,test-base64-data"><TestNode/></ViewHierarchy>"`;
+
+exports[`XmlBuilder withStylesheet should add custom stylesheet (URL) when provided 1`] = `
+"<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="custom-stylesheet.xsl"?>
+<ViewHierarchy><TestNode/></ViewHierarchy>"
+`;
+
+exports[`XmlBuilder withStylesheet should add custom stylesheet (data URI) when provided 1`] = `
+"<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="data:application/xml;charset=utf-8,custom-stylesheet.xsl"?>
+<ViewHierarchy><TestNode/></ViewHierarchy>"
+`;
+
+exports[`XmlBuilder withStylesheet should add custom stylesheet (inline) when provided 1`] = `
+"<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="data:application/xml;charset=utf-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%3Cxsl%3Astylesheet%20version%3D%221.0%22%20xmlns%3Axsl%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2FXSL%2FTransform%22%3E%3Cxsl%3Atemplate%20match%3D%22%2F%22%3E%3Cdiv%3EHello%20World%3C%2Fdiv%3E%3C%2Fxsl%3Atemplate%3E%3C%2Fxsl%3Astylesheet%3E"?>
+<ViewHierarchy><TestNode/></ViewHierarchy>"
+`;

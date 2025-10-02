@@ -10,6 +10,7 @@
     "dist",
     "*.js",
     "*.mjs",
+    "*.xsl",
     "!.*.js",
     "!jest.config.js",
     "!**/__*__",

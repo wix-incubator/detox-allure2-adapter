@@ -9,7 +9,7 @@ const __dirname = dirname(__filename);
 const projectRoot = join(__dirname, '..');
 
 // Paths to template files
-const templateDir = join(projectRoot, 'src', 'view-hierarchy', 'xsl');
+const templateDir = join(projectRoot, 'src', 'file-handlers', 'view-hierarchy', 'xsl');
 const xslTemplatePath = join(templateDir, 'template.xsl');
 const cssTemplatePath = join(templateDir, 'template.css');
 const jsTemplatePath = join(templateDir, 'template.js');

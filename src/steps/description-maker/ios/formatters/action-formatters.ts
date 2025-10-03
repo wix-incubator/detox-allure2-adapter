@@ -67,6 +67,9 @@ const actionFormatters: ActionFormatterMap = {
       }),
       p(predicate),
     ),
+
+  takeScreenshot: ({ predicate, params: [screenshot_name = 'element'] }) =>
+    concat(msg('Take screenshot of', { screenshot_name }), p(predicate)),
 };
 
 // Main entry point that routes to the correct formatter based on action type

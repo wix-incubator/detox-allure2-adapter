@@ -516,6 +516,7 @@ exports[`Android description maker should process trace 55: {"type":"invoke","pa
 {
   "args": {
     "id": "webViewFormWithScrolling",
+    "screenshot_name": "element",
   },
   "message": "Take screenshot of #webViewFormWithScrolling",
 }
@@ -649,6 +650,7 @@ exports[`Android description maker should process trace 70: {"type":"invoke","pa
 {
   "args": {
     "id": "webViewFormWithScrolling",
+    "screenshot_name": "element",
   },
   "message": "Take screenshot of #webViewFormWithScrolling",
 }
@@ -866,6 +868,7 @@ exports[`Android description maker should process trace 92: {"type":"invoke","pa
 {
   "args": {
     "id": "webViewFormWithScrolling",
+    "screenshot_name": "element",
   },
   "message": "Take screenshot of #webViewFormWithScrolling",
 }
@@ -1044,6 +1047,7 @@ exports[`Android description maker should process trace 110: {"type":"invoke","p
 {
   "args": {
     "id": "webViewFormWithScrolling",
+    "screenshot_name": "element",
   },
   "message": "Take screenshot of #webViewFormWithScrolling",
 }
@@ -1207,6 +1211,7 @@ exports[`Android description maker should process trace 128: {"type":"invoke","p
 {
   "args": {
     "id": "webViewFormWithScrolling",
+    "screenshot_name": "element",
   },
   "message": "Take screenshot of #webViewFormWithScrolling",
 }
@@ -1412,6 +1417,7 @@ exports[`Android description maker should process trace 149: {"type":"invoke","p
 {
   "args": {
     "id": "webViewFormWithScrolling",
+    "screenshot_name": "element",
   },
   "message": "Take screenshot of #webViewFormWithScrolling",
 }
@@ -1605,6 +1611,7 @@ exports[`Android description maker should process trace 171: {"type":"invoke","p
 {
   "args": {
     "id": "webViewFormWithScrolling",
+    "screenshot_name": "element",
   },
   "message": "Take screenshot of #webViewFormWithScrolling",
 }
@@ -10420,6 +10427,7 @@ exports[`Android description maker should process trace 1117: {"type":"invoke","
 {
   "args": {
     "id": "fancyElement",
+    "screenshot_name": "element",
   },
   "message": "Take screenshot of #fancyElement",
 }
@@ -10463,6 +10471,7 @@ exports[`Android description maker should process trace 1122: {"type":"invoke","
 {
   "args": {
     "id": "fancyElement",
+    "screenshot_name": "element",
   },
   "message": "Take screenshot of #fancyElement",
 }

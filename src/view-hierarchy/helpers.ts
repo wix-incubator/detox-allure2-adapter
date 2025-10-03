@@ -122,7 +122,7 @@ export class ViewHierarchyHelper {
       await allure.fileAttachment(dirPath, {
         name: 'ui.viewhierarchy.zip',
         mimeType: 'application/zip',
-        handler: 'zip-rm',
+        handler: 'zip',
       });
       return true;
     } catch (error) {

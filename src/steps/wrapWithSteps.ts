@@ -1,12 +1,13 @@
+import path from 'node:path';
 // eslint-disable-next-line import/no-internal-modules
 import type { AllureRuntime } from 'jest-allure2-reporter/api';
 import { type StepLogRecorder } from '../logs';
 import { type ScreenshotHelper } from '../screenshots';
-import type { DetoxTestFailedResult, WorkerWrapper } from '../utils';
+import type { DetoxTestFailedResult, DetoxInvokeResult, WorkerWrapper } from '../utils';
 import { type VideoManager } from '../video';
 import { type ViewHierarchyHelper } from '../view-hierarchy';
 import { androidDescriptionMaker, iosDescriptionMaker } from './description-maker';
-import type { StepDescriptionMaker } from './description-maker';
+import type { StepDescriptionMaker, StepArgs } from './description-maker';
 
 export interface WrapWithStepsOptions {
   detox: typeof import('detox');
@@ -69,10 +70,10 @@ export function wrapWithSteps(options: WrapWithStepsOptions) {
     device.resetAppState = allure.createStep('Reset app state', device.resetAppState.bind(device));
   }
 
-  if (userArtifacts === 'copy' || userArtifacts === 'move') {
+  if (userArtifacts !== 'ignore') {
     device.takeScreenshot = allure.createFileAttachment(device.takeScreenshot.bind(device), {
       name: '{{firstOr "screenshot"}}.png',
-      handler: userArtifacts === 'move' ? 'mv-delayed' : 'copy',
+      handler: 'copy',
     });
     device.takeScreenshot = allure.createStep('Take screenshot', [null], device.takeScreenshot);
 
@@ -81,7 +82,7 @@ export function wrapWithSteps(options: WrapWithStepsOptions) {
       {
         name: '{{firstOr "capture"}}.viewhierarchy.zip',
         mimeType: 'application/zip',
-        handler: userArtifacts === 'move' ? 'zip-rm' : 'zip',
+        handler: 'zip',
       },
     );
     device.captureViewHierarchy = allure.createStep(
@@ -237,10 +238,31 @@ function wrapSendMethod({
   videoManager,
   screenshots,
   viewHierarchy,
+  userArtifacts,
   send,
 }: WrapWithDescriptionMakerOptions) {
-  const onActionSuccess = async () => {
+  const onActionSuccess = async (args: StepArgs, result: DetoxInvokeResult) => {
     await logs?.attachAfterSuccess(allure);
+
+    const screenshotName = args?.screenshot_name;
+    if (userArtifacts !== 'ignore' && screenshotName) {
+      const screenshotPath = result?.params?.screenshotPath;
+      if (screenshotPath) {
+        allure.fileAttachment(screenshotPath, {
+          name: path.extname(screenshotName)
+            ? screenshotName
+            : `${screenshotName}${path.extname(screenshotPath)}`,
+          handler: 'copy',
+        });
+      }
+
+      const screenshotContent = result?.params?.result;
+      if (screenshotContent) {
+        const name = path.extname(screenshotName) ? screenshotName : `${screenshotName}.png`;
+        const buffer = Buffer.from(screenshotContent, 'base64');
+        allure.attachment(name, buffer);
+      }
+    }
   };
 
   const onActionFailure = async (shouldSetStatus: boolean, result?: DetoxTestFailedResult) => {
@@ -291,7 +313,7 @@ function wrapSendMethod({
             const result = await send(...args);
             await (result?.type === 'testFailed'
               ? onActionFailure(true, result as DetoxTestFailedResult)
-              : onActionSuccess());
+              : onActionSuccess(desc.args, result as DetoxInvokeResult));
             return result;
           } catch (error) {
             await onActionFailure(false);

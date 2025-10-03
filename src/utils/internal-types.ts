@@ -63,3 +63,11 @@ export interface DetoxTestFailedResult {
     windows?: string[];
   };
 }
+
+export interface DetoxInvokeResult {
+  type: 'invokeResult';
+  params: {
+    result?: string;
+    screenshotPath?: string;
+  };
+}

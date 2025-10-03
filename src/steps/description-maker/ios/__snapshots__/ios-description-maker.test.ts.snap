@@ -369,30 +369,56 @@ exports[`iOS description maker should process everything.jsonl fixture 1`] = `
 + {"direction":"down","speed":"fast","amount":0.7,"text":"Index"}
 
 > {"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["elementScreenshot.horiz"],"predicate":{"type":"id","value":"fancyElement","isRegex":false}}}
+< Take screenshot of #fancyElement
++ {"screenshot_name":"elementScreenshot.horiz","id":"fancyElement"}
 
 > {"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["elementScreenshot.vert"],"predicate":{"type":"id","value":"fancyElement","isRegex":false}}}
+< Take screenshot of #fancyElement
++ {"screenshot_name":"elementScreenshot.vert","id":"fancyElement"}
 
 > {"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["focus-on-content-editable-webview"],"predicate":{"type":"id","value":"webViewFormWithScrolling","isRegex":false}}}
+< Take screenshot of #webViewFormWithScrolling
++ {"screenshot_name":"focus-on-content-editable-webview","id":"webViewFormWithScrolling"}
 
 > {"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["focus-on-input-webview"],"predicate":{"type":"id","value":"webViewFormWithScrolling","isRegex":false}}}
+< Take screenshot of #webViewFormWithScrolling
++ {"screenshot_name":"focus-on-input-webview","id":"webViewFormWithScrolling"}
 
 > {"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["move-cursor-to-end-content-editable-webview"],"predicate":{"type":"id","value":"webViewFormWithScrolling","isRegex":false}}}
+< Take screenshot of #webViewFormWithScrolling
++ {"screenshot_name":"move-cursor-to-end-content-editable-webview","id":"webViewFormWithScrolling"}
 
 > {"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["move-cursor-to-end-webview"],"predicate":{"type":"id","value":"webViewFormWithScrolling","isRegex":false}}}
+< Take screenshot of #webViewFormWithScrolling
++ {"screenshot_name":"move-cursor-to-end-webview","id":"webViewFormWithScrolling"}
 
 > {"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["scroll-to-view-webview"],"predicate":{"type":"id","value":"webViewFormWithScrolling","isRegex":false}}}
+< Take screenshot of #webViewFormWithScrolling
++ {"screenshot_name":"scroll-to-view-webview","id":"webViewFormWithScrolling"}
 
 > {"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["select-all-text-in-content-editable-webview"],"predicate":{"type":"id","value":"webViewFormWithScrolling","isRegex":false}}}
+< Take screenshot of #webViewFormWithScrolling
++ {"screenshot_name":"select-all-text-in-content-editable-webview","id":"webViewFormWithScrolling"}
 
 > {"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["select-all-text-in-webview"],"predicate":{"type":"id","value":"webViewFormWithScrolling","isRegex":false}}}
+< Take screenshot of #webViewFormWithScrolling
++ {"screenshot_name":"select-all-text-in-webview","id":"webViewFormWithScrolling"}
 
 > {"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["tap-on-cross-origin-frame-element"],"predicate":{"type":"id","value":"webView","isRegex":false}}}
+< Take screenshot of #webView
++ {"screenshot_name":"tap-on-cross-origin-frame-element","id":"webView"}
 
 > {"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["type-text-in-cross-origin-frame"],"predicate":{"type":"id","value":"webView","isRegex":false}}}
+< Take screenshot of #webView
++ {"screenshot_name":"type-text-in-cross-origin-frame","id":"webView"}
 
 > {"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["typing-keep-cursor-position-webview-content-editable-1"],"predicate":{"type":"id","value":"webViewFormWithScrolling","isRegex":false}}}
+< Take screenshot of #webViewFormWithScrolling
++ {"screenshot_name":"typing-keep-cursor-position-webview-content-editable-1","id":"webViewFormWithScrolling"}
 
 > {"type":"invoke","params":{"type":"action","action":"takeScreenshot","params":["typing-keep-cursor-position-webview-input-1"],"predicate":{"type":"id","value":"webViewFormWithScrolling","isRegex":false}}}
+< Take screenshot of #webViewFormWithScrolling
++ {"screenshot_name":"typing-keep-cursor-position-webview-input-1","id":"webViewFormWithScrolling"}
 
 > {"type":"invoke","params":{"type":"action","action":"tap","atIndex":0,"predicate":{"type":"text","value":"Index","isRegex":false}}}
 < Tap "Index"

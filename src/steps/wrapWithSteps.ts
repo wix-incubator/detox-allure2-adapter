@@ -41,7 +41,6 @@ export function wrapWithSteps(options: WrapWithStepsOptions) {
   wrapDeviceMethod(options, 'launchApp', 'Launch app');
   wrapDeviceMethod(options, 'relaunchApp', 'Relaunch app');
   wrapDeviceMethod(options, 'openURL', 'Open URL');
-  wrapDeviceMethod(options, 'reloadReactNative', 'Reload React Native');
   wrapDeviceMethod(options, 'sendToHome', 'Send app to background');
   wrapDeviceMethod(options, 'setOrientation', 'Set orientation');
   wrapDeviceMethod(options, 'matchFace', 'Match face');

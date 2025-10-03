@@ -75,6 +75,7 @@ export type DetoxAction =
   | 'setDatePickerDate'
   | 'setColumnToValue'
   | 'swipe'
+  | 'takeScreenshot'
   | 'tap'
   | 'typeText';
 
@@ -281,6 +282,11 @@ export interface MultiTapAction extends BaseActionInvocation {
   action: 'multiTap';
   params: MultiTapParams;
 }
+
+export interface TakeScreenshotAction extends BaseActionInvocation {
+  action: 'takeScreenshot';
+  params: TakeScreenshotParams;
+}
 //#endregion Action Invocations
 
 //#region Invocation Union Types
@@ -295,7 +301,8 @@ export type ActionInvocation =
   | SetDatePickerAction
   | SwipeAction
   | SetColumnAction
-  | MultiTapAction;
+  | MultiTapAction
+  | TakeScreenshotAction;
 
 export type WebInvocation =
   | WebGetTitleAction
@@ -328,6 +335,7 @@ export type AccessibilityActionParams = readonly [action: string];
 export type SwipeParams = readonly [direction: string, speed: string, percentage: number];
 export type PickerColumnParams = readonly [column: number, value: string];
 export type MultiTapParams = readonly [count: number];
+export type TakeScreenshotParams = readonly [name: string];
 
 export type ActionParams =
   | AccessibilityActionParams

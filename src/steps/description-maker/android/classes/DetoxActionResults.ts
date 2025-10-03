@@ -177,7 +177,7 @@ export class SwipeInDirectionResult implements ArgumentFormatter {
 
 export class TakeViewScreenshotResult implements ArgumentFormatter {
   format(matcher: StepDescriptionFriendly): StepDescription {
-    return concat('Take screenshot of', matcher);
+    return concat(msg('Take screenshot of', { screenshot_name: 'element' }), matcher);
   }
 }
 

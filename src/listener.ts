@@ -8,10 +8,8 @@ import { allure } from 'jest-allure2-reporter/api';
 import type { EnvironmentListenerFn } from 'jest-environment-emit';
 
 import {
-  createDelayedMvHandler,
   createViewHierarchyHandlerFactory,
   createZipHandler,
-  createZipRmHandler,
   ViewHierarchyHandlerFactory$1,
   RecycleBin,
 } from './file-handlers';
@@ -62,9 +60,7 @@ export const listener: EnvironmentListenerFn = (
       allure.$plug((context) => {
         viewHierarchyFactory = createViewHierarchyHandlerFactory(context);
 
-        context.fileAttachmentHandlers['mv-delayed'] ??= createDelayedMvHandler(context);
         context.fileAttachmentHandlers['zip'] ??= createZipHandler(context);
-        context.fileAttachmentHandlers['zip-rm'] ??= createZipRmHandler(context);
         context.handlebars.registerHelper(
           'firstOr',
           function (this: unknown[], defaultValue: unknown) {
@@ -145,6 +141,12 @@ export const listener: EnvironmentListenerFn = (
             event.launchArgs.detoxDebugVisibility = 'NO';
             event.launchArgs.detoxDisableHierarchyDump = 'YES';
           }
+        });
+      }
+
+      if (userArtifacts === 'move') {
+        workerWrapper.eventEmitter.on('createExternalArtifact', (event) => {
+          recycleBin.add(event.artifactPath);
         });
       }
     })

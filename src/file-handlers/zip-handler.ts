@@ -28,7 +28,7 @@ async function packDirectory(src: string): Promise<string> {
     output.on('end', () => resolve(dest));
 
     const archive = archiver('zip');
-    archive.directory(src, false);
+    archive.directory(src, path.basename(src));
     archive.pipe(output);
     archive.on('error', reject);
     archive.finalize();

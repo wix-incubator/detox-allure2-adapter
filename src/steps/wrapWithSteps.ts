@@ -247,7 +247,7 @@ function wrapSendMethod({
     if (userArtifacts !== 'ignore' && screenshotName) {
       const screenshotPath = result?.params?.screenshotPath;
       if (screenshotPath) {
-        allure.fileAttachment(screenshotPath, {
+        await allure.fileAttachment(screenshotPath, {
           name: path.extname(screenshotName)
             ? screenshotName
             : `${screenshotName}${path.extname(screenshotPath)}`,

@@ -52,7 +52,7 @@ export class ScreenshotHelper {
     return this._kitten.takeScreenshot({ deviceId: this._device.id });
   }
 
-  private async _attachScreenshot(allure: AllureRuntime, name = 'screenshot') {
+  private async _attachScreenshot(allure: AllureRuntime, name: string) {
     const filePath = await this.takeScreenshot();
 
     allure.fileAttachment(filePath, {

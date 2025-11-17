@@ -200,7 +200,11 @@ export const listener: EnvironmentListenerFn = (
     .on('test_fn_success', async () => {
       await Promise.all([logs?.attachAfterSuccess(allure), screenshots?.attachSuccess(allure)]);
     })
-    .on('test_done', async () => {
+    .on('test_done', async ({ event }) => {
+      if (event.test.errors.length > 0) {
+        failing = true;
+      }
+
       await videoManager?.stopAndAttach($test, failing);
       $test = undefined;
     })

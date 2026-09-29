@@ -70,13 +70,14 @@ export class VideoManager {
 
     this.recordingSession = undefined;
 
-    if (allure && (this.saveAll || failed)) {
-      allure.fileAttachment(videoPath, {
-        name: 'test' + path.extname(videoPath),
-        handler: 'move',
-      });
-    } else {
-      await fs.unlink(videoPath);
-    }
+    await (allure && (this.saveAll || failed)
+      ? allure
+          .fileAttachment(videoPath, {
+            name: 'test' + path.extname(videoPath),
+            handler: 'move',
+          })
+          // jest-allure2-reporter's task queue already logs the failure
+          .catch(() => {})
+      : fs.unlink(videoPath));
   }
 }
